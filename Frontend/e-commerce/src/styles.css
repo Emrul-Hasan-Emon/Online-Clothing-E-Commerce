@@ -2,3 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Roboto, 'Times New Roman', Times, serif;
+}
+
+.box-container {
+    box-shadow: black 0px 5px 15px;
+    padding: 10px;
+}
+
+/* Assume we don't want to show default web browser scroll bar */
+.hide-scroll-bar::-webkit-scrollbar {
+    display: none;
+}
