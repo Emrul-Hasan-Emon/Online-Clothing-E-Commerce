@@ -1,9 +1,14 @@
 .title {
-    font-size: 1.5rem;
+    color: black;
+    font-size: 2rem;
     font-weight: 600;
-    opacity: 0.7;
+    opacity: 0.8;
 }
 
+.box {
+    background-color: white;
+    color: black;
+}
 .products-container {
     display: flex;
     flex-wrap: wrap;

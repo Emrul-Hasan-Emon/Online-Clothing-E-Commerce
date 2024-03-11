@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { jeansCollection } from '../Data/mensJeans';
+import { pantCollection } from '../Data/meansPant';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,7 @@ import { jeansCollection } from '../Data/mensJeans';
 })
 export class HomeComponent implements OnInit{
   dressTitle: string[] = [];
-  products: any = [];
+  products: any[] = [];
 
   ngOnInit(): void {
     this.dressTitle.push("Men's Shirt");
@@ -16,7 +17,10 @@ export class HomeComponent implements OnInit{
     this.dressTitle.push("Women's Sharee");
     this.dressTitle.push("Women's Lahenga");
     
-    this.products = jeansCollection;
+    this.products.push(jeansCollection);
+    this.products.push(pantCollection);
+    this.products.push(jeansCollection);
+    this.products.push(jeansCollection);
   }
 
 }
