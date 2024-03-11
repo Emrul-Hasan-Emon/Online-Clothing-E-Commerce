@@ -7,6 +7,8 @@ import { HomeComponent } from './home/home.component';
 import { CarouselComponent } from './home/carousel/carousel.component';
 import { ProductSliderComponent } from './home/product-slider/product-slider.component';
 import { HomeProductCardComponent } from './home/home-product-card/home-product-card.component';
+import { CarouselModule } from 'primeng/carousel';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { HomeProductCardComponent } from './home/home-product-card/home-product-
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CarouselModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

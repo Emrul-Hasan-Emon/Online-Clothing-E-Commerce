@@ -1,8 +1,29 @@
 <div class="p-5 lg:px-20 lg:py-10">
     <p class="title"> {{ title }} </p>
-    <div>
-        <ng-container *ngFor="let item of products">
-            <app-home-product-card></app-home-product-card>
-        </ng-container>
+    <div class="products-container">
+        <p-carousel [value]="products"
+            [numVisible]="4"
+            [numScroll]="2"
+            [circular]="true"
+            [responsiveOptions]="responsiveOptions"
+        >
+            <ng-template *ngFor="let item of products">
+                <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
+                    <div class="mb-3">
+                        <img src="" class="w-6 shadow-2" />
+                    </div>
+                    <div>
+                        <h4 class="mb-1">{{ "A" }}</h4>
+                        <h6 class="mt-0 mb-3">{{ '$' + "200" }}</h6>
+                    </div>
+                </div>
+            </ng-template>
+        </p-carousel>
     </div>
+
+    <!-- <div class="products-container">
+        <ng-container *ngFor="let item of products">
+            <app-home-product-card [product]="item"></app-home-product-card>
+        </ng-container>
+    </div> -->
 </div>
