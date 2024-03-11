@@ -1,6 +1,8 @@
-<div>
-    <p> {{ show }} </p>
+<div class="p-5 lg:px-20 lg:py-10">
+    <p class="title"> {{ title }} </p>
     <div>
-
+        <ng-container *ngFor="let item of products">
+            <app-home-product-card></app-home-product-card>
+        </ng-container>
     </div>
 </div>
