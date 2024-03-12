@@ -14,6 +14,8 @@ export class CarouselComponent {
 
   ngOnInit() {
     this.carouselImages = Carousel;
+    console.log("Carousel: ", this.carouselImages);
+    
     this.autoPlay();
   }
 
