@@ -9,6 +9,7 @@ import { ProductSliderComponent } from './home/product-slider/product-slider.com
 import { HomeProductCardComponent } from './home/home-product-card/home-product-card.component';
 import { CarouselModule } from 'primeng/carousel';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HomeComponent,
     CarouselComponent,
     ProductSliderComponent,
-    HomeProductCardComponent
+    HomeProductCardComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
