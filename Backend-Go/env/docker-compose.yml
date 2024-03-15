@@ -1,0 +1,9 @@
+version: '3.1'
+services:
+    mariadb:
+        image: 'mariadb'
+        ports:
+            - '3306:3306'
+        environment:
+            MYSQL_ROOT_PASSWORD: 'emon@123'
+            MYSQL_DATABASE: 'online_cloth_management_system'
