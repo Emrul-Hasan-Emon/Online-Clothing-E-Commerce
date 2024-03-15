@@ -28,14 +28,22 @@
                     <p>Log In</p>
                 </div>
             </div>
-            
+            <div class="single-icon">
+                
+                <button type="submit">Emrul Hasan</button>
+                  
+            </div>
         </div>
     </div>
     <div class="nav-links">
         <a href="#">Trending</a>
-        <a href="#">Men</a>
-        <a href="#">Women</a>
+        <a class="open-button" href="#" (click)="openNavBarContent('Men')">Men</a>
+        <a class="open-button" href="#" (click)="openNavBarContent('Women')">Women</a>
         <a href="#">LogIn</a>
         <a href="#">SignUp</a>
     </div>
+</div>
+
+<div *ngIf="isNavBarContentOpen" class="modal-container">
+    <app-navbar-content [selectedCategory]="currentSection"></app-navbar-content>
 </div>

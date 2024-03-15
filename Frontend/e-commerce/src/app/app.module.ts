@@ -10,6 +10,8 @@ import { HomeProductCardComponent } from './home/home-product-card/home-product-
 import { CarouselModule } from 'primeng/carousel';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './navbar/navbar.component';
+import { MenuModule } from 'primeng/menu';
+import { NavbarContentComponent } from './navbar/navbar-content/navbar-content.component';
 
 @NgModule({
   declarations: [
@@ -18,13 +20,15 @@ import { NavbarComponent } from './navbar/navbar.component';
     CarouselComponent,
     ProductSliderComponent,
     HomeProductCardComponent,
-    NavbarComponent
+    NavbarComponent,
+    NavbarContentComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CarouselModule,
-    NgbModule
+    NgbModule,
+    MenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
