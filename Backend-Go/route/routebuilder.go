@@ -12,30 +12,40 @@ import (
 
 type Builder struct {
 	allowCors  bool
-	auth       auth.Protector
 	router     *mux.Router
 	serverName string
 	isLogDebug bool
 }
 
-func NewRouteBuilder(allowCors bool, auth auth.Protector, serverName string, isLogDebug bool) *Builder {
-	return &Builder{allowCors, auth, mux.NewRouter().StrictSlash(true), serverName, isLogDebug}
+func NewRouteBuilder(allowCors bool, serverName string, isLogDebug bool) *Builder {
+	return &Builder{allowCors, mux.NewRouter().StrictSlash(true), serverName, isLogDebug}
 }
 
 func (rb *Builder) SubRouteBuilder(pathPrefix string) *Builder {
-	return &Builder{rb.allowCors, rb.auth, rb.router.PathPrefix(pathPrefix).Subrouter(), rb.serverName, rb.isLogDebug}
+	return &Builder{rb.allowCors, rb.router.PathPrefix(pathPrefix).Subrouter(), rb.serverName, rb.isLogDebug}
 }
 
-func (rb *Builder) Add(action auth.Action, method, path string, handlerFunc http.HandlerFunc) *mux.Route {
-	handler := rb.generalHanlder(rb.corsHanlder(rb.performanceLogger(handlerFunc, action)))
+func (rb *Builder) Add(action string, method, path string, handlerFunc http.HandlerFunc) *mux.Route {
+	handler := rb.generalHanlder(
+		rb.corsHanlder(
+			rb.performanceLogger(
+				handlerFunc, action)))
 	return rb.add(action, method, path, handler)
 }
 
-func (rb *Builder) add(action auth.Action, method, path string, handler http.Handler) *mux.Route {
+func (rb *Builder) AddSafe(action string, method, path string, handlerFunc http.HandlerFunc) *mux.Route {
+	handler := rb.generalHanlder(
+		rb.corsHanlder(
+			auth.Protector(
+				action, rb.performanceLogger(
+					handlerFunc, action))))
+	return rb.add(action, method, path, handler)
+}
+func (rb *Builder) add(action string, method, path string, handler http.Handler) *mux.Route {
 	return rb.router.Methods(method).Path(path).Name(string(action)).Handler(handler)
 }
 
-func (rb *Builder) performanceLogger(inner http.HandlerFunc, action auth.Action) http.Handler {
+func (rb *Builder) performanceLogger(inner http.HandlerFunc, action string) http.Handler {
 	if rb.isLogDebug {
 		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 			start := time.Now()
