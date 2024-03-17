@@ -17,7 +17,8 @@
 .btn-css {
     background-color: gray;
     color: black;
-    font-size: 15px;
+    font-size: 20px;
+    font-weight: 500;
 }
 
 img {
