@@ -12,6 +12,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MenuModule } from 'primeng/menu';
 import { NavbarContentComponent } from './navbar/navbar-content/navbar-content.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { NavbarContentComponent } from './navbar/navbar-content/navbar-content.c
     ProductSliderComponent,
     HomeProductCardComponent,
     NavbarComponent,
-    NavbarContentComponent
+    NavbarContentComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
