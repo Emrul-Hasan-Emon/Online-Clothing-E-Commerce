@@ -3,34 +3,22 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { CarouselComponent } from './home/carousel/carousel.component';
-import { ProductSliderComponent } from './home/product-slider/product-slider.component';
-import { HomeProductCardComponent } from './home/home-product-card/home-product-card.component';
-import { CarouselModule } from 'primeng/carousel';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NavbarComponent } from './navbar/navbar.component';
 import { MenuModule } from 'primeng/menu';
-import { NavbarContentComponent } from './navbar/navbar-content/navbar-content.component';
-import { FooterComponent } from './footer/footer.component';
+import { FeatureModule } from './Modules/feature/feature.module';
+import { SharedModule } from './Modules/shared/shared.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HomeComponent,
-    CarouselComponent,
-    ProductSliderComponent,
-    HomeProductCardComponent,
-    NavbarComponent,
-    NavbarContentComponent,
-    FooterComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CarouselModule,
     NgbModule,
-    MenuModule
+    MenuModule,
+    FeatureModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

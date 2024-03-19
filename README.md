@@ -9,3 +9,5 @@
 7. Created Product Slider Component.
 8. Installed PrimeNG
 9. Created Home Product Card Component.
+10. Changed Some styles on Carousel Component.
+11. Navbar Component is created under src/app directory.
