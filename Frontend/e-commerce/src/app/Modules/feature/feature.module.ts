@@ -5,6 +5,7 @@ import { CarouselComponent } from './home/carousel/carousel.component';
 import { HomeProductCardComponent } from './home/home-product-card/home-product-card.component';
 import { ProductSliderComponent } from './home/product-slider/product-slider.component';
 import { CarouselModule } from 'primeng/carousel';
+import { ProductsShowPageComponent } from './products-show-page/products-show-page.component';
 
 
 
@@ -13,7 +14,8 @@ import { CarouselModule } from 'primeng/carousel';
     HomeComponent,
     CarouselComponent,
     HomeProductCardComponent,
-    ProductSliderComponent
+    ProductSliderComponent,
+    ProductsShowPageComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +25,8 @@ import { CarouselModule } from 'primeng/carousel';
     HomeComponent,
     CarouselComponent,
     HomeProductCardComponent,
-    ProductSliderComponent
+    ProductSliderComponent,
+    ProductsShowPageComponent
   ]
 })
 export class FeatureModule { }
