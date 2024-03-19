@@ -6,8 +6,9 @@ import { HomeProductCardComponent } from './home/home-product-card/home-product-
 import { ProductSliderComponent } from './home/product-slider/product-slider.component';
 import { CarouselModule } from 'primeng/carousel';
 import { ProductsShowPageComponent } from './products-show-page/products-show-page.component';
-
-
+import { DropdownModule } from 'primeng/dropdown';
+import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -18,8 +19,11 @@ import { ProductsShowPageComponent } from './products-show-page/products-show-pa
     ProductsShowPageComponent
   ],
   imports: [
+    FormsModule,
+    BrowserAnimationsModule,
     CommonModule,
-    CarouselModule
+    CarouselModule,
+    DropdownModule
   ],
   exports: [
     HomeComponent,

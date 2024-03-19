@@ -1,0 +1,20 @@
+.main-container {
+    margin: 0;
+    padding: 0;
+    height: auto;
+}
+
+.first-container {
+    display: flex; /* Use flexbox layout */
+    justify-content: space-between; /* Align items to start and end of container */
+    align-items: center; /* Vertically center items */
+    height: auto; /* Ensure container adjusts its height based on content */
+}
+
+.text {
+    display: inline-block;
+}
+
+.sort {
+    display: inline-block;
+}

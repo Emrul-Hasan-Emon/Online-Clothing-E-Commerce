@@ -1,1 +1,21 @@
-<p>products-show-page works!</p>
+<div class="main-container">
+    <div class="first-container">
+        <div class="text">
+            Products
+        </div>
+        <div class="sort"> 
+            <div class="card flex justify-content-center">
+                <p-dropdown [options]="sortingOptions" 
+                    [(ngModel)]="selectedSortOption" 
+                    optionLabel="name" 
+                    [showClear]="true" 
+                    placeholder="Sort By"
+                    (onChange)="onSortSelect($event)">
+                </p-dropdown>
+            </div>
+        </div>
+    </div>
+    <div class="second-container">
+
+    </div>
+</div>
