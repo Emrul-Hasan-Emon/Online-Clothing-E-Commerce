@@ -4,18 +4,23 @@
             Products
         </div>
         <div class="sort"> 
-            <div class="card flex justify-content-center">
-                <p-dropdown [options]="sortingOptions" 
-                    [(ngModel)]="selectedSortOption" 
-                    optionLabel="name" 
-                    [showClear]="true" 
-                    placeholder="Sort By"
-                    (onChange)="onSortSelect($event)">
-                </p-dropdown>
-            </div>
+            <app-single-filter [sortingOptions]="sortingOptions" [placeholder]="'Sort By'" (selectedSortOption)="sortOptionsSelected($event)"></app-single-filter>
         </div>
     </div>
+    <hr/>
     <div class="second-container">
+        <div class="left-side">
+            <h2>Filters</h2>
+            <app-single-filter [sortingOptions]="sortingOptions" [placeholder]="'Sort By Colors'" (selectedSortOption)="sortOptionsSelected($event)"></app-single-filter>
 
+            <app-single-filter [sortingOptions]="sortingOptions" [placeholder]="'Sort By Price'"></app-single-filter>
+
+            <app-single-filter [sortingOptions]="sortingOptions" [placeholder]="'Availability'"></app-single-filter>
+
+            <app-single-filter [sortingOptions]="sortingOptions" [placeholder]="'Sort By Discount'"></app-single-filter>
+        </div>
+        <div class="right-side">
+            <h2>Products</h2>
+        </div>
     </div>
 </div>

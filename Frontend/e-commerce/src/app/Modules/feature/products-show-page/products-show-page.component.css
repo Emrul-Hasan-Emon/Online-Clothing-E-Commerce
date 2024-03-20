@@ -7,6 +7,8 @@
 .first-container {
     display: flex; /* Use flexbox layout */
     justify-content: space-between; /* Align items to start and end of container */
+    margin-top: 10px;
+    margin-bottom: 10px;
     align-items: center; /* Vertically center items */
     height: auto; /* Ensure container adjusts its height based on content */
 }
@@ -17,4 +19,12 @@
 
 .sort {
     display: inline-block;
+}
+
+.second-container {
+    display: flex;
+}
+
+.p-checkbox {
+    background-color: black;
 }

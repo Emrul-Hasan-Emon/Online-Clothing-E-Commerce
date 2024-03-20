@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-interface Sort {
-  name: string;
-  code: string;
-}
+import { Sort } from 'src/app/Model/sortmodel';
 
 @Component({
   selector: 'app-products-show-page',
@@ -13,6 +9,15 @@ interface Sort {
 export class ProductsShowPageComponent implements OnInit {
   sortingOptions: Sort[];
   selectedSortOption: Sort;
+
+  selectedCategories: any[] = [];
+
+  categories: any[] = [
+      { name: 'Accounting', key: 'A' },
+      { name: 'Marketing', key: 'M' },
+      { name: 'Production', key: 'P' },
+      { name: 'Research', key: 'R' }
+  ];
 
   ngOnInit(): void {
       this.sortingOptions = [
@@ -24,5 +29,10 @@ export class ProductsShowPageComponent implements OnInit {
 
   onSortSelect(event) {
     console.log("Event: ", event);
+  }
+
+  sortOptionsSelected(event) {
+    console.log("Event in Parent: ", event);
+    
   }
 }
