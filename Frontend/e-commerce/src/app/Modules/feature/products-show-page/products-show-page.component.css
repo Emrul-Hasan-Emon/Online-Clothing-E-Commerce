@@ -1,30 +1,103 @@
 .main-container {
     margin: 0;
     padding: 0;
-    height: auto;
 }
 
-.first-container {
-    display: flex; /* Use flexbox layout */
-    justify-content: space-between; /* Align items to start and end of container */
-    margin-top: 10px;
-    margin-bottom: 10px;
-    align-items: center; /* Vertically center items */
-    height: auto; /* Ensure container adjusts its height based on content */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
 }
 
 .text {
-    display: inline-block;
+    font-size: 24px;
+    font-weight: bold;
 }
 
-.sort {
-    display: inline-block;
-}
-
-.second-container {
+.product-container {
     display: flex;
+    justify-content: space-between;
 }
 
-.p-checkbox {
-    background-color: black;
+.filters {
+    width: 20%;
+    padding-right: 20px;
 }
+
+.filters h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.products {
+    width: 75%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.product {
+    position: relative;
+    width: calc(25% - 20px);
+    margin: 20px;
+    background-color: black;
+    border: 1px solid #333;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.product-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-details {
+    padding: 10px;
+}
+
+.product-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: white;
+}
+
+.product-brand {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #ccc;
+}
+
+.product-price {
+    font-size: 16px;
+    font-weight: bold;
+    color: #17a2b8;
+    margin-bottom: 5px;
+}
+
+.discount-box {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #17a2b8;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+

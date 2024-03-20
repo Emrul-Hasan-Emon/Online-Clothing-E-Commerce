@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { pantCollection } from 'src/app/Data/meansPant';
+import { mensCollection } from 'src/app/Data/mensColletion';
+import { jeansCollection } from 'src/app/Data/mensJeans';
 import { Sort } from 'src/app/Model/sortmodel';
 
 @Component({
@@ -11,6 +14,7 @@ export class ProductsShowPageComponent implements OnInit {
   selectedSortOption: Sort;
 
   selectedCategories: any[] = [];
+  products: any[] = [];
 
   categories: any[] = [
       { name: 'Accounting', key: 'A' },
@@ -25,6 +29,9 @@ export class ProductsShowPageComponent implements OnInit {
         { name: "Sort By Name", code: "sn" }
       ]
       this.selectedSortOption = null;
+
+      this.products.push(mensCollection)
+      console.log(this.products);
   }
 
   onSortSelect(event) {

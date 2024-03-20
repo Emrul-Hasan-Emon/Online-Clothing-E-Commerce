@@ -9,6 +9,9 @@ import { ProductsShowPageComponent } from './products-show-page/products-show-pa
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DividerModule } from 'primeng/divider';
+import { CheckboxModule } from 'primeng/checkbox';
+import { SingleFilterComponent } from './products-show-page/single-filter/single-filter.component';
 
 @NgModule({
   declarations: [
@@ -16,14 +19,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CarouselComponent,
     HomeProductCardComponent,
     ProductSliderComponent,
-    ProductsShowPageComponent
+    ProductsShowPageComponent,
+    SingleFilterComponent
   ],
   imports: [
     FormsModule,
     BrowserAnimationsModule,
     CommonModule,
     CarouselModule,
-    DropdownModule
+    DropdownModule,
+    DividerModule,
+    CheckboxModule
   ],
   exports: [
     HomeComponent,

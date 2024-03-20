@@ -3,7 +3,9 @@ import { CommonModule } from '@angular/common';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NavbarContentComponent } from './navbar/navbar-content/navbar-content.component';
-
+import { DropdownModule } from 'primeng/dropdown';
+import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -13,7 +15,10 @@ import { NavbarContentComponent } from './navbar/navbar-content/navbar-content.c
     NavbarContentComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    DropdownModule
   ],
   exports: [
     FooterComponent,
