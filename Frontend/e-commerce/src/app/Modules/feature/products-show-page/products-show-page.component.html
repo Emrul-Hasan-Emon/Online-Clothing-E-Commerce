@@ -2,17 +2,17 @@
     <div class="header">
         <h1 class="text">Products</h1>
         <div class="sort"> 
-            <app-single-filter [sortingOptions]="sortingOptions" [placeholder]="'Sort By'" (selectedSortOption)="sortOptionsSelected($event)"></app-single-filter>
+            <app-single-filter-show [sortingOptions]="sortingOptions" [placeholder]="'Sort By'" (selectedSortOption)="sortOptionsSelected($event)"></app-single-filter-show>
         </div>
     </div>
     <hr/>
     <div class="product-container">
         <div class="filters">
             <h2>Filters</h2>
-            <app-single-filter [sortingOptions]="sortingOptions" [placeholder]="'Colors'" (selectedSortOption)="sortOptionsSelected($event)"></app-single-filter>
-            <app-single-filter [sortingOptions]="sortingOptions" [placeholder]="'Size'"></app-single-filter>
-            <app-single-filter [sortingOptions]="sortingOptions" [placeholder]="'Price'"></app-single-filter>
-            <app-single-filter [sortingOptions]="sortingOptions" [placeholder]="'Availability'"></app-single-filter>
+            <app-single-filter-show [sortingOptions]="sortingOptions" [placeholder]="'Colors'" (selectedSortOption)="sortOptionsSelected($event)"></app-single-filter-show>
+            <app-single-filter-show [sortingOptions]="sortingOptions" [placeholder]="'Size'"></app-single-filter-show>
+            <app-single-filter-show [sortingOptions]="sortingOptions" [placeholder]="'Price'"></app-single-filter-show>
+            <app-single-filter-show [sortingOptions]="sortingOptions" [placeholder]="'Availability'"></app-single-filter-show>
         </div>
         <div class="products">
             <div class="product" *ngFor="let item of products[0]">

@@ -11,7 +11,8 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DividerModule } from 'primeng/divider';
 import { CheckboxModule } from 'primeng/checkbox';
-import { SingleFilterComponent } from './products-show-page/single-filter/single-filter.component';
+import { SharedModule } from '../shared/shared.module';
+import { FeatureRoutingModule } from './feature-routing.module';
 
 @NgModule({
   declarations: [
@@ -19,8 +20,7 @@ import { SingleFilterComponent } from './products-show-page/single-filter/single
     CarouselComponent,
     HomeProductCardComponent,
     ProductSliderComponent,
-    ProductsShowPageComponent,
-    SingleFilterComponent
+    ProductsShowPageComponent
   ],
   imports: [
     FormsModule,
@@ -29,7 +29,9 @@ import { SingleFilterComponent } from './products-show-page/single-filter/single
     CarouselModule,
     DropdownModule,
     DividerModule,
-    CheckboxModule
+    CheckboxModule,
+    SharedModule,
+    FeatureRoutingModule
   ],
   exports: [
     HomeComponent,
