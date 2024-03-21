@@ -1,0 +1,9 @@
+<div class="single-filter-container mb-4 ml-3">
+    <p-dropdown [options]="sortingOptions" 
+        optionLabel="name" 
+        [(ngModel)]="selectSortOption"
+        [showClear]="true" 
+        [placeholder]="placeholder"
+        (onChange)="onSortSelect($event)">
+    </p-dropdown>
+</div>

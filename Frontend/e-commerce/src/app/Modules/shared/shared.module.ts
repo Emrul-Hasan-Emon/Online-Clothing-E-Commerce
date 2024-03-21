@@ -6,13 +6,15 @@ import { NavbarContentComponent } from './navbar/navbar-content/navbar-content.c
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SingleFilterShowComponent } from './single-filter-show/single-filter-show.component';
 
 
 @NgModule({
   declarations: [
     FooterComponent,
     NavbarComponent,
-    NavbarContentComponent
+    NavbarContentComponent,
+    SingleFilterShowComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +25,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   exports: [
     FooterComponent,
     NavbarComponent,
-    NavbarContentComponent
+    NavbarContentComponent,
+    SingleFilterShowComponent
   ]
 })
 export class SharedModule { }

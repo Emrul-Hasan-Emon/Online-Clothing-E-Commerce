@@ -1,0 +1,7 @@
+.single-filter-container {
+    margin-bottom: 10px; /* Adjust spacing between filters */
+}
+
+.single-filter-container p-dropdown {
+    width: 100%; /* Make the dropdown fill the container */
+}
