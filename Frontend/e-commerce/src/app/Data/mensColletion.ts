@@ -27,7 +27,7 @@ export const mensCollection = [
     {
         "imageUrl": "",
         "brand": "A",
-        "cloth_type": "kurtas",
+        "cloth_id": "kurtas",
         "title": "Kurtas-1",
         "color": colors,
         "price": 2000,
@@ -38,7 +38,7 @@ export const mensCollection = [
     {
         "imageUrl": "",
         "brand": "B",
-        "cloth_type": "kurtas",
+        "cloth_id": "kurtas",
         "title": "Kurtas-2",
         "color": colors,
         "price": 2000,
@@ -49,7 +49,7 @@ export const mensCollection = [
     {
         "imageUrl": "",
         "brand": "C",
-        "cloth_type": "kurtas",
+        "cloth_id": "kurtas",
         "title": "Kurtas-3",
         "color": colors,
         "price": 2000,
@@ -60,7 +60,7 @@ export const mensCollection = [
     {
         "imageUrl": "",
         "brand": "D",
-        "cloth_type": "kurtas",
+        "cloth_id": "kurtas",
         "title": "Kurtas-4",
         "color": colors,
         "price": 2000,
@@ -71,7 +71,7 @@ export const mensCollection = [
     {
         "imageUrl": "",
         "brand": "E",
-        "cloth_type": "kurtas",
+        "cloth_id": "kurtas",
         "title": "Kurtas-5",
         "color": colors,
         "price": 2000,
@@ -82,7 +82,7 @@ export const mensCollection = [
     {
         "imageUrl": "",
         "brand": "A",
-        "cloth_type": "shirt",
+        "cloth_id": "shirt",
         "title": "Shirt-1",
         "color": colors,
         "price": 2000,
@@ -93,7 +93,7 @@ export const mensCollection = [
     {
         "imageUrl": "",
         "brand": "B",
-        "cloth_type": "shirt",
+        "cloth_id": "shirt",
         "title": "Shirt-2",
         "color": colors,
         "price": 2000,
@@ -104,7 +104,7 @@ export const mensCollection = [
     {
         "imageUrl": "",
         "brand": "C",
-        "cloth_type": "shirt",
+        "cloth_id": "shirt",
         "title": "Shirt-3",
         "color": colors,
         "price": 2000,
@@ -115,7 +115,7 @@ export const mensCollection = [
     {
         "imageUrl": "",
         "brand": "D",
-        "cloth_type": "shirt",
+        "cloth_id": "shirt",
         "title": "Shirt-4",
         "color": colors,
         "price": 2000,
@@ -126,7 +126,7 @@ export const mensCollection = [
     {
         "imageUrl": "",
         "brand": "E",
-        "cloth_type": "shirt",
+        "cloth_id": "shirt",
         "title": "Shirt-5",
         "color": colors,
         "price": 2000,
@@ -137,7 +137,7 @@ export const mensCollection = [
     {
         "imageUrl": "",
         "brand": "A",
-        "cloth_type": "pants",
+        "cloth_id": "pants",
         "title": "Pants-1",
         "color": colors,
         "price": 2000,
@@ -148,7 +148,7 @@ export const mensCollection = [
     {
         "imageUrl": "",
         "brand": "B",
-        "cloth_type": "pants",
+        "cloth_id": "pants",
         "title": "Pants-2",
         "color": colors,
         "price": 2000,
@@ -159,7 +159,7 @@ export const mensCollection = [
     {
         "imageUrl": "",
         "brand": "C",
-        "cloth_type": "pants",
+        "cloth_id": "pants",
         "title": "Pants-3",
         "color": colors,
         "price": 2000,
@@ -170,7 +170,7 @@ export const mensCollection = [
     {
         "imageUrl": "",
         "brand": "D",
-        "cloth_type": "pants",
+        "cloth_id": "pants",
         "title": "Pants-4",
         "color": colors,
         "price": 2000,
@@ -181,7 +181,7 @@ export const mensCollection = [
     {
         "imageUrl": "",
         "brand": "E",
-        "cloth_type": "pants",
+        "cloth_id": "pants",
         "title": "Pants-5",
         "color": colors,
         "price": 2000,
@@ -192,7 +192,7 @@ export const mensCollection = [
     {
         "imageUrl": "",
         "brand": "A",
-        "cloth_type": "sweaters",
+        "cloth_id": "sweaters",
         "title": "Sweaters-1",
         "color": colors,
         "price": 2000,
@@ -203,7 +203,7 @@ export const mensCollection = [
     {
         "imageUrl": "",
         "brand": "B",
-        "cloth_type": "sweaters",
+        "cloth_id": "sweaters",
         "title": "Sweaters-2",
         "color": colors,
         "price": 2000,
@@ -214,7 +214,7 @@ export const mensCollection = [
     {
         "imageUrl": "",
         "brand": "C",
-        "cloth_type": "sweaters",
+        "cloth_id": "sweaters",
         "title": "Sweaters-3",
         "color": colors,
         "price": 2000,
@@ -225,7 +225,7 @@ export const mensCollection = [
     {
         "imageUrl": "",
         "brand": "D",
-        "cloth_type": "sweaters",
+        "cloth_id": "sweaters",
         "title": "Sweaters-4",
         "color": colors,
         "price": 2000,
@@ -236,7 +236,7 @@ export const mensCollection = [
     {
         "imageUrl": "",
         "brand": "E",
-        "cloth_type": "sweaters",
+        "cloth_id": "sweaters",
         "title": "Sweaters-5",
         "color": colors,
         "price": 2000,
@@ -247,7 +247,7 @@ export const mensCollection = [
     {
         "imageUrl": "",
         "brand": "A",
-        "cloth_type": "t-shirts",
+        "cloth_id": "t-shirts",
         "title": "T-shirts-1",
         "color": colors,
         "price": 2000,
@@ -258,7 +258,7 @@ export const mensCollection = [
     {
         "imageUrl": "",
         "brand": "B",
-        "cloth_type": "t-shirts",
+        "cloth_id": "t-shirts",
         "title": "T-shirts-2",
         "color": colors,
         "price": 2000,
@@ -269,7 +269,7 @@ export const mensCollection = [
     {
         "imageUrl": "",
         "brand": "C",
-        "cloth_type": "t-shirts",
+        "cloth_id": "t-shirts",
         "title": "T-shirts-3",
         "color": colors,
         "price": 2000,
@@ -280,7 +280,7 @@ export const mensCollection = [
     {
         "imageUrl": "",
         "brand": "A",
-        "cloth_type": "jackets",
+        "cloth_id": "jackets",
         "title": "Jackets-1",
         "color": colors,
         "price": 2000,
@@ -291,7 +291,7 @@ export const mensCollection = [
     {
         "imageUrl": "",
         "brand": "B",
-        "cloth_type": "jackets",
+        "cloth_id": "jackets",
         "title": "Jackets-2",
         "color": colors,
         "price": 2000,
@@ -302,7 +302,7 @@ export const mensCollection = [
     {
         "imageUrl": "",
         "brand": "C",
-        "cloth_type": "jackets",
+        "cloth_id": "jackets",
         "title": "Jackets-3",
         "color": colors,
         "price": 2000,

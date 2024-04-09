@@ -4,7 +4,7 @@
             <div class="flex flex-col" *ngFor="let item of catergory[selectedCategory].sections">
                 <h5 class="text-center"> {{ item.name }}</h5>
                 <div class="button flex flex-col" *ngFor="let subItem of item.items">
-                    <button type="button" class="btn-css">
+                    <button type="button" class="btn-css" (click)="buttonClicked(subItem)">
                         {{ subItem.name }}
                     </button>
                 </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { pantCollection } from 'src/app/Data/meansPant';
 import { mensCollection } from 'src/app/Data/mensColletion';
 import { jeansCollection } from 'src/app/Data/mensJeans';
@@ -12,9 +13,10 @@ import { Sort } from 'src/app/Model/sortmodel';
 export class ProductsShowPageComponent implements OnInit {
   sortingOptions: Sort[];
   selectedSortOption: Sort;
-
+  categoryName: string;
+  categoryId;
   selectedCategories: any[] = [];
-  products: any[] = [];
+  products: any;
 
   categories: any[] = [
       { name: 'Accounting', key: 'A' },
@@ -23,15 +25,28 @@ export class ProductsShowPageComponent implements OnInit {
       { name: 'Research', key: 'R' }
   ];
 
-  ngOnInit(): void {
-      this.sortingOptions = [
-        { name: "Sort By Price", code: "sp"},
-        { name: "Sort By Name", code: "sn" }
-      ]
-      this.selectedSortOption = null;
+  constructor( 
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ) { }
 
-      this.products.push(mensCollection)
-      console.log(this.products);
+  
+  ngOnInit(): void {
+    this.categoryId = '';
+    this.products = mensCollection;
+
+    this.activatedRoute.queryParamMap.subscribe(
+      (params) => {
+        this.categoryId = params.get('id')
+        this.products = mensCollection.filter((item) => item.cloth_id == this.categoryId);
+      }
+    )
+    
+    this.sortingOptions = [
+      { name: "Sort By Price", code: "sp"},
+      { name: "Sort By Name", code: "sn" }
+    ]
+    this.selectedSortOption = null;
   }
 
   onSortSelect(event) {

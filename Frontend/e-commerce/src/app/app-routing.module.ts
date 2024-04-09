@@ -15,8 +15,8 @@ const routes: Routes = [
   //   loadChildren: () => import('./Modules/feature/feature.module').then(m => m.FeatureModule)
   // }
   { path: "home", component: HomeComponent },
-  { path: "", component: HomeComponent },
-  { path: "products", component: ProductsShowPageComponent }
+  { path: "products", component: ProductsShowPageComponent },
+  { path: "", component: ProductsShowPageComponent },
 ];
 
 @NgModule({

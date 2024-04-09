@@ -15,7 +15,7 @@
             <app-single-filter-show [sortingOptions]="sortingOptions" [placeholder]="'Availability'"></app-single-filter-show>
         </div>
         <div class="products">
-            <div class="product" *ngFor="let item of products[0]">
+            <div class="product" *ngFor="let item of products">
                 <div *ngIf="item.discountPercent" class="discount-box">
                     {{ item.discountPercent }}% OFF
                 </div>
