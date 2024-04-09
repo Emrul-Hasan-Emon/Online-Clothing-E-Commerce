@@ -5,6 +5,11 @@ import { HomeComponent } from './Modules/feature/home/home.component';
 import { ProductsShowPageComponent } from './Modules/feature/products-show-page/products-show-page.component';
 import { CartComponent } from './Modules/feature/cart/cart.component';
 import { ProductDetailsComponent } from './Modules/feature/product-details/product-details.component';
+import { CheckoutComponent } from './Modules/payment/checkout/checkout.component';
+import { PaymentComponent } from './Modules/payment/payment/payment.component';
+import { PaymentSuccessComponent } from './Modules/payment/payment-success/payment-success.component';
+import { OrderHistoryComponent } from './Modules/order/order-history/order-history.component';
+import { OrderDetailsComponent } from './Modules/order/order-details/order-details.component';
 
 const routes: Routes = [
   // { 
@@ -20,6 +25,11 @@ const routes: Routes = [
   { path: "cart", component: CartComponent },
   { path: "product-details", component: ProductDetailsComponent },
   { path: "products", component: ProductsShowPageComponent },
+  { path: "checkout", component: CheckoutComponent },
+  { path: "checkout/payment/:id", component: PaymentComponent },
+  { path: "payment-success", component: PaymentSuccessComponent },
+  { path: "order-history", component: OrderHistoryComponent },
+  { path: "order/:id", component: OrderDetailsComponent },
   { path: "", component: ProductsShowPageComponent },
 ];
 

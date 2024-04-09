@@ -7,10 +7,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MenuModule } from 'primeng/menu';
 import { FeatureModule } from './Modules/feature/feature.module';
 import { SharedModule } from './Modules/shared/shared.module';
+import { OrderHistoryComponent } from './Modules/order/order-history/order-history.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    OrderHistoryComponent
   ],
   imports: [
     BrowserModule,
