@@ -13,6 +13,8 @@ import { DividerModule } from 'primeng/divider';
 import { CheckboxModule } from 'primeng/checkbox';
 import { SharedModule } from '../shared/shared.module';
 import { FeatureRoutingModule } from './feature-routing.module';
+import { CartComponent } from './cart/cart.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { FeatureRoutingModule } from './feature-routing.module';
     CarouselComponent,
     HomeProductCardComponent,
     ProductSliderComponent,
-    ProductsShowPageComponent
+    ProductsShowPageComponent,
+    CartComponent,
+    ProductDetailsComponent
   ],
   imports: [
     FormsModule,

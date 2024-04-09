@@ -38,10 +38,11 @@ export class ProductsShowPageComponent implements OnInit {
     this.activatedRoute.queryParamMap.subscribe(
       (params) => {
         this.categoryId = params.get('id')
-        this.products = mensCollection.filter((item) => item.cloth_id == this.categoryId);
+        if(this.categoryId) {
+          this.products = mensCollection.filter((item) => item.cloth_id == this.categoryId);
+        }
       }
     )
-    
     this.sortingOptions = [
       { name: "Sort By Price", code: "sp"},
       { name: "Sort By Name", code: "sn" }

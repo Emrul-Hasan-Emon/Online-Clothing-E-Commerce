@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { FeatureModule } from './Modules/feature/feature.module';
 import { HomeComponent } from './Modules/feature/home/home.component';
 import { ProductsShowPageComponent } from './Modules/feature/products-show-page/products-show-page.component';
+import { CartComponent } from './Modules/feature/cart/cart.component';
+import { ProductDetailsComponent } from './Modules/feature/product-details/product-details.component';
 
 const routes: Routes = [
   // { 
@@ -15,6 +17,8 @@ const routes: Routes = [
   //   loadChildren: () => import('./Modules/feature/feature.module').then(m => m.FeatureModule)
   // }
   { path: "home", component: HomeComponent },
+  { path: "cart", component: CartComponent },
+  { path: "product-details", component: ProductDetailsComponent },
   { path: "products", component: ProductsShowPageComponent },
   { path: "", component: ProductsShowPageComponent },
 ];
