@@ -8,6 +8,7 @@ import { MenuModule } from 'primeng/menu';
 import { FeatureModule } from './Modules/feature/feature.module';
 import { SharedModule } from './Modules/shared/shared.module';
 import { OrderHistoryComponent } from './Modules/order/order-history/order-history.component';
+import { AdminModule } from './Modules/admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { OrderHistoryComponent } from './Modules/order/order-history/order-histo
     NgbModule,
     MenuModule,
     FeatureModule,
-    SharedModule
+    SharedModule,
+    AdminModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -31,6 +31,10 @@ const routes: Routes = [
   { path: "order-history", component: OrderHistoryComponent },
   { path: "order/:id", component: OrderDetailsComponent },
   { path: "", component: ProductsShowPageComponent },
+  { 
+    path: 'admin',
+    loadChildren: () => import('./Modules/admin/admin.module').then(m => m.AdminModule)
+  }
 ];
 
 @NgModule({
