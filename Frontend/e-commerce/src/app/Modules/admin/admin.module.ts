@@ -7,6 +7,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { OrderTableComponent } from './order-table/order-table.component';
 import { ProductsTableComponent } from './products-table/products-table.component';
 import { CustomerTableComponent } from './customer-table/customer-table.component';
+import { AddProductComponent } from './add-product/add-product.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { CustomerTableComponent } from './customer-table/customer-table.componen
     DashboardComponent,
     OrderTableComponent,
     ProductsTableComponent,
-    CustomerTableComponent
+    CustomerTableComponent,
+    AddProductComponent
   ],
   imports: [
     CommonModule,

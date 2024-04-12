@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.product-container {
+    margin: 30px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.product-image {
+    flex: 0 0 auto; /* Fix the width of the image div */
+    margin-right: 20px; /* Add some spacing between the two divs */
+}
+
+.description {
+    flex: 1;;
+}
+
+.product-description {
+    margin: 10px 0px;
+}
+
+.price {
+    font-size: 25px;
+    font-weight: 500px;
+}
+.cart-button {
+    margin: 20px 0px;
+    font-size: 25px;
+    font-weight: 600;
+    background-color: orange;
+    width: 200px;
+    height: 40px;
+    border-radius: 5px;
+}
+
+img {
+    min-height: 300px;
+    max-width: 100%; /* Ensure the image fits within its container */
+    height: auto;
+}
