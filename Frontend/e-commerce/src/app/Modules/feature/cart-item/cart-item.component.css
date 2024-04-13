@@ -1,0 +1,12 @@
+.item-container {
+    display: flex;
+}
+
+.cart-image img {
+    width: 150px;
+}
+
+.cart-item-details {
+    margin-left: 20px;
+    line-height: 1;
+}

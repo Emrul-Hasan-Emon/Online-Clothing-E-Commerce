@@ -1,43 +1,85 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 .product-container {
-    margin: 30px;
     display: flex;
-    align-items: flex-start;
+    margin: 30px;
 }
 
 .product-image {
-    flex: 0 0 auto; /* Fix the width of the image div */
-    margin-right: 20px; /* Add some spacing between the two divs */
+    flex: 0 0 auto;
+    margin-right: 20px;
 }
 
+.product-image img {
+    width: 400px;
+    height: auto;
+}
 .description {
-    flex: 1;;
+    flex: 1;
+    margin-right: 20px;
 }
 
-.product-description {
-    margin: 10px 0px;
+.product-description p {
+    margin-bottom: 10px;
 }
 
 .price {
-    font-size: 25px;
-    font-weight: 500px;
+    margin-top: 10px;
+    font-weight: bold;
 }
+
 .cart-button {
-    margin: 20px 0px;
-    font-size: 25px;
-    font-weight: 600;
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
     background-color: orange;
-    width: 200px;
-    height: 40px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.customer-comments {
+    margin: 30px;
+}
+
+.comment {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.comment-img {
+    flex: 0 0 auto;
+    margin-right: 10px;
+}
+
+.comment-img img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.comment-input input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
     border-radius: 5px;
 }
 
-img {
-    min-height: 300px;
-    max-width: 100%; /* Ensure the image fits within its container */
-    height: auto;
+.comment-list {
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+}
+
+.comment-item {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.comment-text p {
+    margin-bottom: 5px;
 }

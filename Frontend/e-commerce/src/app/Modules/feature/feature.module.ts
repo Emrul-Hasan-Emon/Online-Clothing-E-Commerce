@@ -16,6 +16,7 @@ import { FeatureRoutingModule } from './feature-routing.module';
 import { CartComponent } from './cart/cart.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { CheckoutComponent } from '../payment/checkout/checkout.component';
+import { CartItemComponent } from './cart-item/cart-item.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { CheckoutComponent } from '../payment/checkout/checkout.component';
     ProductsShowPageComponent,
     CartComponent,
     ProductDetailsComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    CartItemComponent
   ],
   imports: [
     FormsModule,
