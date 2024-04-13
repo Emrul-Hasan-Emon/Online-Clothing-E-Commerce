@@ -1,10 +1,29 @@
-<div class="cart-continer">
+<div class="cart-container">
     <div class="cart-list">
         <app-cart-item></app-cart-item>
         <app-cart-item></app-cart-item>
         <app-cart-item></app-cart-item>
     </div>
     <div class="calculation">
-
+        <p class="text-xl font-bold">Price Details</p>
+        <hr/>
+        <div class="total-products flex justify-between">
+            <p>Total number of products</p>
+            <p>5</p>
+        </div>
+        <div class="total-price flex justify-between">
+            <p>Total Price</p>
+            <p>100000 BDT</p>
+        </div>
+        <div class="discount-price flex justify-between">
+            <p>Discount</p>
+            <p>2000 BDT</p>
+        </div>
+        <hr/>
+        <div class="payable-price flex justify-between">
+            <p class="text-xl font-bold">Payable Price</p>
+            <p>8000 BDT</p>
+        </div>
+        <button type="submit">Checkout</button>
     </div>
 </div>

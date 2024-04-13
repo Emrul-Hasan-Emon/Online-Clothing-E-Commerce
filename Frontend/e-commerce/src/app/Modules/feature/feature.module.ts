@@ -17,6 +17,7 @@ import { CartComponent } from './cart/cart.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { CheckoutComponent } from '../payment/checkout/checkout.component';
 import { CartItemComponent } from './cart-item/cart-item.component';
+import { InputNumberModule } from 'primeng/inputnumber';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { CartItemComponent } from './cart-item/cart-item.component';
     DividerModule,
     CheckboxModule,
     SharedModule,
-    FeatureRoutingModule
+    FeatureRoutingModule,
+    InputNumberModule
   ],
   exports: [
     HomeComponent,

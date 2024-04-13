@@ -1,12 +1,33 @@
-<div class="item-container">
-    <div class="cart-image">
-        <img src="https://fabrilife.com/products/63bc2fb22e02f-square.jpg" alt="">
+<div class="cart-item-container">
+    <div class="item-container">
+        <div class="cart-image">
+            <img src="https://fabrilife.com/products/63bc2fb22e02f-square.jpg" alt="">
+        </div>
+        <div class="cart-item-details">
+            <p class="product-name">Shirt</p>
+            <p class="product-brand">Brand: A</p>
+            <p class="product-size">Size: S</p>
+            <p class="product-color">Color: Green</p>
+            <p class="product-quantity">Quantity: 2</p>
+        </div>
     </div>
-    <div class="cart-item-details">
-        <p>Product Name: Shirt</p>
-        <p>Product Brand: A</p>
-        <p>Size: S</p>
-        <p>Color: Green</p>
-        <p>Quantity: 2</p>
+    <div class="cart-item-quantitty flex justify-between">
+        <div class="quantity-control">
+            <button class="decrement" 
+                [disabled]="productQuantity <= 0"
+                (click)="decrementQuantity()"    
+            >-</button>
+            <input type="text" class="quantity" [(ngModel)]="productQuantity">
+            <button 
+                class="increment"
+                (click)="incrementQuantity()"
+            >+</button>
+        </div>
+        <div class="add-another-button">
+            <button type="submit">Add another one</button>
+        </div>
+        <div class="remove">
+            <button type="submit">Remove</button>
+        </div>
     </div>
 </div>

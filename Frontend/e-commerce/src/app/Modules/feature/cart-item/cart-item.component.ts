@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./cart-item.component.css']
 })
 export class CartItemComponent {
+  productQuantity = 0;
 
+  decrementQuantity() {
+    this.productQuantity--;
+  }
+
+  incrementQuantity() {
+    this.productQuantity++;
+  }
 }
