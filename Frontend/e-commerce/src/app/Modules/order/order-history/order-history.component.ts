@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./order-history.component.css']
 })
 export class OrderHistoryComponent {
-
+  item = [1, 2, 3, 4, 5, 6];
 }

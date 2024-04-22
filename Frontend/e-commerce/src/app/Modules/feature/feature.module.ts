@@ -15,7 +15,6 @@ import { SharedModule } from '../shared/shared.module';
 import { FeatureRoutingModule } from './feature-routing.module';
 import { CartComponent } from './cart/cart.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
-import { CheckoutComponent } from '../payment/checkout/checkout.component';
 import { CartItemComponent } from './cart-item/cart-item.component';
 import { InputNumberModule } from 'primeng/inputnumber';
 
@@ -28,7 +27,6 @@ import { InputNumberModule } from 'primeng/inputnumber';
     ProductsShowPageComponent,
     CartComponent,
     ProductDetailsComponent,
-    CheckoutComponent,
     CartItemComponent
   ],
   imports: [

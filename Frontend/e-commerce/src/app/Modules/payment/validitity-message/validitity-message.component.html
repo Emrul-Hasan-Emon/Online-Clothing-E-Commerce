@@ -1,0 +1,6 @@
+<small *ngIf="messageShown && !isRequired">
+    *{{field}} is a required field.
+</small>
+<small *ngIf="messageShown && isRequired">
+    *{{field}} is not valid
+</small>

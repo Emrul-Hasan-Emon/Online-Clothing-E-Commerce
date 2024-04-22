@@ -9,6 +9,8 @@ import { FeatureModule } from './Modules/feature/feature.module';
 import { SharedModule } from './Modules/shared/shared.module';
 import { OrderHistoryComponent } from './Modules/order/order-history/order-history.component';
 import { AdminModule } from './Modules/admin/admin.module';
+import { PaymentModule } from './Modules/payment/payment.module';
+import { OrderModule } from './Modules/order/order.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { AdminModule } from './Modules/admin/admin.module';
     MenuModule,
     FeatureModule,
     SharedModule,
-    AdminModule
+    AdminModule,
+    PaymentModule,
+    OrderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

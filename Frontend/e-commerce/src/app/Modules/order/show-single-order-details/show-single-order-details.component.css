@@ -1,0 +1,24 @@
+.order-details {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 20px;
+    box-shadow: 10px 10px 30px rgb(192, 191, 191);
+}
+
+.image img {
+    width: 150px;
+    height: auto;
+    border-radius: 3px;
+}
+
+.image-and-details {
+    display: flex;
+    align-items: center;
+}
+
+.price,
+.delivery {
+    align-self: center;
+}

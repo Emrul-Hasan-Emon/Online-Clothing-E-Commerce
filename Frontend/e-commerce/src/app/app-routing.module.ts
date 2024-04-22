@@ -25,12 +25,12 @@ const routes: Routes = [
   { path: "cart", component: CartComponent },
   { path: "product-details/:id", component: ProductDetailsComponent },
   { path: "products", component: ProductsShowPageComponent },
-  { path: "checkout", component: CheckoutComponent },
   { path: "checkout/payment/:id", component: PaymentComponent },
   { path: "payment-success", component: PaymentSuccessComponent },
   { path: "order-history", component: OrderHistoryComponent },
   { path: "order/:id", component: OrderDetailsComponent },
   { path: "", component: ProductsShowPageComponent },
+  { path: "checkout", component: CheckoutComponent},
   { 
     path: 'admin',
     loadChildren: () => import('./Modules/admin/admin.module').then(m => m.AdminModule)
