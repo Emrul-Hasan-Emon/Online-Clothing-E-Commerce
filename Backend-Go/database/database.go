@@ -6,6 +6,7 @@ import (
 
 	"github.com/Emrul-Hasan-Emon/repositories/ecommerce/config"
 	log "github.com/Emrul-Hasan-Emon/repositories/ecommerce/log4u"
+	_ "github.com/go-sql-driver/mysql"
 )
 
 type Database struct {
