@@ -17,6 +17,11 @@ type Builder struct {
 	isLogDebug bool
 }
 
+// Router fetch the configured router.
+func (rb *Builder) Router() *mux.Router {
+	return rb.router
+}
+
 func NewRouteBuilder(allowCors bool, serverName string, isLogDebug bool) *Builder {
 	return &Builder{allowCors, mux.NewRouter().StrictSlash(true), serverName, isLogDebug}
 }

@@ -133,3 +133,11 @@ func (c *Config) IsLogDebug() bool {
 func (c *Config) GetappName() string {
 	return c.appName
 }
+
+func (c *Config) Server() *ServerDef {
+	return &c.configData.Server
+}
+
+func (sd *ServerDef) String() string {
+	return fmt.Sprintf("%s:%d", sd.Bind, sd.Port)
+}

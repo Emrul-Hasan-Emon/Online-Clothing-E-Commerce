@@ -1,1 +1,2 @@
-[FATAL] [2024-04-23 23:15:14,812] [???] [database.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/database.openDatabase:26] ==> Failed to open database localhost:3306: : [sql: unknown driver "mysql" (forgotten import?)]
+[DEBUG] [2024-04-23 23:27:55,199] [???] [database.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/database.openDatabase:29] ==> Connected to database localhost:3306: 
+[DEBUG] [2024-04-23 23:27:55,200] [???] [database.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/database.openDatabase:34] ==> Database available localhost:3306:

@@ -5,6 +5,7 @@ import (
 
 	"github.com/Emrul-Hasan-Emon/repositories/ecommerce/config"
 	"github.com/Emrul-Hasan-Emon/repositories/ecommerce/database"
+	log "github.com/Emrul-Hasan-Emon/repositories/ecommerce/log4u"
 	"github.com/Emrul-Hasan-Emon/repositories/ecommerce/product"
 	"github.com/Emrul-Hasan-Emon/repositories/ecommerce/route"
 )
@@ -23,4 +24,6 @@ func main() {
 
 	productRouter := router.SubRouteBuilder("/product")
 	productRouter.Add("Get All Products", http.MethodGet, "/", pr.CreateProductFetcher(mapper))
+
+	log.Fatal(http.ListenAndServe(config.Server().String(), router.Router()))
 }
