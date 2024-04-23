@@ -37,3 +37,7 @@ func openDatabase(dbDef *config.DbDef) *sql.DB {
 func (db *Database) Close() {
 	db.db.Close()
 }
+
+func (db *Database) FetchAllProduct() error {
+	return nil
+}
