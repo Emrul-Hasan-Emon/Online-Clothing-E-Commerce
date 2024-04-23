@@ -1,1 +1,31 @@
-<p>customer-table works!</p>
+<div>
+    <div>
+        <h2 class="text-center">Customer Table (Admin)</h2>
+    </div>
+    <div class="customer-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Serial</th>
+                    <th>Customer ID</th>
+                    <th>Customer Name</th>
+                    <th>Registered Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <ng-container *ngFor="let idx of item">
+                <tr>
+                    <td>{{ idx }}</td>
+                    <td>emon1234455</td>
+                    <td> Emrul Hasan Emon </td>
+                    <td>25th April</td>
+                    <td>
+                        <button>
+                            View Details
+                        </button>
+                    </td>
+                </tr>
+            </ng-container>
+          </table>
+    </div>
+</div>

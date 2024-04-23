@@ -1,1 +1,31 @@
-<p>order-table works!</p>
+<div>
+    <div>
+        <h2 class="text-center">Order History (Admin)</h2>
+    </div>
+    <div class="order-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Serial</th>
+                    <th>Order ID</th>
+                    <th>Price</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <ng-container *ngFor="let i of item">
+                <tr>
+                    <td>1</td>
+                    <td>alshdj12312</td>
+                    <td> {{  2000 | currency:'BDT':'symbol':'1.0-0' }}</td>
+                    <td>25th April</td>
+                    <td>
+                        <button>
+                            View Details
+                        </button>
+                    </td>
+                </tr>
+            </ng-container>
+          </table>
+    </div>
+</div>
