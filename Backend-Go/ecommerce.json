@@ -3,10 +3,10 @@
     "Description": "A platform for buying and selling cloths.",
     "AllowCORS": true,
     "Db": {
-        "User": "root",
-        "Password": "emon@123",
+        "User": "User",
+        "Password": "User",
         "Host": "localhost:3306",
-        "Database": "online_cloth_management_system"
+        "Database": "online_clothing_management_system"
     },
     "Server": {
         "Bind": "",
