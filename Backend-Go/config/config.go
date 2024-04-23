@@ -54,7 +54,7 @@ func NewConfig() *Config {
 	configData := loadConfig()
 	logFile := configureLogging(configData.Logging.Filename, configData.Logging.Level)
 	logDebug := configData.Logging.isDebug()
-	appName := configData.GetappName()
+	appName := configData.createAppName()
 
 	return &Config{configData, logFile, logDebug, appName}
 }
@@ -112,7 +112,7 @@ func (ld *LogDef) isDebug() bool {
 	return strings.EqualFold(ld.Level, "DEBUG")
 }
 
-func (cd *configData) GetappName() string {
+func (cd *configData) createAppName() string {
 	return fmt.Sprintf("%s/%s", cd.Name, "1.0.0")
 }
 
@@ -124,4 +124,12 @@ func (c *Config) CloseLog() {
 
 func (c *Config) GetIndent() bool {
 	return c.configData.Indent
+}
+
+func (c *Config) IsLogDebug() bool {
+	return c.logDebug
+}
+
+func (c *Config) GetappName() string {
+	return c.appName
 }
