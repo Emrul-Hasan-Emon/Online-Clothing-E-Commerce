@@ -46,7 +46,8 @@ import { InputNumberModule } from 'primeng/inputnumber';
     CarouselComponent,
     HomeProductCardComponent,
     ProductSliderComponent,
-    ProductsShowPageComponent
+    ProductsShowPageComponent,
+    CartComponent
   ]
 })
 export class FeatureModule { }
