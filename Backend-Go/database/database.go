@@ -57,7 +57,7 @@ func (db *Database) FetchAllProduct() ([]model.Product, error) {
 		var colorsJSON string
 		var sizeJSON string
 
-		err := rows.Scan(&p.ID, &p.Name, &p.Brand, &p.Category, &p.CategoryID, &p.Price, &colorsJSON, &sizeJSON, &p.InStock, &p.Quantity, &p.Discount, &p.ImageURL, &p.Gender)
+		err := rows.Scan(&p.ID, &p.Name, &p.Brand, &p.Category, &p.CategoryID, &p.Price, &colorsJSON, &sizeJSON, &p.InStock, &p.Quantity, &p.Discount, &p.ImageURL, &p.Gender, &p.Description)
 		if err != nil {
 			panic(err.Error())
 		}
@@ -78,4 +78,31 @@ func (db *Database) FetchAllProduct() ([]model.Product, error) {
 	// 	fmt.Printf("ID: %d, Name: %s, Brand: %s, Category: %s, Price: %d, Colors: %s, Size: %+v, InStock: %t, Quantity: %d, Discount: %d, ImageURL: %s, Gender: %s\n", p.ID, p.Name, p.Brand, p.Category, p.Price, strings.Join(p.Colors, ", "), p.Size, p.InStock, p.Quantity, p.Discount, p.ImageURL, p.Gender)
 	// }
 	return products, nil
+}
+
+func (db *Database) FetchProductByID(productId model.ProductID) (model.Product, error) {
+	query := "SELECT * FROM Products WHERE Id = ?"
+
+	// Execute the query with the specified ID
+	row := db.db.QueryRow(query, productId)
+
+	var p model.Product
+	var colorsJSON string
+	var sizeJSON string
+
+	err := row.Scan(&p.ID, &p.Name, &p.Brand, &p.Category, &p.CategoryID, &p.Price, &colorsJSON, &sizeJSON, &p.InStock, &p.Quantity, &p.Discount, &p.ImageURL, &p.Gender, &p.Description)
+	if err != nil {
+		panic(err.Error())
+	}
+	// Unmarshal the JSON string for Colors into the Colors slice
+	err = json.Unmarshal([]byte(colorsJSON), &p.Colors)
+	if err != nil {
+		panic(err.Error())
+	}
+	// Unmarshal the JSON string for Size into the Size slice
+	err = json.Unmarshal([]byte(sizeJSON), &p.Size)
+	if err != nil {
+		panic(err.Error())
+	}
+	return p, nil
 }
