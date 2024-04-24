@@ -26,6 +26,7 @@ func main() {
 
 	productRouter := router.SubRouteBuilder("/products")
 	productRouter.Add("Get All Products", http.MethodGet, "/", pr.CreateProductFetcher(db))
+	productRouter.Add("Get Product By ID", http.MethodGet, "/{guery}", pr.CreateSingleProductFetcher(db))
 
 	log.Fatal(http.ListenAndServe(config.Server().String(), router.Router()))
 }
