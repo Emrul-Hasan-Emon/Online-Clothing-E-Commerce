@@ -16,16 +16,16 @@
         </div>
         <div class="products">
             <div class="product" *ngFor="let item of products">
-                <div *ngIf="item.discountPercent" class="discount-box">
-                    {{ item.discountPercent }}% OFF
+                <div *ngIf="item.Discount" class="discount-box">
+                    {{ item.Discount }}% OFF
                 </div>
                 <div class="product-image">
-                    <img [src]="item.imageUrl" alt="Product Image">
+                    <img [src]="item.ImageURL" alt="Product Image">
                 </div>
                 <div class="product-details">
-                    <h2 class="product-title">{{ item.title }}</h2>
-                    <p class="product-brand">Brand: {{ item.brand }}</p>
-                    <p class="product-price">$ {{ item.price }}</p>
+                    <h2 class="product-title">{{ item.Name }}</h2>
+                    <p class="product-brand">Brand: {{ item.Brand }}</p>
+                    <p class="product-price">$ {{ item.Price }}</p>
                     <button class="btn btn-primary">Add to Cart</button>
                 </div>
             </div>

@@ -35,11 +35,12 @@ export class ProductsShowPageComponent implements OnInit {
   
   ngOnInit(): void {
     this.categoryId = '';
-    this.products = mensCollection;
+    // this.products = mensCollection;
 
     this.productFetchService.getAllProducts().subscribe(
-      (response) => {
-        console.log('Response: ', response);        
+      (productList) => {
+        console.log('Response: ', productList); 
+        this.products = productList;      
       },
       (error) => {
         console.log('An error occured while fetching products');        
@@ -50,7 +51,7 @@ export class ProductsShowPageComponent implements OnInit {
       (params) => {
         this.categoryId = params.get('id')
         if(this.categoryId) {
-          this.products = mensCollection.filter((item) => item.cloth_id == this.categoryId);
+          this.products = this.products.filter((item) => item.CategoryID == this.categoryId);
         }
       }
     )
