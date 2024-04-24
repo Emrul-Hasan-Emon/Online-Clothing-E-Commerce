@@ -20,6 +20,8 @@ CREATE TABLE Products (
  -- Add a new column named "Gender" to the existing table
 ALTER TABLE Products ADD COLUMN Gender VARCHAR(255) NOT NULL DEFAULT 'Male';
 
+ALTER TABLE Products ADD COLUMN Description VARCHAR(1000) NOT NULL DEFAULT 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, assumenda? Id consequatur totam necessitatibus animi eius iusto quia laboriosam eum laudantium hic! Rem, commodi praesentium harum officia porro autem incidunt ad aspernatur laboriosam at fugit debitis ipsa, recusandae veniam voluptatem, quaerat necessitatibus placeat eligendi! Fugit, natus rerum, molestias neque officiis, quam vitae eum quod sint eius in. Accusantium neque explicabo corrupti maiores iure culpa repudiandae rerum!';
+
 -- Insert into Products Table
 INSERT INTO Products (Name, Brand, Category_id, Category, Price, Colors, Size, InStock, Quantity, Discount, ImageUrl)
 VALUES 
