@@ -4,6 +4,7 @@ import { pantCollection } from 'src/app/Data/meansPant';
 import { mensCollection } from 'src/app/Data/mensColletion';
 import { jeansCollection } from 'src/app/Data/mensJeans';
 import { Sort } from 'src/app/Model/sortmodel';
+import { ProductFetchService } from 'src/app/Service/product-fetch.service';
 
 @Component({
   selector: 'app-products-show-page',
@@ -27,13 +28,23 @@ export class ProductsShowPageComponent implements OnInit {
 
   constructor( 
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private productFetchService: ProductFetchService
   ) { }
 
   
   ngOnInit(): void {
     this.categoryId = '';
     this.products = mensCollection;
+
+    this.productFetchService.getAllProducts().subscribe(
+      (response) => {
+        console.log('Response: ', response);        
+      },
+      (error) => {
+        console.log('An error occured while fetching products');        
+      }
+    )
 
     this.activatedRoute.queryParamMap.subscribe(
       (params) => {

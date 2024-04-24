@@ -11,6 +11,7 @@ import { OrderHistoryComponent } from './Modules/order/order-history/order-histo
 import { AdminModule } from './Modules/admin/admin.module';
 import { PaymentModule } from './Modules/payment/payment.module';
 import { OrderModule } from './Modules/order/order.module';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,9 +27,10 @@ import { OrderModule } from './Modules/order/order.module';
     SharedModule,
     AdminModule,
     PaymentModule,
-    OrderModule
+    OrderModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
