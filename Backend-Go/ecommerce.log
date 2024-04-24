@@ -1,4 +1,5 @@
-[DEBUG] [2024-04-25 04:15:20,526] [???] [database.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/database.openDatabase:31] ==> Connected to database localhost:3306: 
-[DEBUG] [2024-04-25 04:15:20,527] [???] [database.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/database.openDatabase:36] ==> Database available localhost:3306:
-[DEBUG] [2024-04-25 04:17:29,254] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 708.833µs
-[DEBUG] [2024-04-25 04:30:21,587] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 928.137µs
+[DEBUG] [2024-04-25 05:48:50,507] [???] [database.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/database.openDatabase:32] ==> Connected to database localhost:3306: 
+[DEBUG] [2024-04-25 05:48:50,507] [???] [database.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/database.openDatabase:37] ==> Database available localhost:3306:
+[ERROR] [2024-04-25 05:48:56,326] [???] [product.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/product.(*Product).CreateSingleProductFetcher.func1:49] ==> error to fetch start index. Error: strconv.Atoi: parsing "productId=1": invalid syntax
+[DEBUG] [2024-04-25 05:48:56,326] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/productId=1 Get Product By ID 61.096µs
+[DEBUG] [2024-04-25 05:49:39,508] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/1 Get Product By ID 577.709µs

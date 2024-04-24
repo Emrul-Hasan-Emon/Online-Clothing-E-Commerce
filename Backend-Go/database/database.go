@@ -3,6 +3,7 @@ package database
 import (
 	"database/sql"
 	"encoding/json"
+	"fmt"
 	"net/url"
 
 	"github.com/Emrul-Hasan-Emon/repositories/ecommerce/config"
@@ -81,8 +82,9 @@ func (db *Database) FetchAllProduct() ([]model.Product, error) {
 }
 
 func (db *Database) FetchProductByID(productId model.ProductID) (model.Product, error) {
-	query := "SELECT * FROM Products WHERE Id = ?"
+	query := "SELECT * FROM online_clothing_management_system.Products WHERE Id = ?"
 
+	fmt.Println("Product ID: ", productId)
 	// Execute the query with the specified ID
 	row := db.db.QueryRow(query, productId)
 

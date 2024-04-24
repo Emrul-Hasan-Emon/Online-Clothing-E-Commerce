@@ -16,7 +16,7 @@ func main() {
 
 	db := database.CreateNewDatabaseInstance(config.GetDatabaseDef())
 	defer db.Close()
-	db.FetchAllProduct()
+	// db.FetchAllProduct()
 
 	// mapper := database.CreateNewDatabaseMapper(db)
 	pr := product.CreateNewProductInstance()
@@ -26,7 +26,7 @@ func main() {
 
 	productRouter := router.SubRouteBuilder("/products")
 	productRouter.Add("Get All Products", http.MethodGet, "/", pr.CreateProductFetcher(db))
-	productRouter.Add("Get Product By ID", http.MethodGet, "/{guery}", pr.CreateSingleProductFetcher(db))
+	productRouter.Add("Get Product By ID", http.MethodGet, "/{productId}", pr.CreateSingleProductFetcher(db))
 
 	log.Fatal(http.ListenAndServe(config.Server().String(), router.Router()))
 }
