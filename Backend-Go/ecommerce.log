@@ -1,2 +1,4 @@
-[DEBUG] [2024-04-23 23:27:55,199] [???] [database.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/database.openDatabase:29] ==> Connected to database localhost:3306: 
-[DEBUG] [2024-04-23 23:27:55,200] [???] [database.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/database.openDatabase:34] ==> Database available localhost:3306:
+[DEBUG] [2024-04-25 04:15:20,526] [???] [database.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/database.openDatabase:31] ==> Connected to database localhost:3306: 
+[DEBUG] [2024-04-25 04:15:20,527] [???] [database.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/database.openDatabase:36] ==> Database available localhost:3306:
+[DEBUG] [2024-04-25 04:17:29,254] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 708.833µs
+[DEBUG] [2024-04-25 04:30:21,587] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 928.137µs

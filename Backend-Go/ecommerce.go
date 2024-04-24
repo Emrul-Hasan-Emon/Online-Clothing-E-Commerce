@@ -16,14 +16,16 @@ func main() {
 
 	db := database.CreateNewDatabaseInstance(config.GetDatabaseDef())
 	defer db.Close()
+	db.FetchAllProduct()
 
-	mapper := database.CreateNewDatabaseMapper(db)
+	// mapper := database.CreateNewDatabaseMapper(db)
 	pr := product.CreateNewProductInstance()
+	// pr.Testing(mapper, db)
 
 	router := route.NewRouteBuilder(config.GetAllowCORS(), config.GetappName(), config.IsLogDebug())
 
-	productRouter := router.SubRouteBuilder("/product")
-	productRouter.Add("Get All Products", http.MethodGet, "/", pr.CreateProductFetcher(mapper))
+	productRouter := router.SubRouteBuilder("/products")
+	productRouter.Add("Get All Products", http.MethodGet, "/", pr.CreateProductFetcher(db))
 
 	log.Fatal(http.ListenAndServe(config.Server().String(), router.Router()))
 }
