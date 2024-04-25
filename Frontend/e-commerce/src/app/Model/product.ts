@@ -1,17 +1,18 @@
 export interface Product {
-    id: number;
-    name: string;
-    brand: string;
-    category: string;
-    category_id: string;
-    price: number;
-    colors: string[];
-    size: Size[];
-    in_stock: boolean;
-    quantity: number;
-    discount: number;
-    image_url: string;
-    gender: string;
+    Id: number;
+    Name: string;
+    Brand: string;
+    Category: string;
+    CategoryID: string;
+    Price: number;
+    Colors: string[];
+    Size: Size[];
+    InStock: boolean;
+    Quantity: number;
+    Discount: number;
+    ImageURL: string;
+    Gender: string;
+    Description: string;
   }
   
   export interface Size {

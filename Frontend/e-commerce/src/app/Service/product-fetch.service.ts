@@ -13,4 +13,8 @@ export class ProductFetchService {
   public getAllProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.productUrl);
   }
+
+  public getSpecificProduct(productId: string): Observable<Product> {
+    return this.http.get<Product>(`${this.productUrl}/${productId}`);
+  }
 }

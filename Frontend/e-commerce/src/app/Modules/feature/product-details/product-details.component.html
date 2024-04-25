@@ -1,42 +1,52 @@
-<div class="product-container">
-    <div class="product-image">
-        <img src="https://prod.saralifestyle.com/Images/Products/VariationWisetImage/b3e234f81e184536aba23191beff9d60.jpeg" alt="Shirt">
-    </div>
-    <div class="description">
-        <h1>Shirt</h1>
-        <h2>Brand Name: A</h2>
-        <div>Available Colors: Green, Red, White</div>
-        <p>Available: Yes</p>
-        <div class="product-description">
-            <p class="text-lg font-semibold">Product Description:</p>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, assumenda? Id consequatur totam necessitatibus animi eius iusto quia laboriosam eum laudantium hic! Rem, commodi praesentium harum officia porro autem incidunt ad aspernatur laboriosam at fugit debitis ipsa, recusandae veniam voluptatem, quaerat necessitatibus placeat eligendi! Fugit, natus rerum, molestias neque officiis, quam vitae eum quod sint eius in. Accusantium neque explicabo corrupti maiores iure culpa repudiandae rerum!
-            </p>
-        </div>
-        <hr>
-        <div class="price">550 BDT</div>
-        <button class="cart-button" (click)="buttonClicked()">Add to Cart</button>
+<div class="product-loader" *ngIf="!product">
+    <div class="loader-loader">
+        <div class="loader"></div>
     </div>
 </div>
-
-<div class="customer-comments">
-    <div class="comment">
-        <div class="comment-img">
-            <img src="https://static.vecteezy.com/system/resources/previews/024/183/502/original/male-avatar-portrait-of-a-young-man-with-a-beard-illustration-of-male-character-in-modern-color-style-vector.jpg" alt="User Avatar">
+<div *ngIf="product">
+    <div class="product-container">
+        <div *ngIf="!product">
+            <div class="loader"></div>
         </div>
-        <div class="comment-input">
-            <input type="text" placeholder="Add a Comment">
+        <div class="product-image">
+            <img src="https://prod.saralifestyle.com/Images/Products/VariationWisetImage/b3e234f81e184536aba23191beff9d60.jpeg" alt="Shirt">
+        </div>
+        <div class="description">
+            <h1>{{ product.Name }}</h1>
+            <h2>Brand Name: {{product.Brand}}</h2>
+            <div>Available Colors: Green, Red, White</div>
+            <p>Available: Yes</p>
+            <div class="product-description">
+                <p class="text-lg font-semibold">Product Description:</p>
+                <p>
+                    {{ product.Description }}
+                </p>
+            </div>
+            <hr>
+            <div class="price"> {{ product.Price }} BDT </div>
+            <button class="cart-button" (click)="buttonClicked()">Add to Cart</button>
         </div>
     </div>
-    <div class="comment-list">
-        <div class="comment-item">
+    
+    <div class="customer-comments">
+        <div class="comment">
             <div class="comment-img">
                 <img src="https://static.vecteezy.com/system/resources/previews/024/183/502/original/male-avatar-portrait-of-a-young-man-with-a-beard-illustration-of-male-character-in-modern-color-style-vector.jpg" alt="User Avatar">
             </div>
-            <div class="comment-text">
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, perspiciatis consequatur veniam at repudiandae, velit placeat enim cum quod quos debitis deserunt quisquam! Architecto dignissimos harum dolores animi, corporis aliquid. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores eius vero nisi tenetur ratione harum, debitis recusandae tempora maxime placeat quia blanditiis iste excepturi sequi perferendis, illum nostrum libero eos. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Recusandae totam reprehenderit inventore? Fugiat vel perspiciatis eos iusto eligendi ratione molestias sunt, aliquam placeat suscipit doloribus maiores facere velit dolores pariatur! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere, rerum. Rem, ratione vero. Amet, est. Voluptate sit suscipit saepe molestiae numquam quasi quidem officia, alias corrupti mollitia, pariatur voluptatem iste.
-                </p>
+            <div class="comment-input">
+                <input type="text" placeholder="Add a Comment">
+            </div>
+        </div>
+        <div class="comment-list">
+            <div class="comment-item">
+                <div class="comment-img">
+                    <img src="https://static.vecteezy.com/system/resources/previews/024/183/502/original/male-avatar-portrait-of-a-young-man-with-a-beard-illustration-of-male-character-in-modern-color-style-vector.jpg" alt="User Avatar">
+                </div>
+                <div class="comment-text">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, perspiciatis consequatur veniam at repudiandae, velit placeat enim cum quod quos debitis deserunt quisquam! Architecto dignissimos harum dolores animi, corporis aliquid. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores eius vero nisi tenetur ratione harum, debitis recusandae tempora maxime placeat quia blanditiis iste excepturi sequi perferendis, illum nostrum libero eos. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Recusandae totam reprehenderit inventore? Fugiat vel perspiciatis eos iusto eligendi ratione molestias sunt, aliquam placeat suscipit doloribus maiores facere velit dolores pariatur! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere, rerum. Rem, ratione vero. Amet, est. Voluptate sit suscipit saepe molestiae numquam quasi quidem officia, alias corrupti mollitia, pariatur voluptatem iste.
+                    </p>
+                </div>
             </div>
         </div>
     </div>
