@@ -84,7 +84,7 @@ func (db *Database) FetchAllProduct() ([]model.Product, error) {
 func (db *Database) FetchProductByID(productId model.ProductID) (model.Product, error) {
 	query := "SELECT * FROM online_clothing_management_system.Products WHERE Id = ?"
 
-	fmt.Println("Product ID: ", productId)
+	// fmt.Println("Product ID: ", productId)
 	// Execute the query with the specified ID
 	row := db.db.QueryRow(query, productId)
 
@@ -129,4 +129,17 @@ func (db *Database) InsertNewUserInformation(user model.User) error {
 		return err
 	}
 	return nil
+}
+
+func (db *Database) ValidateUser(userLogin model.UserLogin) (string, error) {
+	var userRole string
+	err := db.db.QueryRow("SELECT Role FROM online_clothing_management_system.User WHERE Email = ? AND Password = ?", userLogin.Email, userLogin.Password).Scan(&userRole)
+	switch {
+	case err == sql.ErrNoRows:
+		return "", fmt.Errorf("user not found")
+	case err != nil:
+		return "", err
+	}
+
+	return userRole, nil
 }
