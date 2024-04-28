@@ -7,6 +7,13 @@ import (
 	log "github.com/Emrul-Hasan-Emon/repositories/ecommerce/log4u"
 )
 
+type Authentication struct {
+}
+
+func CreateNewAuthInstance() *Authentication {
+	return &Authentication{}
+}
+
 func Protector(action string, inner http.Handler) http.HandlerFunc {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if !tokenExists(r) {

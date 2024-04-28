@@ -108,3 +108,25 @@ func (db *Database) FetchProductByID(productId model.ProductID) (model.Product, 
 	}
 	return p, nil
 }
+
+func (db *Database) CheckIfEmailExist(email string) bool {
+	// Query database to check if email exists
+	var count int
+	err := db.db.QueryRow("SELECT COUNT(*) FROM online_clothing_management_system.User WHERE Email = ?", email).Scan(&count)
+	if err != nil {
+		log.Errorf("Error checking email existence: %v", err)
+		return false // Assume email doesn't exist in case of error
+	}
+	return count > 0
+}
+
+func (db *Database) InsertNewUserInformation(user model.User) error {
+	_, err := db.db.Exec("INSERT INTO online_clothing_management_system.User (Name, PhoneNumber, Email, Gender, Address, Role, DateOfBirth, Password, IsDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+		user.Name, user.PhoneNumber, user.Email, user.Gender, user.Address, user.Role, user.DateOfBirth, user.Password, user.IsDeleted)
+
+	if err != nil {
+		log.Errorf("Error inserting user into database: %v", err)
+		return err
+	}
+	return nil
+}
