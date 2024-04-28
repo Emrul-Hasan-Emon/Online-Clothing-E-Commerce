@@ -1,3 +1,4 @@
-[DEBUG] [2024-04-29 04:18:47,926] [???] [database.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/database.openDatabase:32] ==> Connected to database localhost:3306: 
-[DEBUG] [2024-04-29 04:18:47,927] [???] [database.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/database.openDatabase:37] ==> Database available localhost:3306:
-[DEBUG] [2024-04-29 04:18:53,536] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> POST /auth/register Register 6.748144ms
+[DEBUG] [2024-04-29 04:28:54,746] [???] [database.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/database.openDatabase:32] ==> Connected to database localhost:3306: 
+[DEBUG] [2024-04-29 04:28:54,746] [???] [database.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/database.openDatabase:37] ==> Database available localhost:3306:
+[DEBUG] [2024-04-29 04:29:04,094] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> POST /auth/register Register 3.830204ms
+[DEBUG] [2024-04-29 04:29:16,177] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> POST /auth/register Register 442.898µs

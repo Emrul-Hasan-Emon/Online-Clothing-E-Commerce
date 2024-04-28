@@ -2,7 +2,6 @@ package auth
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/http"
 
 	"github.com/Emrul-Hasan-Emon/repositories/ecommerce/database"
@@ -34,7 +33,6 @@ func (auth *Authentication) RegisterNewUser(
 			return
 		}
 		// Respond with success message
-		w.WriteHeader(http.StatusCreated)
-		fmt.Fprintf(w, "User registered successfully")
+		w.WriteHeader(http.StatusOK)
 	}
 }
