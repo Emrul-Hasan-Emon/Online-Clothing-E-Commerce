@@ -8,6 +8,8 @@ export class AuthService {
   private baseUrl = 'auth';
   public isUserLogged = false;
   public isAdminLogged = false;
+  public userInformation;
+  public adminInformation;
   
   constructor(private http: HttpClient) { }
 
