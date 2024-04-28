@@ -19,12 +19,15 @@ func (auth *Authentication) ValidateUser(
 			return
 		}
 
-		userRole, err := db.ValidateUser(user)
+		userName, userRole, err := db.ValidateUser(user)
 		if err != nil {
 			http.Error(w, "Invalid User", http.StatusBadRequest)
 			return
 		}
+		// Return user name and role
+		response := map[string]string{"name": userName, "role": userRole}
+
 		w.WriteHeader(http.StatusOK)
-		json.NewEncoder(w).Encode(userRole)
+		json.NewEncoder(w).Encode(response)
 	}
 }

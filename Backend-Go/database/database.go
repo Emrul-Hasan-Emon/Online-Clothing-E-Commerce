@@ -131,15 +131,16 @@ func (db *Database) InsertNewUserInformation(user model.User) error {
 	return nil
 }
 
-func (db *Database) ValidateUser(userLogin model.UserLogin) (string, error) {
+func (db *Database) ValidateUser(userLogin model.UserLogin) (string, string, error) {
 	var userRole string
-	err := db.db.QueryRow("SELECT Role FROM online_clothing_management_system.User WHERE Email = ? AND Password = ?", userLogin.Email, userLogin.Password).Scan(&userRole)
+	var userName string
+	err := db.db.QueryRow("SELECT Name, Role FROM online_clothing_management_system.User WHERE Email = ? AND Password = ?", userLogin.Email, userLogin.Password).Scan(&userName, &userRole)
 	switch {
 	case err == sql.ErrNoRows:
-		return "", fmt.Errorf("user not found")
+		return "", "", fmt.Errorf("user not found")
 	case err != nil:
-		return "", err
+		return "", "", err
 	}
 
-	return userRole, nil
+	return userName, userRole, nil
 }
