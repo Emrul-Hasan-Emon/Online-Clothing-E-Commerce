@@ -12,6 +12,7 @@ import { AdminModule } from './Modules/admin/admin.module';
 import { PaymentModule } from './Modules/payment/payment.module';
 import { OrderModule } from './Modules/order/order.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { AuthModule } from './Modules/auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     AdminModule,
     PaymentModule,
     OrderModule,
+    AuthModule,
     HttpClientModule
   ],
   providers: [HttpClient],

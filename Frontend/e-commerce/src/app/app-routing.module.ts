@@ -11,6 +11,8 @@ import { PaymentSuccessComponent } from './Modules/payment/payment-success/payme
 import { OrderHistoryComponent } from './Modules/order/order-history/order-history.component';
 import { OrderDetailsComponent } from './Modules/order/order-details/order-details.component';
 import { ShowSingleOrderDetailsComponent } from './Modules/order/show-single-order-details/show-single-order-details.component';
+import { LoginComponent } from './Modules/auth/login/login.component';
+import { RegisterComponent } from './Modules/auth/register/register.component';
 
 const routes: Routes = [
   // { 
@@ -36,7 +38,9 @@ const routes: Routes = [
   { 
     path: 'admin',
     loadChildren: () => import('./Modules/admin/admin.module').then(m => m.AdminModule)
-  }
+  },
+  { path: "login", component: LoginComponent },
+  { path: "register", component: RegisterComponent }
 ];
 
 @NgModule({

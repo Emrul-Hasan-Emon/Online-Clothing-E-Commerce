@@ -1,1 +1,43 @@
-<p>register works!</p>
+<div class="register-container"> 
+    <h2>Register</h2>
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+        <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" formControlName="name" required>
+        </div>
+        <div>
+            <label for="phone">Phone Number</label>
+            <input type="text" id="phone" formControlName="phonenumber" required>
+        </div>
+        <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" formControlName="email" required>
+        </div>
+        <div>
+            <label for="dob">Date of Birth</label>
+            <input type="date" id="dob" formControlName="dateOfBirth" required>
+        </div>
+        <div>
+            <label>Gender</label>
+            <input type="radio" id="male" name="gender" formControlName="gender" value="male"> Male
+            <input type="radio" id="female" name="gender" formControlName="gender" value="female"> Female
+            <div *ngIf="registerForm.get('gender').invalid && (registerForm.get('gender').dirty || registerForm.get('gender').touched)">
+              Please select a gender.
+            </div>
+        </div>
+        <div>
+            <label for="address">Address</label>
+            <textarea id="address" formControlName="address" required></textarea>
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input type="password" id="password" formControlName="password" required>
+        </div>
+        <div>
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" formControlName="confirmPassword" required>
+        </div>
+        <button type="submit" [disabled]="registerForm.invalid" [class.disabled-button]="registerForm.invalid">Register</button>
+        <p><a routerLink="/login">Log In</a></p>
+    </form>
+</div>
