@@ -14,8 +14,19 @@
         <div class="description">
             <h1>{{ product.Name }}</h1>
             <h2>Brand Name: {{product.Brand}}</h2>
-            <div>Available Colors: Green, Red, White</div>
-            <p>Available: Yes</p>
+            <p class="font-bold">Available Colors</p>
+            <div class="colors">
+                <div *ngFor="let color of product.Colors">
+                    <p class="color">{{color}}</p>
+                </div>
+            </div>
+            <p class="font-bold">Available: Yes</p>
+            <p class="font-bold">Size</p>
+            <div class="size flex flex-wrap">
+                <div *ngFor="let size of product.Size">
+                    <input type="radio" name="size" [value]="size" (change)="onSizeChange(size)"> {{ size.Name }}
+                </div>
+            </div>
             <div class="product-description">
                 <p class="text-lg font-semibold">Product Description:</p>
                 <p>
@@ -24,7 +35,12 @@
             </div>
             <hr>
             <div class="price"> {{ product.Price }} BDT </div>
-            <button class="cart-button" (click)="buttonClicked()">Add to Cart</button>
+            <ng-container *ngIf="!isAdminLoggedIn">
+                <button class="cart-button" (click)="addToCheckout()">Add to Cart</button>
+            </ng-container>
+            <ng-container *ngIf="isAdminLoggedIn">
+                <button class="cart-button" (click)="removeProduct()">Remove Product</button>
+            </ng-container>
         </div>
     </div>
     

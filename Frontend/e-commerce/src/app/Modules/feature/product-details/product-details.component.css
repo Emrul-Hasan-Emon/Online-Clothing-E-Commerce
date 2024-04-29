@@ -122,3 +122,20 @@
 @keyframes l12 { 
     100%{transform: rotate(.5turn)}
 }
+
+.colors {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.color {
+    background-color: orange;
+    margin-right: 10px;
+    margin-top: 10px;
+    border-radius: 3px;
+    font-weight: 500;
+}
+
+.size input {
+    margin-left: 10px;
+}

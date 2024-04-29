@@ -16,7 +16,7 @@ export interface Product {
   }
   
   export interface Size {
-    name: string;
-    quantity: number;
+    Name: string;
+    Quantity: number;
   }
   
