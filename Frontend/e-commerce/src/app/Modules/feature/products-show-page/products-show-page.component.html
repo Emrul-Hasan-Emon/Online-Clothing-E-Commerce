@@ -16,17 +16,19 @@
         </div>
         <div class="products">
             <div class="product" *ngFor="let item of products">
-                <div *ngIf="item.Discount" class="discount-box">
-                    {{ item.Discount }}% OFF
-                </div>
-                <div class="product-image">
-                    <img [src]="item.ImageURL" alt="Product Image">
-                </div>
-                <div class="product-details">
-                    <h2 class="product-title">{{ item.Name }}</h2>
-                    <p class="product-brand">Brand: {{ item.Brand }}</p>
-                    <p class="product-price">$ {{ item.Price }}</p>
-                    <button class="btn btn-primary">Add to Cart</button>
+                <div (click)="showProductDetails(item)">
+                    <div *ngIf="item.Discount" class="discount-box">
+                        {{ item.Discount }}% OFF
+                    </div>
+                    <div class="product-image">
+                        <img [src]="item.ImageURL" alt="Product Image">
+                    </div>
+                    <div class="product-details">
+                        <h2 class="product-title">{{ item.Name }}</h2>
+                        <p class="product-brand">Brand: {{ item.Brand }}</p>
+                        <p class="product-price">$ {{ item.Price }}</p>
+                        <button class="btn btn-primary">Add to Cart</button>
+                    </div>
                 </div>
             </div>
         </div>

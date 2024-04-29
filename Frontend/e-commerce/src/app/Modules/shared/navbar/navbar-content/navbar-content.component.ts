@@ -21,6 +21,6 @@ export class NavbarContentComponent implements OnInit {
 
   buttonClicked(clickedItem) {
     console.log("event: ", clickedItem);
-    this.router.navigate(['/products'],  {queryParams: { id: clickedItem.id } } )
+    this.router.navigate(['products'],  {queryParams: { id: clickedItem.id } } )
   }
 }

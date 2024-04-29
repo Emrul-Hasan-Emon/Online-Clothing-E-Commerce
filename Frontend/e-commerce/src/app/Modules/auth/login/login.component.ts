@@ -28,14 +28,27 @@ export class LoginComponent implements OnInit {
     });
   }
 
+
+  private userValidation(userData: Response) {
+    this.authService.isUserLogged = true;
+    this.authService.validationHappened(userData);
+    this.router.navigate(['home']);
+  }
+
+  private adminValidation(userData: Response) {
+    this.authService.isAdminLogged = true;
+    this.authService.validationHappened(userData);
+    this.router.navigate(['admin']);
+  }
   validateTheUser(userData: any) {
     this.authService.authenticateUser(userData).subscribe(
       (response: Response) => {
         // console.log('Response: ', response);
-        if(response.role && response.role == 'user') {
-          this.authService.isUserLogged = true;
-          this.authService.userInformation = response
-          this.router.navigate(['home']);
+        if(response.role == 'user') {
+          this.userValidation(response);
+        }
+        else if(response.role == 'admin') {
+          this.adminValidation(response);
         }
       },
       (error) => {

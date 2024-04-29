@@ -18,6 +18,7 @@ export class ProductsShowPageComponent implements OnInit {
   categoryId;
   selectedCategories: any[] = [];
   products: any;
+  allProducts: any;
 
   categories: any[] = [
       { name: 'Accounting', key: 'A' },
@@ -35,26 +36,31 @@ export class ProductsShowPageComponent implements OnInit {
   
   ngOnInit(): void {
     this.categoryId = '';
-    // this.products = mensCollection;
 
     this.productFetchService.getAllProducts().subscribe(
       (productList) => {
         console.log('Response: ', productList); 
-        this.products = productList;      
+        this.allProducts = productList;     
+        this.products = this.allProducts;
+
+        this.activatedRoute.queryParamMap.subscribe(
+          (params) => {
+            this.categoryId = params.get('id');
+
+            // console.log('Category ID ----> ', this.categoryId);
+            // console.log('Products ------> ', this.products);
+
+            if(this.categoryId) {
+              this.products = this.allProducts.filter((item) => item.CategoryID == this.categoryId);
+            }
+          }
+        )
       },
       (error) => {
         console.log('An error occured while fetching products');        
       }
     )
 
-    this.activatedRoute.queryParamMap.subscribe(
-      (params) => {
-        this.categoryId = params.get('id')
-        if(this.categoryId) {
-          this.products = this.products.filter((item) => item.CategoryID == this.categoryId);
-        }
-      }
-    )
     this.sortingOptions = [
       { name: "Sort By Price", code: "sp"},
       { name: "Sort By Name", code: "sn" }
@@ -68,6 +74,10 @@ export class ProductsShowPageComponent implements OnInit {
 
   sortOptionsSelected(event) {
     console.log("Event in Parent: ", event);
-    
+  }
+
+  showProductDetails(product: any) {
+    // console.log('Product ------> ', product);
+    this.router.navigate(['product-details', product.ID]);
   }
 }

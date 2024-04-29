@@ -1,5 +1,6 @@
 import { HostListener } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/Service/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,10 +11,25 @@ export class NavbarComponent implements OnInit {
   logoImagePath = "https://i.pinimg.com/originals/cb/ca/38/cbca38012ddfa7faaab7591df95c2b5a.png";
   isNavBarContentOpen: boolean;
   currentSection: string;
+  isLogged = false;
+  name = '';
+
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
       this.isNavBarContentOpen = false;
       this.currentSection = "";
+      this.isLogged = true;
+      this.name = 'emrulHasan';
+      
+      this.authService.login.subscribe(
+        (response) => {
+          this.isLogged = true;
+          this.name = response.name;
+
+          console.log('Response -----> ', response);
+        }
+      )
   }
 
   openNavBarContent(navBarItem: string) {
