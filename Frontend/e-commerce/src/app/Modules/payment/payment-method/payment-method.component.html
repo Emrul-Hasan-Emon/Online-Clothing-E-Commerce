@@ -1,0 +1,44 @@
+<div class="payment-container">
+    <div class="method-container">
+        <div class="dropdown">
+            <button class="dropbtn">Mobile Banking</button>
+            <div class="dropdown-content">
+                <a (click)="expressPaymentMethod('bKash')">bKash</a>
+                <a (click)="expressPaymentMethod('Rocket')">Rocket</a>
+                <a (click)="expressPaymentMethod('Nagad')">Nagad</a>
+            </div>
+        </div>
+    
+        <div class="dropdown">
+            <button class="dropbtn  card-method">Card</button>
+            <!-- <div class="dropdown-content">
+                <a href="#">Link 1</a>
+                <a href="#">Link 2</a>
+                <a href="#">Link 3</a>
+            </div> -->
+        </div>
+    </div>
+    <div id="address-container">
+        <form>
+            <div>
+                <label for="name">{{ paymentMethod }} Number</label>
+                <input 
+                    type="text" 
+                    id="name" 
+                    [(ngModel)]="number"
+                    required>
+            </div>
+            <div>
+                <label for="contact">{{ paymentMethod }} Transaction ID</label>
+                <input 
+                    type="text" 
+                    id="id" 
+                    [(ngModel)]="transactionNumber"
+                    required>
+            </div>
+            <div>
+                <button class="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>

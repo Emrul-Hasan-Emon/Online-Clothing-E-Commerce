@@ -4,8 +4,11 @@ import { PaymentComponent } from './payment/payment.component';
 import { PaymentSuccessComponent } from './payment-success/payment-success.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { AddressInfoComponent } from './address-info/address-info.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ValiditityMessageComponent } from './validitity-message/validitity-message.component';
+import { PaymentMethodComponent } from './payment-method/payment-method.component';
+import { PaymentRoutingModule } from './payment-routing.module';
+import { SinglePaymentMethodComponent } from './single-payment-method/single-payment-method.component';
 
 @NgModule({
   declarations: [
@@ -13,11 +16,15 @@ import { ValiditityMessageComponent } from './validitity-message/validitity-mess
     PaymentSuccessComponent,
     CheckoutComponent,
     AddressInfoComponent,
-    ValiditityMessageComponent
+    ValiditityMessageComponent,
+    PaymentMethodComponent,
+    SinglePaymentMethodComponent
   ],
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    PaymentRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class PaymentModule { }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-address-info',
@@ -8,6 +9,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class AddressInfoComponent implements OnInit {
   checkoutForm: FormGroup;
+
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.checkoutForm = new FormGroup({
@@ -20,7 +23,7 @@ export class AddressInfoComponent implements OnInit {
     });
   }
 
-  deliveryHereClicked() {
-    console.log(this.checkoutForm);
+  navigateToPaymentMethod() {
+    this.router.navigate(['payment-method']);
   }
 }

@@ -1,0 +1,23 @@
+<div class="address-container">
+    <form>
+        <div>
+            <label for="name">{{ paymentMethod }} Number</label>
+            <input 
+                type="text" 
+                id="name" 
+                [(ngModel)]="number"
+                required>
+        </div>
+        <div>
+            <label for="contact">{{ paymentMethod }} Transaction ID</label>
+            <input 
+                type="text" 
+                id="id" 
+                [(ngModel)]="transactionNumber"
+                required>
+        </div>
+        <div>
+            <button class="submit">Submit</button>
+        </div>
+    </form>
+</div>

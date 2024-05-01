@@ -1,5 +1,5 @@
 <div class="address-container">
-    <form [formGroup]="checkoutForm" (ngSubmit)="deliveryHereClicked()">
+    <form [formGroup]="checkoutForm" (ngSubmit)="navigateToPaymentMethod()">
         <div>
             <label for="name">Name</label>
             <input type="text" id="name" formControlName="name" required>
@@ -49,7 +49,8 @@
             ></app-validitity-message>
         </div>
         <div>
-            <button type="submit" [disabled]="!checkoutForm.valid">Delivery Here</button>
+            <!-- <button type="submit" [disabled]="!checkoutForm.valid">Delivery Here</button> -->
+            <button type="submit">Delivery Here</button>
         </div>
     </form>
 </div>
