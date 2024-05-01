@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { pantCollection } from 'src/app/Data/meansPant';
 import { mensCollection } from 'src/app/Data/mensColletion';
 import { jeansCollection } from 'src/app/Data/mensJeans';
+import { Product } from 'src/app/Model/product';
 import { Sort } from 'src/app/Model/sortmodel';
 import { ProductFetchService } from 'src/app/Service/product-fetch.service';
 
@@ -17,8 +18,8 @@ export class ProductsShowPageComponent implements OnInit {
   categoryName: string;
   categoryId;
   selectedCategories: any[] = [];
-  products: any;
-  allProducts: any;
+  products: Product[];
+  allProducts: Product[];
 
   categories: any[] = [
       { name: 'Accounting', key: 'A' },
@@ -33,7 +34,29 @@ export class ProductsShowPageComponent implements OnInit {
     private productFetchService: ProductFetchService
   ) { }
 
-  
+  filterProductsByBrand() {
+    this.activatedRoute.queryParamMap.subscribe(
+      (params) => {
+        const brand = params.get('brand');
+        if(brand) {
+          this.products = this.allProducts.filter((item) => item?.Brand == brand);
+        }
+      }
+    );
+  }
+
+  filterProductByCategoryId() {
+    this.activatedRoute.queryParamMap.subscribe(
+      (params) => {
+        this.categoryId = params.get('categoryId');
+
+        if(this.categoryId) {
+          this.products = this.allProducts.filter((item) => item.CategoryID == this.categoryId);
+        }
+      }
+    );
+  }
+
   ngOnInit(): void {
     this.categoryId = '';
 
@@ -42,24 +65,14 @@ export class ProductsShowPageComponent implements OnInit {
         console.log('Response: ', productList); 
         this.allProducts = productList;     
         this.products = this.allProducts;
-
-        this.activatedRoute.queryParamMap.subscribe(
-          (params) => {
-            this.categoryId = params.get('id');
-
-            // console.log('Category ID ----> ', this.categoryId);
-            // console.log('Products ------> ', this.products);
-
-            if(this.categoryId) {
-              this.products = this.allProducts.filter((item) => item.CategoryID == this.categoryId);
-            }
-          }
-        )
+        
+        this.filterProductsByBrand();
+        this.filterProductByCategoryId();
       },
       (error) => {
         console.log('An error occured while fetching products');        
       }
-    )
+    );
 
     this.sortingOptions = [
       { name: "Sort By Price", code: "sp"},
@@ -78,6 +91,6 @@ export class ProductsShowPageComponent implements OnInit {
 
   showProductDetails(product: any) {
     // console.log('Product ------> ', product);
-    this.router.navigate(['product-details', product.ID]);
+    this.router.navigate(['product-details', product.id]);
   }
 }

@@ -1,11 +1,19 @@
 <div class="w-full">
     <div class="shadow-lg p-6 content">
         <div class="container">
-            <div class="flex flex-col" *ngFor="let item of catergory[selectedCategory].sections">
-                <h5 class="text-center"> {{ item.name }}</h5>
-                <div class="button flex flex-col" *ngFor="let subItem of item.items">
-                    <button type="button" class="btn-css" (click)="buttonClicked(subItem)">
-                        {{ subItem.name }}
+            <div class="flex flex-col">
+                <h5 class="text-center"> Clothing </h5>
+                <div class="button flex flex-col" *ngFor="let categoryItem of selectedCategories">
+                    <button type="button" class="btn-css" (click)="categorySelected(categoryItem)">
+                        {{ categoryItem.CategoryName }}
+                    </button>
+                </div>
+            </div>
+            <div class="flex flex-col">
+                <h5 class="text-center"> Brand </h5>
+                <div class="button flex flex-col" *ngFor="let brand of brands">
+                    <button type="button" class="btn-css" (click)="brandSelected(brand)">
+                        {{ brand }}
                     </button>
                 </div>
             </div>

@@ -29,12 +29,15 @@ export class CartService {
   }
 
   public addAnotherProductToCart(product: Product, selectedSize: string, selectedColor: string, quantity: number) {
+    let discountInfo = 0;
+    if(product.Discount) discountInfo = product.Discount;
+
     const subPrice = quantity * product.Price;
-    const discount = quantity * ((product.Discount * product.Price) / 100);
+    const discount = quantity * ((discountInfo * product.Price) / 100);
     const total = subPrice - discount;
     
     const singleCart = {
-      Id: product.ID,
+      Id: product.id,
       Size: selectedSize,
       Color: selectedColor,
       Quantity: quantity,

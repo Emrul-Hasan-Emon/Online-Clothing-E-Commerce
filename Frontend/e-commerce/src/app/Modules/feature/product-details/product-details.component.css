@@ -159,3 +159,11 @@
 .quantity-control button:hover {
     background-color: #ddd;
 }
+
+.discount {
+    color: orange;
+}
+
+del {
+    color: black;
+}

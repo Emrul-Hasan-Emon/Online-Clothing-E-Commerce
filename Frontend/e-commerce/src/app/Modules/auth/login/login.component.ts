@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Service/auth.service';
 
 export interface Response {
+  id: string,
   name: string,
   role: string,
   token?: any
@@ -32,26 +33,29 @@ export class LoginComponent implements OnInit {
 
   private userValidation(userData: Response) {
     this.authService.isUserLogged = true;
-    this.authService.validationHappened(userData);
     this.router.navigate(['home']);
   }
 
   private adminValidation(userData: Response) {
     this.authService.isAdminLogged = true;
-    this.authService.validationHappened(userData);
     this.router.navigate(['admin']);
   }
   validateTheUser(userData: any) {
     this.authService.authenticateUser(userData).subscribe(
       (response: Response) => {
-        // console.log('Response: ', response);
         if(response.role == 'user') {
           this.userValidation(response);
         }
         else if(response.role == 'admin') {
           this.adminValidation(response);
         }
+        
+        const dataString = JSON.stringify(response);
+
         localStorage.setItem('token', response.token);
+        localStorage.setItem('userinfo', dataString);
+
+        this.authService.validationHappened(response);
       },
       (error) => {
         console.log(error);

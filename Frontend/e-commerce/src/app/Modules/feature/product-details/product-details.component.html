@@ -9,22 +9,22 @@
             <div class="loader"></div>
         </div>
         <div class="product-image">
-            <img src="https://prod.saralifestyle.com/Images/Products/VariationWisetImage/b3e234f81e184536aba23191beff9d60.jpeg" alt="Shirt">
+            <img [src]="product.ImageURL" [alt]="product.Name">
         </div>
         <div class="description">
             <h1>{{ product.Name }}</h1>
             <h2>Brand Name: {{product.Brand}}</h2>
             <p class="font-bold">Available Colors</p>
             <div class="colors flex flex-wrap">
-                <div *ngFor="let color of product.Colors">
+                <div *ngFor="let color of colors">
                     <input type="radio" name="color" [value]="color" (change)="onColorChange(color)"> {{ color }}
                 </div>
             </div>
             <p class="font-bold">Available: Yes</p>
             <p class="font-bold">Size</p>
             <div class="size flex flex-wrap">
-                <div *ngFor="let size of product.Size">
-                    <input type="radio" name="size" [value]="size" (change)="onSizeChange(size)"> {{ size.Name }}
+                <div *ngFor="let size of sizes">
+                    <input type="radio" name="size" [value]="size" (change)="onSizeChange(size)"> {{ size }}
                 </div>
             </div>
             <div class="cart-item-quantitty flex">
@@ -48,7 +48,10 @@
                 </p>
             </div>
             <hr>
-            <div class="price"> {{ product.Price }} BDT </div>
+            <div class="price" *ngIf="!product.Discount || product.Discount == 0"> {{ product.Price }} BDT </div>
+            <div class="price discount" *ngIf="product.Discount">
+                <del> {{ product.Price }} BDT</del> {{ discountedPrice }} BDT ({{ product.Discount }}% OFF)
+            </div>
             <ng-container *ngIf="!isAdminLoggedIn">
                 <button class="cart-button" (click)="addToCart()">Add to Cart</button>
             </ng-container>
@@ -73,9 +76,7 @@
                     <img src="https://static.vecteezy.com/system/resources/previews/024/183/502/original/male-avatar-portrait-of-a-young-man-with-a-beard-illustration-of-male-character-in-modern-color-style-vector.jpg" alt="User Avatar">
                 </div>
                 <div class="comment-text">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, perspiciatis consequatur veniam at repudiandae, velit placeat enim cum quod quos debitis deserunt quisquam! Architecto dignissimos harum dolores animi, corporis aliquid. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores eius vero nisi tenetur ratione harum, debitis recusandae tempora maxime placeat quia blanditiis iste excepturi sequi perferendis, illum nostrum libero eos. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Recusandae totam reprehenderit inventore? Fugiat vel perspiciatis eos iusto eligendi ratione molestias sunt, aliquam placeat suscipit doloribus maiores facere velit dolores pariatur! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere, rerum. Rem, ratione vero. Amet, est. Voluptate sit suscipit saepe molestiae numquam quasi quidem officia, alias corrupti mollitia, pariatur voluptatem iste.
-                    </p>
+                    <p>{{ product.Description }}</p>
                 </div>
             </div>
         </div>

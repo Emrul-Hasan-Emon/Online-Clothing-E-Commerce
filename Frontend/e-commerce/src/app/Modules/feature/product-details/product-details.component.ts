@@ -24,6 +24,9 @@ export class ProductDetailsComponent implements OnInit {
   selectedSize= '';
   color = '';
   productQuantity = 0;
+  colors =  [];
+  sizes = [];
+  discountedPrice: number;
 
   constructor(
     private router: Router,
@@ -33,6 +36,22 @@ export class ProductDetailsComponent implements OnInit {
     private cartService: CartService
   ) {}
   
+  fetchAllColors() {
+    var uniqueColors = new Set<string>();
+    var uniqueSizes = new Set<string>();
+
+    this.product.Size.forEach(size => {
+      uniqueColors.add(size.Color);
+      uniqueSizes.add(size.Name);
+    });
+
+    this.colors = Array.from(uniqueColors);
+    this.sizes = Array.from(uniqueSizes);
+
+    console.log('Colors ---> ', this.colors);
+    console.log('Sizes ---> ', this.sizes);
+  }
+
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe(
       parmas => {
@@ -41,7 +60,7 @@ export class ProductDetailsComponent implements OnInit {
       }
     )
 
-    this.authService.login.subscribe(
+    this.authService.getLoginCredentials().subscribe(
       (response: Response) => {
         if(response.role == 'admin') {
           this.isAdminLoggedIn = true;
@@ -60,7 +79,9 @@ export class ProductDetailsComponent implements OnInit {
     .subscribe(
       (productDetails) => {
         this.product = productDetails
-        console.log('Product Details: ', productDetails);        
+        this.discountedPrice = this.product.Price -  ((this.product.Discount * this.product.Price) / 100);
+        console.log('Product Details: ', productDetails);   
+        this.fetchAllColors();     
       },
       (error) => {
         console.log('An error occured while fetching product details for product id: ', this.productID);
@@ -68,11 +89,15 @@ export class ProductDetailsComponent implements OnInit {
     )
   }
   addToCart() {
+    console.log('Size ---> ', this.selectedSize);
+    console.log('Color ---> ', this.color);
     if(!this.selectedSize) {
       alert('Please select a Size');
     }
     else if(!this.color) {
       alert('Please select a color');
+    } else if(this.productQuantity == 0) {
+      alert('Please select quantity');
     }
     else {
       this.cartService.addAnotherProductToCart(this.product, this.selectedSize, this.color, this.productQuantity);
@@ -80,13 +105,11 @@ export class ProductDetailsComponent implements OnInit {
     }
 }
 
-  onSizeChange(size: any) {
-    // console.log('Selected Size ----> ', size);
-    this.selectedSize = size.Name;
+  onSizeChange(size: string) {
+    this.selectedSize = size;
   }
 
   onColorChange(color: string) {
-    // console.log('Selected Color ---> ', color);
     this.color = color;
   }
   removeProduct() {

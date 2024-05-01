@@ -10,7 +10,6 @@ export class HomeProductCardComponent implements OnInit{
   product: any;
 
   ngOnInit(): void {
-    console.log("Home Product Card Component");
-    console.log("Prduct: ", this.product);
+    
   }
 }

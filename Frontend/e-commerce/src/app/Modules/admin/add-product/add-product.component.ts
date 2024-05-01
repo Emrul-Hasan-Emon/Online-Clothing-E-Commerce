@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { NavigationStart, Router } from '@angular/router';
 import { Product, Size } from 'src/app/Model/product';
+import { ProductPostService } from 'src/app/Service/product-post.service';
 
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
   styleUrls: ['./add-product.component.css']
 })
-export class AddProductComponent implements OnInit{
+export class AddProductComponent implements OnInit, OnDestroy {
   addProductForm: FormGroup;
   selectedImage;
   sizesOptions: string[] = ['S', 'M', 'L', 'XL', 'XXL', 'XXXL'];
@@ -15,7 +17,13 @@ export class AddProductComponent implements OnInit{
   selectedPairs: { size: string, color: string }[] = [];
   genderOptions: string[] = ['Male', 'Female', 'Other'];
 
+  constructor(
+    private productPostService: ProductPostService,
+    private router: Router
+  ) {}
+
   ngOnInit(): void {
+    
     this.addProductForm = new FormGroup({
         Name: new FormControl('', Validators.required),
         Category: new FormControl('', Validators.required),
@@ -30,6 +38,21 @@ export class AddProductComponent implements OnInit{
         ImageURL: new FormControl('', Validators.required),
         Description: new FormControl('', Validators.required)
       });
+
+      console.log(this.addProductForm.value);
+      this.router.events.subscribe(event => {
+        if (event instanceof NavigationStart) {
+          this.resetForm(); // Reset the form when navigating away from the component
+        }
+      });
+  }
+
+  resetForm() {
+    this.addProductForm.reset(); // Reset the form controls
+    // Reset individual form controls to empty value
+    Object.keys(this.addProductForm.controls).forEach(key => {
+      this.addProductForm.get(key).setValue('');
+    });
   }
 
   createSizeFormGroup(): FormGroup {
@@ -54,7 +77,7 @@ export class AddProductComponent implements OnInit{
       const reader = new FileReader();
       reader.onload = (e) => {
         this.selectedImage = e.target.result;
-        // console.log('Selected Image Url: ', this.selectedImage);
+        this.addProductForm.get('ImageURL').setValue(this.selectedImage);
       };
       reader.readAsDataURL(inputElement.files[0]);
     }
@@ -124,9 +147,26 @@ export class AddProductComponent implements OnInit{
     product.InStock = inStock;
     product.Price = +product.Price;
     product.Discount = +product.Discount;
-    
+    product.Quantity = quantity;
+
     delete product.sizes;
 
     console.log('Product ----> ', product);
+
+    this.productPostService.insertProduct(product).subscribe(
+      (newInsertedProduct) => {
+        alert('Product Insertion Successfull');
+        this.addProductForm.reset();
+        console.log('New Inserted Product', newInsertedProduct)
+      },
+      (error) => {
+        console.log(error);
+        alert('Duplication of product name');
+      }
+    )
+  }
+
+  ngOnDestroy(): void {
+      this.addProductForm.reset();
   }
 }

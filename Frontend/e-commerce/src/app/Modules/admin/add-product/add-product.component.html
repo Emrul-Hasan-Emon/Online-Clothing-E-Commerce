@@ -1,7 +1,7 @@
 <div class="address-container">
     <form [formGroup]="addProductForm" (ngSubmit)="productDetailsSubmitted()">
         <div>
-            <label for="name">Product Name</label>
+            <label>Product Name</label>
             <input type="text" id="name" formControlName="Name" required>
         </div>
         <div>
@@ -81,17 +81,24 @@
           </div>
           <div>
             <label for="image">Image</label>
-            <input type="file" id="image" (change)="onImageChange($event)" formControlName="ImageURL">
+            <input type="text" id="image" formControlName="ImageURL">
           </div>
+          <!-- <div>
+            <label for="image">Image</label>
+            <input type="file" id="image" (change)="onImageChange($event)" formControlName="ImageURL">
+          </div> -->
           <!-- <div *ngIf="selectedImage">
             <img [src]="selectedImage" alt="Selected Image">
+          </div>
+          <div>
+            <img [src]="this.addProductForm.get('ImageURL').value">
           </div> -->
           <div>
             <label for="description">Product Description</label>
             <textarea formControlName="Description" required></textarea>
           </div>
         <div>
-            <button type="submit">Delivery Here</button>
+            <button type="submit">Add Product</button>
         </div>
     </form>
 </div>

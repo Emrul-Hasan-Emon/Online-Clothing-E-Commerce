@@ -14,6 +14,8 @@ import { ShowSingleOrderDetailsComponent } from './Modules/order/show-single-ord
 import { LoginComponent } from './Modules/auth/login/login.component';
 import { RegisterComponent } from './Modules/auth/register/register.component';
 import { CartShowComponent } from './Modules/cart/cart-show/cart-show.component';
+import { PaymentMethodComponent } from './Modules/payment/payment-method/payment-method.component';
+import { SinglePaymentMethodComponent } from './Modules/payment/single-payment-method/single-payment-method.component';
 
 const routes: Routes = [
   // { 
@@ -36,12 +38,14 @@ const routes: Routes = [
   { path: "", component: ProductsShowPageComponent },
   { path: "checkout", component: CheckoutComponent},
   { path: "single-order-history-details", component: ShowSingleOrderDetailsComponent},
+  { path: "payment-method", component: PaymentMethodComponent},
   { 
     path: 'admin',
     loadChildren: () => import('./Modules/admin/admin.module').then(m => m.AdminModule)
   },
   { path: "login", component: LoginComponent },
-  { path: "register", component: RegisterComponent }
+  { path: "register", component: RegisterComponent },
+  { path: "single-payment-method/:method", component: SinglePaymentMethodComponent }
 ];
 
 @NgModule({

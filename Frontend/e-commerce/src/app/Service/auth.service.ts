@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,9 +9,9 @@ export class AuthService {
   private baseUrl = 'auth';
   public isUserLogged = false;
   public isAdminLogged = false;
-  public userInformation;
 
-  public login = new Subject<any>();
+
+  public loginCredentials = new BehaviorSubject<any>(null);
 
   constructor(private http: HttpClient) { }
 
@@ -24,10 +24,14 @@ export class AuthService {
   }
 
   public validationHappened(response: any) {
-    this.userInformation = response;
+    this.loginCredentials.next(response);
   }
 
   public validateUserThroughToken(token: string) {
     return this.http.get<string>(`${this.baseUrl}/validate`, { headers: { 'Authorization': token } });
+  }
+
+  public getLoginCredentials() {
+    return this.loginCredentials.asObservable();
   }
 }

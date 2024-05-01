@@ -6,5 +6,9 @@
     "/auth": {
         "target": "http://localhost:8083",
         "secure": false
+    },
+    "/category": {
+        "target": "http://localhost:8083",
+        "secure": false
     }
 }

@@ -7,6 +7,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SingleFilterShowComponent } from './single-filter-show/single-filter-show.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { SingleFilterShowComponent } from './single-filter-show/single-filter-sh
     CommonModule,
     FormsModule,
     BrowserAnimationsModule,
-    DropdownModule
+    DropdownModule,
+    RouterModule
   ],
   exports: [
     FooterComponent,
