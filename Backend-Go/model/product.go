@@ -4,18 +4,18 @@ type ProductID int
 
 // Product represents the structure of a product
 type Product struct {
-	ID          ProductID
-	Name        string
-	Brand       string
-	Category    string
-	CategoryID  string
-	Price       int
-	Colors      []string // Assuming Colors will be stored as a string in JSON format
-	Size        []Size   // Size is now a slice of structs representing the JSON array
-	InStock     bool
-	Quantity    int
-	Discount    int
-	ImageURL    string
-	Gender      string
-	Description string
+	ID          ProductID `json:"id,omitempty"`
+	Name        string    `json:"Name,omitempty"`
+	Brand       string    `json:"Brand,omitempty"`
+	Category    string    `json:"Category,omitempty"`
+	CategoryID  string    `json:"CategoryID,omitempty"`
+	Price       int       `json:"Price,omitempty"`
+	Colors      []string  `json:"Colors,omitempty"`
+	Size        []Size    `json:"Size,omitempty"`
+	InStock     bool      `json:"InStock,omitempty"`
+	Quantity    int       `json:"Quantity,omitempty"`
+	Discount    int       `json:"Discount,omitempty"`
+	ImageURL    string    `json:"ImageURL,omitempty"`
+	Gender      string    `json:"Gender,omitempty"`
+	Description string    `json:"Description,omitempty"`
 }

@@ -131,16 +131,44 @@ func (db *Database) InsertNewUserInformation(user model.User) error {
 	return nil
 }
 
-func (db *Database) ValidateUser(userLogin model.UserLogin) (string, string, error) {
+func (db *Database) ValidateUser(userLogin model.UserLogin) (int, string, string, error) {
 	var userRole string
 	var userName string
-	err := db.db.QueryRow("SELECT Name, Role FROM online_clothing_management_system.User WHERE Email = ? AND Password = ?", userLogin.Email, userLogin.Password).Scan(&userName, &userRole)
+	var userID int
+
+	err := db.db.QueryRow("SELECT ID, Name, Role FROM online_clothing_management_system.User WHERE Email = ? AND Password = ?", userLogin.Email, userLogin.Password).Scan(&userID, &userName, &userRole)
 	switch {
 	case err == sql.ErrNoRows:
-		return "", "", fmt.Errorf("user not found")
+		return 0, "", "", fmt.Errorf("user not found")
 	case err != nil:
-		return "", "", err
+		return 0, "", "", err
 	}
 
-	return userName, userRole, nil
+	return userID, userName, userRole, nil
+}
+
+func (db *Database) IsNameExit(productName string) bool {
+	var count int
+	err := db.db.QueryRow("SELECT COUNT(*) FROM online_clothing_management_system.Products WHERE Name = ?", productName).Scan(&count)
+	if err != nil {
+		log.Errorf("Error checking email existence: %v", err)
+		return false // Assume email doesn't exist in case of error
+	}
+	return count > 0
+}
+
+func (db *Database) InsertNewProduct(product model.Product) error {
+	jsonSize, err := json.Marshal(product.Size)
+	if err != nil {
+		return err
+	}
+
+	jsonColor, err := json.Marshal(product.Colors)
+	if err != nil {
+		return err
+	}
+	query := `INSERT INTO online_clothing_management_system.Products (Name, Brand, Category_id, Category, Price, Colors, Size, InStock, Quantity, Discount, ImageUrl) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+	_, err = db.db.Exec(query, product.Name, product.Brand, product.CategoryID, product.Category, product.Price, jsonColor,
+		jsonSize, product.InStock, product.Quantity, product.Discount, product.ImageURL)
+	return err
 }

@@ -3,6 +3,7 @@ package auth
 import (
 	"encoding/json"
 	"net/http"
+	"strconv"
 	"time"
 
 	"github.com/Emrul-Hasan-Emon/repositories/ecommerce/database"
@@ -28,7 +29,7 @@ func (auth *Authentication) ValidateUser(
 			return
 		}
 
-		userName, userRole, err := db.ValidateUser(user)
+		userID, userName, userRole, err := db.ValidateUser(user)
 		if err != nil {
 			w.WriteHeader(http.StatusUnauthorized)
 			http.Error(w, "Invalid User", http.StatusBadRequest)
@@ -50,7 +51,7 @@ func (auth *Authentication) ValidateUser(
 			return
 		}
 
-		response := map[string]string{"name": userName, "role": userRole, "token": tokenString}
+		response := map[string]string{"id": strconv.Itoa(userID), "name": userName, "role": userRole, "token": tokenString}
 
 		w.WriteHeader(http.StatusOK)
 		json.NewEncoder(w).Encode(response)
@@ -60,6 +61,7 @@ func (auth *Authentication) ValidateUser(
 func (auth *Authentication) ValidateToken() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		tokenString := r.Header.Get("Authorization")
+
 		if tokenString == "" {
 			w.WriteHeader(http.StatusUnauthorized)
 			return
@@ -68,13 +70,15 @@ func (auth *Authentication) ValidateToken() http.HandlerFunc {
 		token, err := jwt.ParseWithClaims(tokenString, &Claims{}, func(token *jwt.Token) (interface{}, error) {
 			return jwtKey, nil
 		})
+
 		if err != nil {
 			w.WriteHeader(http.StatusUnauthorized)
 			return
 		}
 
 		if claims, ok := token.Claims.(*Claims); ok && token.Valid {
-			w.Write([]byte(claims.Email))
+			w.WriteHeader(http.StatusOK)
+			json.NewEncoder(w).Encode(claims.Email)
 		} else {
 			w.WriteHeader(http.StatusUnauthorized)
 		}

@@ -2,6 +2,7 @@ package product
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 
 	"github.com/Emrul-Hasan-Emon/repositories/ecommerce/common"
@@ -67,6 +68,42 @@ func (pr *Product) CreateSingleProductFetcher(
 	}
 }
 
+func (pr *Product) InsertNewProduct(
+	db *database.Database,
+) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		contentType := r.Header.Get("Content-Type")
+		fmt.Println("Content Type: ", contentType)
+		// body, err := ioutil.ReadAll(r.Body)
+		// if err != nil {
+		// 	w.WriteHeader(http.StatusInternalServerError)
+		// 	return
+		// }
+
+		// fmt.Println("Request Body ---> ", string(body))
+		var product model.Product
+		err := json.NewDecoder(r.Body).Decode(&product)
+		fmt.Println("Product ---> ", product)
+		if err != nil {
+			w.WriteHeader(http.StatusBadRequest)
+			return
+		}
+
+		if db.IsNameExit(product.Name) {
+			http.Error(w, "Product Name Exit", http.StatusBadRequest)
+			return
+		}
+
+		err = db.InsertNewProduct(product)
+		if err != nil {
+			fmt.Println(err)
+			http.Error(w, "An error occured while inserting product details", http.StatusBadGateway)
+			return
+		}
+		w.WriteHeader(http.StatusOK)
+		json.NewEncoder(w).Encode(product)
+	}
+}
 func (pr *Product) Testing(mapper *database.DatabaseMapper, db *database.Database) {
 	db.FetchAllProduct()
 }
