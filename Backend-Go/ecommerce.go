@@ -7,7 +7,7 @@ import (
 	"github.com/Emrul-Hasan-Emon/repositories/ecommerce/config"
 	"github.com/Emrul-Hasan-Emon/repositories/ecommerce/database"
 	log "github.com/Emrul-Hasan-Emon/repositories/ecommerce/log4u"
-	"github.com/Emrul-Hasan-Emon/repositories/ecommerce/product"
+	"github.com/Emrul-Hasan-Emon/repositories/ecommerce/resource"
 	"github.com/Emrul-Hasan-Emon/repositories/ecommerce/route"
 )
 
@@ -20,7 +20,7 @@ func main() {
 	// db.FetchAllProduct()
 
 	// mapper := database.CreateNewDatabaseMapper(db)
-	pr := product.CreateNewProductInstance()
+	pr := resource.CreateNewProductInstance()
 	auth := auth.CreateNewAuthInstance()
 	// pr.Testing(mapper, db)
 
@@ -34,6 +34,9 @@ func main() {
 	productRouter.Add("Get All Products", http.MethodGet, "/", pr.CreateProductFetcher(db))
 	productRouter.Add("Get Product By ID", http.MethodGet, "/{productId}", pr.CreateSingleProductFetcher(db))
 	productRouter.Add("Inser New Product", http.MethodPost, "/insert", pr.InsertNewProduct(db))
+
+	categoryRouter := router.SubRouteBuilder("/category")
+	categoryRouter.Add("Get Categories", http.MethodGet, "/", pr.CreateCategoryFetcher(db))
 
 	log.Fatal(http.ListenAndServe(config.Server().String(), router.Router()))
 }

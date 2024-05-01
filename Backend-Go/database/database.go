@@ -167,8 +167,8 @@ func (db *Database) InsertNewProduct(product model.Product) error {
 	if err != nil {
 		return err
 	}
-	query := `INSERT INTO online_clothing_management_system.Products (Name, Brand, Category_id, Category, Price, Colors, Size, InStock, Quantity, Discount, ImageUrl) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+	query := `INSERT INTO online_clothing_management_system.Products (Name, Brand, Category_id, Category, Price, Colors, Size, InStock, Quantity, Discount, ImageUrl, Gender, Description) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
 	_, err = db.db.Exec(query, product.Name, product.Brand, product.CategoryID, product.Category, product.Price, jsonColor,
-		jsonSize, product.InStock, product.Quantity, product.Discount, product.ImageURL)
+		jsonSize, product.InStock, product.Quantity, product.Discount, product.ImageURL, product.Gender, product.Description)
 	return err
 }
