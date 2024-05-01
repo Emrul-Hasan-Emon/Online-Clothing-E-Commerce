@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Product, Size } from 'src/app/Model/product';
 
 @Component({
   selector: 'app-add-product',
@@ -12,31 +13,30 @@ export class AddProductComponent implements OnInit{
   sizesOptions: string[] = ['S', 'M', 'L', 'XL', 'XXL', 'XXXL'];
   colorOptions: string[] = ['Black', 'White', 'Maroon', 'Orange', 'Yellow'];
   selectedPairs: { size: string, color: string }[] = [];
-
-  availableSizeOptions = this.sizesOptions;
-  availableColorOptions = this.colorOptions;
+  genderOptions: string[] = ['Male', 'Female', 'Other'];
 
   ngOnInit(): void {
     this.addProductForm = new FormGroup({
-        name: new FormControl('', Validators.required),
-        category: new FormControl('', Validators.required),
-        categoryID: new FormControl('', Validators.required),
-        brand: new FormControl('', Validators.required),
-        price: new FormControl('', Validators.required),
-        discount: new FormControl('', Validators.required),
+        Name: new FormControl('', Validators.required),
+        Category: new FormControl('', Validators.required),
+        CategoryID: new FormControl('', Validators.required),
+        Brand: new FormControl('', Validators.required),
+        Price: new FormControl('', Validators.required),
+        Discount: new FormControl('', Validators.required),
         sizes: new FormArray([
           this.createSizeFormGroup()
         ]),
-        gender: new FormControl('', Validators.required),
-        image: new FormControl('', Validators.required)
+        Gender: new FormControl('', Validators.required),
+        ImageURL: new FormControl('', Validators.required),
+        Description: new FormControl('', Validators.required)
       });
   }
 
   createSizeFormGroup(): FormGroup {
     return new FormGroup({
-      size: new FormControl(''),
-      color: new FormControl(''),
-      quantity: new FormControl('')
+      Name: new FormControl(''),
+      Color: new FormControl(''),
+      Quantity: new FormControl()
     });
   }
 
@@ -60,10 +60,6 @@ export class AddProductComponent implements OnInit{
     }
   }
 
-  productDetailsSubmitted() {
-    console.log("New Product Details ----> ", this.addProductForm.value);
-  }
-
   isSizeColorPairSelected(size: string, color: string): boolean {
     // console.log(`Size : ${size}, Color: ${color}`);
     return this.selectedPairs.some(pair => pair.size === size && pair.color === color);
@@ -72,20 +68,20 @@ export class AddProductComponent implements OnInit{
   getColorControl(index: number): AbstractControl {
     const sizesArray = this.addProductForm.get('sizes') as FormArray;
     const sizeGroup = sizesArray.at(index) as FormGroup;
-    return sizeGroup.get('color');
+    return sizeGroup.get('Color');
 }
 
   getSizeControl(index: number): AbstractControl {
       const sizesArray = this.addProductForm.get('sizes') as FormArray;
       const sizeGroup = sizesArray.at(index) as FormGroup;
-      return sizeGroup.get('size');
+      return sizeGroup.get('Name');
   }
 
   insertSizeColorPair(index: number) {
     const sizesArray = this.addProductForm.get('sizes') as FormArray;
     const sizeGroup = sizesArray.at(index) as FormGroup;
-    const size = sizeGroup.get('size').value;
-    const color = sizeGroup.get('color').value;
+    const size = sizeGroup.get('Name').value;
+    const color = sizeGroup.get('Color').value;
 
     // console.log(`Index: ${index}, Size: ${size}, Color: ${color}`);
     if(size && color) {
@@ -96,8 +92,8 @@ export class AddProductComponent implements OnInit{
   removeSizeColorPair(index: number) {
     const sizesArray = this.addProductForm.get('sizes') as FormArray;
     const sizeGroup = sizesArray.at(index) as FormGroup;
-    const size = sizeGroup.get('size').value;
-    const color = sizeGroup.get('color').value;
+    const size = sizeGroup.get('Name').value;
+    const color = sizeGroup.get('Color').value;
 
     // Find the index of the pair in the selectedPairs array
     const pairIndex = this.selectedPairs.findIndex(pair => pair.size === size && pair.color === color);
@@ -105,5 +101,32 @@ export class AddProductComponent implements OnInit{
     if (pairIndex !== -1) {
       this.selectedPairs.splice(pairIndex, 1);
     }
+  }
+
+  productDetailsSubmitted() {
+    console.log("New Product Details ----> ", this.addProductForm.value);
+    const formValues = this.addProductForm.value;
+    const sizes = formValues.sizes as Size[];
+    
+    const sizesWithNumberQuantity = sizes.map((size: Size) => {
+      return {
+        ...size,
+        Quantity: Number(size.Quantity)
+      };
+    });
+    
+    const quantity = sizesWithNumberQuantity.reduce((total, size) => total + size.Quantity, 0);
+    const inStock = quantity > 0;
+    
+    const product = formValues as Product;
+    product.Size = sizesWithNumberQuantity;
+    product.Colors = [];
+    product.InStock = inStock;
+    product.Price = +product.Price;
+    product.Discount = +product.Discount;
+    
+    delete product.sizes;
+
+    console.log('Product ----> ', product);
   }
 }
