@@ -16,29 +16,42 @@ export class CartComponent implements OnInit{
   totalPrice: number;
   discount: number;
   payablePrice: number;
-  
+  shippingCost: number = 60;
+
   constructor(
     private router: Router,
     private cartService: CartService
   ) {}
   
+  private setZero() {
+    this.quantity = 0;
+    this.totalPrice = 0;
+    this.discount = 0;
+    this.payablePrice = 0;
+  }
+
   updateCalculation() {
+    this.setZero();
     this.cartDetails.forEach(item => {
-      this.quantity = item.Quantity;
-      this.totalPrice = item.TotalPrice;
-      this.discount = item.Discount;
-      this.payablePrice = item.PayablePrice;
-      this.mark = true;
+      this.quantity += item.Quantity;
+      this.totalPrice += item.TotalPrice;
+      this.discount += item.Discount;
+      this.payablePrice += item.PayablePrice;
     })
+
+    this.payablePrice += this.shippingCost;
   }
 
   ngOnInit(): void {
-     this.cartDetails = this.cartService.cartDetails;
-     this.updateCalculation();
+     this.cartService.getCartDetails().subscribe(
+      (cartData) => {
+        console.log('Cart Data -----> ', cartData);
+        this.cartDetails = cartData;
+        this.mark = true;
 
-     console.log('Cart Details ----> ', this.cartDetails);
-     console.log('Cart Details from service ----> ', this.cartService.cartDetails);
-     
+        this.updateCalculation();
+      }
+     )
   }
   
   navigateToCheckout() {

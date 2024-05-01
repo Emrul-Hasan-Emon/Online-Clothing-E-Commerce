@@ -23,6 +23,7 @@ export class ProductDetailsComponent implements OnInit {
   isAdminLoggedIn = false;
   selectedSize= '';
   color = '';
+  productQuantity = 0;
 
   constructor(
     private router: Router,
@@ -74,7 +75,7 @@ export class ProductDetailsComponent implements OnInit {
       alert('Please select a color');
     }
     else {
-      this.cartService.addAnotherProductToCart(this.product.ID, this.selectedSize, this.color);
+      this.cartService.addAnotherProductToCart(this.product, this.selectedSize, this.color, this.productQuantity);
       this.router.navigate(['cart-show']);
     }
 }
@@ -91,4 +92,12 @@ export class ProductDetailsComponent implements OnInit {
   removeProduct() {
 
   }
+  decrementQuantity() {
+    this.productQuantity--;
+  }
+
+  incrementQuantity() {
+    this.productQuantity++;
+  }
+
 }

@@ -28,13 +28,15 @@ export class CartItemComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+
+    this.productQuantity = this.cartItem.Quantity;
+    this.totalPrice = this.cartItem.TotalPrice;
+    this.discountedPrice = this.cartItem.Discount;
+    this.ultimatePrice = this.cartItem.PayablePrice;
+
     this.productFetchService.getSpecificProduct(this.cartItem.Id.toString()).subscribe(
       (productDetails) => {
         this.productdetails = productDetails;
-        // this.productQuantity = this.cartItem.Quantity;
-        // this.totalPrice = this.cartItem.TotalPrice;
-        // this.discountedPrice = this.cartItem.Discount;
-        // this.ultimatePrice = this.cartItem?.PayablePrice;
         console.log('Cart Item ---> ', this.cartItem);
       },
       (error) => {
@@ -45,12 +47,10 @@ export class CartItemComponent implements OnInit {
 
   changeOccured() {
     this.totalPrice = this.productQuantity * this.productdetails.Price;
-    const discountPerProduct = (100 * this.productdetails.Discount) / this.productdetails.Price;
-    this.discountedPrice = this.productQuantity * discountPerProduct;
-    this.ultimatePrice = this.totalPrice - (this.totalPrice - this.discountedPrice);
-  
+    this.discountedPrice = this.productQuantity * ((this.productdetails.Discount * this.productdetails.Price) / 100);
+    this.ultimatePrice = this.totalPrice - this.discountedPrice;
+
     this.cartService.updateCartDetails(this.cartItem.Id, this.productQuantity, this.totalPrice, this.discountedPrice, this.ultimatePrice);
-    this.router.navigate(['cart-show']);
   }
 
   decrementQuantity() {

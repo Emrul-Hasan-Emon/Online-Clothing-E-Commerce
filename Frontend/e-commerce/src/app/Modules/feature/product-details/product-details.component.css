@@ -134,3 +134,28 @@
 .size input, .colors input {
     margin-left: 10px;
 }
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+}
+
+.quantity-control input {
+    width: 50px;
+    text-align: center;
+}
+
+.quantity-control button {
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: gray;
+}
+
+.quantity-control button:hover {
+    background-color: #ddd;
+}

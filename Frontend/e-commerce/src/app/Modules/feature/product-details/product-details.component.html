@@ -27,6 +27,20 @@
                     <input type="radio" name="size" [value]="size" (change)="onSizeChange(size)"> {{ size.Name }}
                 </div>
             </div>
+            <div class="cart-item-quantitty flex">
+                <div class="text-2xl font-bold">Quantity: </div>
+                <div class="quantity-control mr-5">
+                    <button class="decrement" 
+                        [disabled]="productQuantity <= 0"
+                        (click)="decrementQuantity()"    
+                    >-</button>
+                    <input type="text" class="quantity" [(ngModel)]="productQuantity">
+                    <button 
+                        class="increment"
+                        (click)="incrementQuantity()"
+                    >+</button>
+                </div>
+            </div>
             <div class="product-description">
                 <p class="text-lg font-semibold">Product Description:</p>
                 <p>

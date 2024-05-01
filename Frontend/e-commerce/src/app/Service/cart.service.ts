@@ -1,7 +1,7 @@
 import { Injectable, signal } from '@angular/core';
 import { Cart } from '../Model/cart';
 import { Product } from '../Model/product';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { CartCost } from '../Model/cost';
 
 @Injectable({
@@ -9,54 +9,48 @@ import { CartCost } from '../Model/cost';
 })
 export class CartService {
   public cartDetails: any = [];
-  public cartEvent =  new Subject<any>();
-  public calculation = {
-    quantity: 0,
-    totalPrice: 0,
-    discount: 0,
-    payablePrice: 0
-  };
+  public cartSource =  new BehaviorSubject<any>(null);
+  cartEvent = this.cartSource.asObservable();
+
+  public cartTotalSource = new BehaviorSubject<CartCost>(null);
+  cartTotal = this.cartTotalSource.asObservable();
 
   constructor() {
-    // Retrieve cart data from localStorage on service initialization
-    const storedCart = localStorage.getItem('cart');
+    const storedCart = localStorage.getItem('userCart');
     if (storedCart) {
       this.cartDetails = JSON.parse(storedCart);
-      this.cartEvent.next(this.cartDetails);
+      this.cartSource.next(this.cartDetails);
     }
    }
 
   private updateLocalStorage() {
-    // Save cart data to localStorage
-    localStorage.setItem('cart', JSON.stringify(this.cartDetails));
-    // Emit updated cart data to subscribers
-    this.cartEvent.next(this.cartDetails);
+    localStorage.setItem('userCart', JSON.stringify(this.cartDetails));
+    this.cartSource.next(this.cartDetails);
   }
 
-  public addAnotherProductToCart(productID: number, selectedSize: string, selectedColor: string) {
+  public addAnotherProductToCart(product: Product, selectedSize: string, selectedColor: string, quantity: number) {
+    const subPrice = quantity * product.Price;
+    const discount = quantity * ((product.Discount * product.Price) / 100);
+    const total = subPrice - discount;
+    
     const singleCart = {
-      Id: productID,
+      Id: product.ID,
       Size: selectedSize,
       Color: selectedColor,
-      Quantity: 0,
-      TotalPrice: 0,
-      Discount: 0,
-      PayablePrice: 0
+      Quantity: quantity,
+      TotalPrice: subPrice,
+      Discount: discount,
+      PayablePrice: total
     };
 
     this.cartDetails.push(singleCart);
     this.updateLocalStorage();
-    this.cartEvent.next(this.cartDetails);
   }
 
-  public updateCartDetails(Id: number, Quantity: number, TotalPrice: number, Discount: number, PayablePrice: number) {
-    this.cartDetails.forEach(item => {
-      if(item.Id == Id) {
-        console.log('Okay');
-      }
-    });
+  public updateCartDetails(Id, Quantity, TotalPrice, Discount, PayablePrice) {
+  
     this.cartDetails = this.cartDetails.map(item => {
-      if(item.id == Id) {
+      if (item.Id === Id) {
         item.Quantity = Quantity;
         item.TotalPrice = TotalPrice;
         item.Discount = Discount;
@@ -64,7 +58,13 @@ export class CartService {
         return item;
       }
       return item;
-    })
+    });
+
+    // console.log('Cart Service ---> Cart Details: ', this.cartDetails);
     this.updateLocalStorage();
+  }
+
+  public getCartDetails() {
+    return this.cartSource.asObservable();
   }
 }
