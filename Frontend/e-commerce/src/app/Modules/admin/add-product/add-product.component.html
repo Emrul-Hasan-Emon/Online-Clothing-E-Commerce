@@ -1,5 +1,5 @@
 <div class="address-container">
-    <form [formGroup]="addProductForm">
+    <form [formGroup]="addProductForm" (ngSubmit)="productDetailsSubmitted()">
         <div>
             <label for="name">Product Name</label>
             <input type="text" id="name" formControlName="name" required>
@@ -29,11 +29,33 @@
                 <div class="size flex justify-between flex-wrap">
                     <div>
                         <label for="size">Size</label>
-                        <input type="text" id="size" formControlName="size" required>
+                        <select 
+                            id="size" 
+                            formControlName="size" 
+                            (change)="insertSizeColorPair(i)"
+                            required>
+                            <option value="">Select Size</option>
+                            <option 
+                                *ngFor="let sizeOption of sizesOptions" 
+                                [value]="sizeOption"
+                                [disabled]="isSizeColorPairSelected(sizeOption, getColorControl(i).value)"
+                                >{{ sizeOption }}</option>
+                        </select>
                     </div>
                     <div>
                         <label for="color">Color</label>
-                        <input type="text" id="color" formControlName="quantity" required>
+                        <select 
+                            id="color" 
+                            formControlName="color" 
+                            (change)="insertSizeColorPair(i)"
+                            required>
+                            <option value="">Select Color</option>
+                            <option 
+                                *ngFor="let colorOption of colorOptions" 
+                                [value]="colorOption"
+                                [disabled]="isSizeColorPairSelected(getSizeControl(i).value, colorOption)"
+                                >{{ colorOption }}</option>
+                        </select>
                     </div>
                     <div>
                         <label for="quantity">Quantity</label>
@@ -52,11 +74,11 @@
           </div>
           <div>
             <label for="image">Image</label>
-            <input type="file" id="image" (change)="onImageChange($event)">
+            <input type="file" id="image" (change)="onImageChange($event)" formControlName="image">
           </div>
-          <div *ngIf="selectedImage">
+          <!-- <div *ngIf="selectedImage">
             <img [src]="selectedImage" alt="Selected Image">
-          </div>
+          </div> -->
         <div>
             <button type="submit">Delivery Here</button>
         </div>
