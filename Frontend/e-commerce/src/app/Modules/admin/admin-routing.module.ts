@@ -6,14 +6,16 @@ import { OrderTableComponent } from './order-table/order-table.component';
 import { CustomerTableComponent } from './customer-table/customer-table.component';
 import { ProductsTableComponent } from './products-table/products-table.component';
 import { AddProductComponent } from './add-product/add-product.component';
+import { ShowProductDetailsComponent } from './show-product-details/show-product-details.component';
 
 const routes: Routes = [
   { path: "", component: AdminHomeComponent, children: [
       { path: "", component: DashboardComponent },
       { path: "order-table", component: OrderTableComponent },
       { path: "customer-table", component: CustomerTableComponent },
-      { path: "products-table", component: ProductsTableComponent },
-      { path: "products-add", component: AddProductComponent }
+      { path: "productsTable", component: ProductsTableComponent },
+      { path: "products-add", component: AddProductComponent },
+      { path: "show-product-details/:id", component: ShowProductDetailsComponent}
   ]}
 ];
 

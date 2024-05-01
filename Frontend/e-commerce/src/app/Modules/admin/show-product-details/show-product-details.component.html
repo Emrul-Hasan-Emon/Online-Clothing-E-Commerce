@@ -1,0 +1,59 @@
+<div class="product-container">
+    <div class="first-container">
+        <div class="product-image">
+            <img src="https://prod.saralifestyle.com/Images/Products/VariationWisetImage/b3e234f81e184536aba23191beff9d60.jpeg" alt="Shirt">
+        </div>
+        <div class="product-description">
+            <h1>Product Name: {{ product.Name }}</h1>
+            <p class="text-2xl">Product Id: {{ product.ID }}</p>
+            <h3>Brand Name: {{ product.Brand }}</h3>
+            <h3>Category: {{ product.Category }}</h3>
+            <p class="text-2xl">Category Id: {{ product.CategoryID }}</p>
+            <h3>Gender: {{ product.Gender }}</h3>
+            <div class="product-description">
+                <p class="text-lg font-semibold">Product Description:</p>
+                <p>
+                    {{ product.Description }}
+                </p>
+            </div>
+            <div class="price">Price: {{ product.Price }} BDT </div>
+            <div class="price">Discount: {{ product.Discount }}% </div>
+            <div class="price">Quantity: {{ product.Quantity }} </div>
+        </div>
+    </div>
+    <div class="second-container flex justify-between flex-wrap">
+        <div class="colors-table">
+            <table>
+                <tr>
+                    <th>SL</th>
+                    <th>Size</th>
+                    <th>Quantity</th>
+                </tr>
+                <ng-container *ngFor="let size of product.Size; index as idx">
+                    <tr>
+                        <td> {{ idx + 1 }}</td>
+                        <td> {{ size.Name }}</td>
+                        <td> {{ size.Quantity }}</td>
+                    </tr>
+                </ng-container>
+            </table>
+        </div>
+        <div class="size-table">
+            <table>
+                <tr>
+                    <th>SL</th>
+                    <th>Color</th>
+                </tr>
+                <ng-container *ngFor="let color of product.Colors; index as idx">
+                    <tr>
+                        <td> {{ idx + 1 }}</td>
+                        <td> {{ color }}</td>
+                    </tr>
+                </ng-container>
+            </table>
+        </div>
+    </div>
+    <div class="third-container">
+        <h3>Comments</h3>
+    </div>
+</div>

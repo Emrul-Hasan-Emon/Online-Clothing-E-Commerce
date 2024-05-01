@@ -1,6 +1,6 @@
 <div>
     <div>
-        <h2 class="text-center">Customer Table (Admin)</h2>
+        <h2 class="text-center">Products Table (Admin)</h2>
     </div>
     <div class="product-container">
         <table>
@@ -10,20 +10,28 @@
                     <th>Product ID</th>
                     <th>Product Name</th>
                     <th>Product Brand</th>
+                    <th>Category</th>
                     <th>Product Price</th>
                     <th>View Details</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
-            <ng-container *ngFor="let idx of item">
+            <ng-container *ngFor="let product of products; index as idx">
                 <tr>
                     <td>{{ idx }}</td>
-                    <td>pr1234</td>
-                    <td> Shirt </td>
-                    <td> A </td>
-                    <td> 2000 BDT </td>
+                    <td> {{ product.ID }}</td>
+                    <td> {{ product.Name }} </td>
+                    <td> {{ product.Brand }} </td>
+                    <td> {{ product.Category }} </td>
+                    <td> {{ product.Price }} BDT </td>
+                    <td>
+                        <button (click)="viewProductDetails(product)">
+                            View Details
+                        </button>
+                    </td>
                     <td>
                         <button>
-                            View Details
+                            Remove Products
                         </button>
                     </td>
                 </tr>

@@ -8,6 +8,8 @@ import { OrderTableComponent } from './order-table/order-table.component';
 import { ProductsTableComponent } from './products-table/products-table.component';
 import { CustomerTableComponent } from './customer-table/customer-table.component';
 import { AddProductComponent } from './add-product/add-product.component';
+import { ShowProductDetailsComponent } from './show-product-details/show-product-details.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,11 +19,13 @@ import { AddProductComponent } from './add-product/add-product.component';
     OrderTableComponent,
     ProductsTableComponent,
     CustomerTableComponent,
-    AddProductComponent
+    AddProductComponent,
+    ShowProductDetailsComponent
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    ReactiveFormsModule
   ],
 })
 export class AdminModule { }
