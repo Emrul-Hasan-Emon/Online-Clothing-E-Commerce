@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { delay } from 'rxjs';
 import { Product } from 'src/app/Model/product';
 import { AuthService } from 'src/app/Service/auth.service';
+import { CartService } from 'src/app/Service/cart.service';
 import { ProductFetchService } from 'src/app/Service/product-fetch.service';
 
 export interface Response {
@@ -21,12 +22,14 @@ export class ProductDetailsComponent implements OnInit {
   isUserLoggedIn = false;
   isAdminLoggedIn = false;
   selectedSize= '';
+  color = '';
 
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private productFetchService: ProductFetchService,
-    private authService: AuthService
+    private authService: AuthService,
+    private cartService: CartService
   ) {}
   
   ngOnInit(): void {
@@ -63,20 +66,28 @@ export class ProductDetailsComponent implements OnInit {
       }
     )
   }
-  addToCheckout() {
+  addToCart() {
     if(!this.selectedSize) {
       alert('Please select a Size');
     }
+    else if(!this.color) {
+      alert('Please select a color');
+    }
     else {
-      this.router.navigate(['cart']);
+      this.cartService.addAnotherProductToCart(this.product.ID, this.selectedSize, this.color);
+      this.router.navigate(['cart-show']);
     }
 }
 
   onSizeChange(size: any) {
-    console.log('Selected Size ----> ', size);
+    // console.log('Selected Size ----> ', size);
     this.selectedSize = size.Name;
   }
 
+  onColorChange(color: string) {
+    // console.log('Selected Color ---> ', color);
+    this.color = color;
+  }
   removeProduct() {
 
   }

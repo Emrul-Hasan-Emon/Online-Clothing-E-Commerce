@@ -13,6 +13,7 @@ import { OrderDetailsComponent } from './Modules/order/order-details/order-detai
 import { ShowSingleOrderDetailsComponent } from './Modules/order/show-single-order-details/show-single-order-details.component';
 import { LoginComponent } from './Modules/auth/login/login.component';
 import { RegisterComponent } from './Modules/auth/register/register.component';
+import { CartShowComponent } from './Modules/cart/cart-show/cart-show.component';
 
 const routes: Routes = [
   // { 
@@ -25,7 +26,7 @@ const routes: Routes = [
   //   loadChildren: () => import('./Modules/feature/feature.module').then(m => m.FeatureModule)
   // }
   { path: "home", component: HomeComponent },
-  { path: "cart", component: CartComponent },
+  { path: "cart-show", component: CartComponent },
   { path: "product-details/:id", component: ProductDetailsComponent },
   { path: "products", component: ProductsShowPageComponent },
   { path: "checkout/payment/:id", component: PaymentComponent },

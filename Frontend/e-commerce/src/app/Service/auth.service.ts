@@ -25,6 +25,9 @@ export class AuthService {
 
   public validationHappened(response: any) {
     this.userInformation = response;
-    this.login.next(this.userInformation);
+  }
+
+  public validateUserThroughToken(token: string) {
+    return this.http.get<string>(`${this.baseUrl}/validate`, { headers: { 'Authorization': token } });
   }
 }

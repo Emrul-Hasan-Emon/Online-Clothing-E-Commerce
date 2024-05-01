@@ -15,9 +15,9 @@
             <h1>{{ product.Name }}</h1>
             <h2>Brand Name: {{product.Brand}}</h2>
             <p class="font-bold">Available Colors</p>
-            <div class="colors">
+            <div class="colors flex flex-wrap">
                 <div *ngFor="let color of product.Colors">
-                    <p class="color">{{color}}</p>
+                    <input type="radio" name="color" [value]="color" (change)="onColorChange(color)"> {{ color }}
                 </div>
             </div>
             <p class="font-bold">Available: Yes</p>
@@ -36,7 +36,7 @@
             <hr>
             <div class="price"> {{ product.Price }} BDT </div>
             <ng-container *ngIf="!isAdminLoggedIn">
-                <button class="cart-button" (click)="addToCheckout()">Add to Cart</button>
+                <button class="cart-button" (click)="addToCart()">Add to Cart</button>
             </ng-container>
             <ng-container *ngIf="isAdminLoggedIn">
                 <button class="cart-button" (click)="removeProduct()">Remove Product</button>

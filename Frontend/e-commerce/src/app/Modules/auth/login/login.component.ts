@@ -5,7 +5,8 @@ import { AuthService } from 'src/app/Service/auth.service';
 
 export interface Response {
   name: string,
-  role: string
+  role: string,
+  token?: any
 }
 
 @Component({
@@ -50,6 +51,7 @@ export class LoginComponent implements OnInit {
         else if(response.role == 'admin') {
           this.adminValidation(response);
         }
+        localStorage.setItem('token', response.token);
       },
       (error) => {
         console.log(error);

@@ -1,29 +1,34 @@
 <div class="cart-container">
-    <div class="cart-list">
-        <app-cart-item></app-cart-item>
-        <app-cart-item></app-cart-item>
-        <app-cart-item></app-cart-item>
-    </div>
-    <div class="calculation">
-        <p class="text-xl font-bold">Price Details</p>
-        <hr/>
-        <div class="total-products flex justify-between">
-            <p>Total number of products</p>
-            <p>5</p>
+    <ng-container class="empty" *ngIf="mark == false">
+        <h2>Your Cart is Empty</h2>
+    </ng-container>
+    <ng-container *ngIf="mark == true">
+        <div class="cart-list">
+            <ng-container *ngFor="let cartItem of cartDetails">
+                <app-cart-item [cartItem]="cartItem"></app-cart-item>
+            </ng-container>
         </div>
-        <div class="total-price flex justify-between">
-            <p>Total Price</p>
-            <p>100000 BDT</p>
+        <div class="calculation">
+            <p class="text-xl font-bold">Price Details</p>
+            <hr/>
+            <div class="total-products flex justify-between">
+                <p>Total number of products</p>
+                <p>{{quantity}}</p>
+            </div>
+            <div class="total-price flex justify-between">
+                <p>Total Price</p>
+                <p>{{totalPrice}} BDT</p>
+            </div>
+            <div class="discount-price flex justify-between">
+                <p>Discount</p>
+                <p>{{discount}} BDT</p>
+            </div>
+            <hr/>
+            <div class="payable-price flex justify-between">
+                <p class="text-xl font-bold">Payable Price</p>
+                <p>{{payablePrice}} BDT</p>
+            </div>
+            <button type="submit" (click)="navigateToCheckout()">Checkout</button>
         </div>
-        <div class="discount-price flex justify-between">
-            <p>Discount</p>
-            <p>2000 BDT</p>
-        </div>
-        <hr/>
-        <div class="payable-price flex justify-between">
-            <p class="text-xl font-bold">Payable Price</p>
-            <p>8000 BDT</p>
-        </div>
-        <button type="submit" (click)="navigateToCheckout()">Checkout</button>
-    </div>
+    </ng-container>
 </div>
