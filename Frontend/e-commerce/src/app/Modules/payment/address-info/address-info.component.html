@@ -2,7 +2,7 @@
     <form [formGroup]="checkoutForm" (ngSubmit)="navigateToPaymentMethod()">
         <div>
             <label for="name">Name</label>
-            <input type="text" id="name" formControlName="name" required>
+            <input type="text" id="name" formControlName="name" [placeholder]="userData.name" required>
             <app-validitity-message 
                 [messageShown]="!checkoutForm.get('name').valid && checkoutForm.get('name').touched"
                 [field]="'Name'"

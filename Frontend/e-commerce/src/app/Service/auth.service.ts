@@ -23,6 +23,9 @@ export class AuthService {
     return this.http.post(`${this.baseUrl}/login`, userData)
   }
 
+  public fetchSpecificUserInfo(userId: number) {
+    return this.http.get(`${this.baseUrl}/user/${userId}`);
+  }
   public validationHappened(response: any) {
     this.loginCredentials.next(response);
   }

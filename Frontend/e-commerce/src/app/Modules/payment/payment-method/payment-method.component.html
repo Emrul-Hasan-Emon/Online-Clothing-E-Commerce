@@ -19,13 +19,13 @@
         </div>
     </div>
     <div id="address-container">
-        <form>
+        <form [formGroup]="paymentForm" (ngSubmit)="submitPaymentDetails()">
             <div>
                 <label for="name">{{ paymentMethod }} Number</label>
                 <input 
                     type="text" 
                     id="name" 
-                    [(ngModel)]="number"
+                    formControlName="number"
                     required>
             </div>
             <div>
@@ -33,7 +33,7 @@
                 <input 
                     type="text" 
                     id="id" 
-                    [(ngModel)]="transactionNumber"
+                    formControlName="transactionNumber"
                     required>
             </div>
             <div>

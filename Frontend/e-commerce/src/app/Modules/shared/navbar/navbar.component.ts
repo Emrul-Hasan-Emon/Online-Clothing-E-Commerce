@@ -85,4 +85,9 @@ export class NavbarComponent implements OnInit {
   navigateToCartDetails() {
     this.router.navigate(['cart-show']);
   }
+
+  navigateToLogin() {
+    console.log('Login');
+    this.router.navigate(['login']);
+  }
 }
