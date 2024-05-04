@@ -9,7 +9,7 @@ export class AuthService {
   private baseUrl = 'auth';
   public isUserLogged = false;
   public isAdminLogged = false;
-
+  public userInfo: any;
 
   public loginCredentials = new BehaviorSubject<any>(null);
 
@@ -27,6 +27,7 @@ export class AuthService {
     return this.http.get(`${this.baseUrl}/user/${userId}`);
   }
   public validationHappened(response: any) {
+    this.userInfo = response;
     this.loginCredentials.next(response);
   }
 

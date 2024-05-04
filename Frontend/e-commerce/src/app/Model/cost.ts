@@ -1,6 +1,5 @@
 export interface CartCost {
-    Quantity: number,
     TotalPrice: number,
-    Discount: Number,
-    PayablePrice: Number
+    Discount: number,
+    PayablePrice: number
 }

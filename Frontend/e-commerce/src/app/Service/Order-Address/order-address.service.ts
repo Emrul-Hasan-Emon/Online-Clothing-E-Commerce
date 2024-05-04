@@ -9,13 +9,13 @@ export class OrderAddressService {
 
   public setOrderAddressInfo(addressInfo: any) {
     this.orderAddressInfo = addressInfo;
-    localStorage.setItem('orderAddressInfo', this.orderAddressInfo);
+    localStorage.setItem('orderAddressInfo', addressInfo);
   }
 
   public getOrderAdressInfo() {
-    if(!this.orderAddressInfo) {
-      this.orderAddressInfo = localStorage.getItem('orderAddressInfo');
-    }
+    // if(!this.orderAddressInfo) {
+    //   // this.orderAddressInfo = JSON.parse(localStorage.getItem('orderAddressInfo'));
+    // }
     return this.orderAddressInfo;
   }
 }

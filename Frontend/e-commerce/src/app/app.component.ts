@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './Service/auth.service';
+import { CartService } from './Service/cart.service';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +9,14 @@ import { AuthService } from './Service/auth.service';
 })
 export class AppComponent implements OnInit {
   title = 'e-commerce';
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private cartService: CartService
+  ) {}
 
   ngOnInit(): void {
     const tokenString = localStorage.getItem('token');
-    console.log('Token String: ', tokenString);
+    // console.log('Token String: ', tokenString);
   //  localStorage.removeItem('userCart');
 
     if(tokenString) {
@@ -35,5 +39,6 @@ export class AppComponent implements OnInit {
         }
       )
     }
+    this.cartService.setCartCost();
   }
 }

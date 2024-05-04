@@ -21,10 +21,10 @@
     <div id="address-container">
         <form [formGroup]="paymentForm" (ngSubmit)="submitPaymentDetails()">
             <div>
-                <label for="name">{{ paymentMethod }} Number</label>
+                <label for="number">{{ paymentMethod }} Number</label>
                 <input 
                     type="text" 
-                    id="name" 
+                    id="number" 
                     formControlName="number"
                     required>
             </div>

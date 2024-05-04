@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { OrderAddressService } from 'src/app/Service/Order-Address/order-address.service';
+import { OrderService } from 'src/app/Service/Order/order.service';
 
 @Component({
   selector: 'app-payment-method',
@@ -18,7 +19,8 @@ export class PaymentMethodComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private orderAddressService: OrderAddressService
+    private orderAddressService: OrderAddressService,
+    private orderService: OrderService
   ) {}
   
   private initiateForm() {
@@ -29,11 +31,13 @@ export class PaymentMethodComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log('Hello');
     this.orderAddressInfo = this.orderAddressService.getOrderAdressInfo();  
     if(!this.orderAddressInfo) {
       alert('No address information found');
       this.router.navigate(['checkout']);
     }
+    console.log('Order Address info ---> ', this.orderAddressInfo);
     this.initiateForm();
   }
 
@@ -61,14 +65,10 @@ export class PaymentMethodComponent implements OnInit {
     this.number = this.paymentForm.get('number').value;
     this.transactionNumber = this.paymentForm.get('transactionNumber').value;
 
-    console.log(this.paymentForm.value);
-
-    console.log(this.number);
-    console.log(this.transactionNumber);
     if(!this.checkData()) {
       const confirmed = window.confirm('Are you sure you want to submit?');
       if(confirmed) {
-
+        this.orderService.createNewOrder(this.number, this.transactionNumber);
       }
     }
   }

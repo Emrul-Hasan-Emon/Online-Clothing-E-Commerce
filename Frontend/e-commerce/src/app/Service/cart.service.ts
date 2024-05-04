@@ -12,8 +12,11 @@ export class CartService {
   public cartSource =  new BehaviorSubject<any>(null);
   cartEvent = this.cartSource.asObservable();
 
-  public cartTotalSource = new BehaviorSubject<CartCost>(null);
-  cartTotal = this.cartTotalSource.asObservable();
+  public cartCost = {
+    TotalPrice: 0,
+    Discount: 0,
+    PayablePrice: 0
+  };
 
   constructor() {
     const storedCart = localStorage.getItem('userCart');
@@ -51,7 +54,6 @@ export class CartService {
   }
 
   public updateCartDetails(Id, Quantity, TotalPrice, Discount, PayablePrice) {
-  
     this.cartDetails = this.cartDetails.map(item => {
       if (item.Id === Id) {
         item.Quantity = Quantity;
@@ -69,5 +71,27 @@ export class CartService {
 
   public getCartDetails() {
     return this.cartSource.asObservable();
+  }
+
+  public setCartCost() {
+    let totalPrice = 0;
+    let discount = 0;
+    let payablePrice = 0;
+
+    this.cartDetails.forEach(item => {
+        totalPrice += item.TotalPrice;
+        discount += item.Discount;
+        payablePrice += item.PayablePrice;
+      }
+    );
+
+    this.cartCost.TotalPrice = totalPrice;
+    this.cartCost.Discount = discount;
+    this.cartCost.PayablePrice = payablePrice;
+  }
+
+  public getTotalCartCost() {
+    console.log('Total Cart Cost ---> ', this.cartCost);
+    return this.cartCost;
   }
 }
