@@ -42,5 +42,7 @@ func main() {
 	orderRouter := router.SubRouteBuilder("/order")
 	orderRouter.Add("Create New Order", http.MethodPost, "/insert", pr.CreateNewOrder(db))
 
+	cartRouter := router.SubRouteBuilder("/cart")
+	cartRouter.Add("Create Carts", http.MethodPost, "/insert", pr.CreateCartInserter(db))
 	log.Fatal(http.ListenAndServe(config.Server().String(), router.Router()))
 }
