@@ -8,6 +8,8 @@ type User struct {
 	Email       string `json:"email"`
 	Gender      string `json:"gender"`
 	Address     string `json:"address"`
+	City        string `json:"city"`
+	District    string `json:"district"`
 	Role        string `json:"role"`
 	DateOfBirth string `json:"dateOfBirth"`
 	Password    string `json:"password"`
