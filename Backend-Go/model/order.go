@@ -16,4 +16,6 @@ type Order struct {
 	ShippingCost      float64 `json:"shippingCost"`
 	PayableCost       float64 `json:"payableCost"`
 	OrderStaus        string  `json:"status,omitempty"`
+	OrderDate         string  `json:"orderDate,omitempty"`
+	OrderTime         string  `json:"orderTime,omitempty"`
 }

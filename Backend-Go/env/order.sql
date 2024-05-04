@@ -13,5 +13,7 @@ CREATE TABLE Orders (
     Discount DECIMAL(10, 2),
     ShippingCost DECIMAL(10, 2),
     PayableCost DECIMAL(10, 2),
-    OrderStatis VARCHAR(100)
-)
+    OrderStatus VARCHAR(100),
+    OrderDate DATE,
+    OrderTime TIME
+);
