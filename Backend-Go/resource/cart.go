@@ -27,6 +27,6 @@ func (pr *Product) CreateCartInserter(
 		}
 
 		w.WriteHeader(http.StatusCreated)
-		w.Write([]byte("Cart details inserted successfully"))
+		json.NewEncoder(w).Encode("cart details entered successfully")
 	}
 }

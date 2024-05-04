@@ -17,7 +17,7 @@ func (db *Database) InsertNewOrder(order model.Order) (int, error) {
 	// fmt.Println(currentDateTime)
 
 	// Execute the SQL statement
-	result, err := stmt.Exec(order.UserID, order.Name, order.Contact, order.Email, order.Address, order.City, order.District, order.PaymentNumber, order.TransactionNumber, order.TotalCost, order.Discount, order.ShippingCost, order.PayableCost, order.OrderStaus, currentDateTime[:10], currentDateTime[11:19])
+	result, err := stmt.Exec(order.UserID, order.Name, order.Contact, order.Email, order.Address, order.City, order.District, order.PaymentNumber, order.TransactionNumber, order.TotalCost, order.Discount, order.ShippingCost, order.PayableCost, order.OrderStatus, currentDateTime[:10], currentDateTime[11:19])
 	if err != nil {
 		return 0, nil
 	}
@@ -28,4 +28,40 @@ func (db *Database) InsertNewOrder(order model.Order) (int, error) {
 		return 0, nil
 	}
 	return int(orderID), nil
+}
+
+func (db *Database) FetchOrderHistory(userId int) ([]model.Order, error) {
+	var orderHistory []model.Order
+	query := "SELECT * FROM online_clothing_management_system.Orders WHERE UserID = ?"
+	rows, err := db.db.Query(query, userId)
+	if err != nil {
+		return []model.Order{}, err
+	}
+	for rows.Next() {
+		var order model.Order
+		err := rows.Scan(
+			&order.OrderID,
+			&order.UserID,
+			&order.Name,
+			&order.Contact,
+			&order.Email,
+			&order.Address,
+			&order.City,
+			&order.District,
+			&order.PaymentNumber,
+			&order.TransactionNumber,
+			&order.TotalCost,
+			&order.Discount,
+			&order.ShippingCost,
+			&order.PayableCost,
+			&order.OrderStatus,
+			&order.OrderDate,
+			&order.OrderTime,
+		)
+		if err != nil {
+			return []model.Order{}, nil
+		}
+		orderHistory = append(orderHistory, order)
+	}
+	return orderHistory, nil
 }

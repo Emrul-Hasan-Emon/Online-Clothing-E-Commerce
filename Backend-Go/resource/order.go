@@ -16,7 +16,7 @@ func (pr *Product) CreateNewOrder(
 	return func(w http.ResponseWriter, r *http.Request) {
 		var order model.Order
 		err := json.NewDecoder(r.Body).Decode(&order)
-		order.OrderStaus = "Pending"
+		order.OrderStatus = "Pending"
 
 		fmt.Println("Order ---> ", order)
 		if err != nil {
@@ -33,6 +33,30 @@ func (pr *Product) CreateNewOrder(
 		orderJsonData, err := json.Marshal(order)
 		if err != nil {
 			http.Error(w, "an expected error occured", http.StatusBadRequest)
+			return
+		}
+		common.SetHeader(w)
+		w.Write(orderJsonData)
+	}
+}
+
+func (pr *Product) FetchOrderHistory(
+	db *database.Database,
+) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		rw := common.RequestWrapper(r)
+		userId, err := rw.FindUserId()
+		if err != nil || userId == 0 {
+			http.Error(w, "User Id couldn't found", http.StatusBadRequest)
+			return
+		}
+		orders, err := db.FetchOrderHistory(userId)
+		if err != nil {
+			http.Error(w, "an error occured while fetching orders", http.StatusBadRequest)
+			return
+		}
+		orderJsonData, err := json.Marshal(orders)
+		if err != nil {
 			return
 		}
 		common.SetHeader(w)
