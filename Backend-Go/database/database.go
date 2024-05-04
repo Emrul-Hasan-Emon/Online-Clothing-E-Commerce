@@ -121,8 +121,8 @@ func (db *Database) CheckIfEmailExist(email string) bool {
 }
 
 func (db *Database) InsertNewUserInformation(user model.User) error {
-	_, err := db.db.Exec("INSERT INTO online_clothing_management_system.User (Name, PhoneNumber, Email, Gender, Address, Role, DateOfBirth, Password, IsDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
-		user.Name, user.PhoneNumber, user.Email, user.Gender, user.Address, user.Role, user.DateOfBirth, user.Password, user.IsDeleted)
+	_, err := db.db.Exec("INSERT INTO online_clothing_management_system.User (Name, PhoneNumber, Email, Gender, Address, Role, DateOfBirth, Password, IsDeleted, City, District) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+		user.Name, user.PhoneNumber, user.Email, user.Gender, user.Address, user.Role, user.DateOfBirth, user.Password, user.IsDeleted, user.City, user.District)
 
 	if err != nil {
 		log.Errorf("Error inserting user into database: %v", err)
