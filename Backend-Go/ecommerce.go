@@ -39,5 +39,8 @@ func main() {
 	categoryRouter := router.SubRouteBuilder("/category")
 	categoryRouter.Add("Get Categories", http.MethodGet, "/", pr.CreateCategoryFetcher(db))
 
+	orderRouter := router.SubRouteBuilder("/order")
+	orderRouter.Add("Create New Order", http.MethodPost, "/insert", pr.CreateNewOrder(db))
+
 	log.Fatal(http.ListenAndServe(config.Server().String(), router.Router()))
 }
