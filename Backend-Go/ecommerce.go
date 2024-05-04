@@ -29,6 +29,7 @@ func main() {
 	authRouter.Add("Register", http.MethodPost, "/register", auth.RegisterNewUser(db))
 	authRouter.Add("Log In", http.MethodPost, "/login", auth.ValidateUser(db))
 	authRouter.Add("Token Validate", http.MethodGet, "/validate", auth.ValidateToken())
+	authRouter.Add("Fetch User Details", http.MethodGet, "/user/{userId}", auth.CreateSpecificUserFetcher(db))
 
 	productRouter := router.SubRouteBuilder("/products")
 	productRouter.Add("Get All Products", http.MethodGet, "/", pr.CreateProductFetcher(db))

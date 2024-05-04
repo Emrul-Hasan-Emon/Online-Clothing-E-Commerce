@@ -172,3 +172,33 @@ func (db *Database) InsertNewProduct(product model.Product) error {
 		jsonSize, product.InStock, product.Quantity, product.Discount, product.ImageURL, product.Gender, product.Description)
 	return err
 }
+
+func (db *Database) GetUserDetailsById(userId int) (model.User, error) {
+	query := `SELECT * FROM online_clothing_management_system.User WHERE ID = ? AND IsDeleted = false`
+	row := db.db.QueryRow(query, userId)
+
+	var user model.User
+	err := row.Scan(
+		&user.ID,
+		&user.Name,
+		&user.PhoneNumber,
+		&user.Email,
+		&user.Gender,
+		&user.Address,
+		&user.Role,
+		&user.DateOfBirth,
+		&user.Password,
+		&user.IsDeleted,
+		&user.City,
+		&user.District,
+	)
+	if err != nil {
+		if err == sql.ErrNoRows {
+			return model.User{}, fmt.Errorf("user not found")
+		} else {
+			return model.User{}, fmt.Errorf("an error occured while fetching user info")
+		}
+	}
+	user.Password = ""
+	return user, nil
+}

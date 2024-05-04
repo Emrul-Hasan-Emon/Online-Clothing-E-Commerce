@@ -6,6 +6,7 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/Emrul-Hasan-Emon/repositories/ecommerce/common"
 	"github.com/Emrul-Hasan-Emon/repositories/ecommerce/database"
 	"github.com/Emrul-Hasan-Emon/repositories/ecommerce/model"
 	"github.com/golang-jwt/jwt"
@@ -82,5 +83,30 @@ func (auth *Authentication) ValidateToken() http.HandlerFunc {
 		} else {
 			w.WriteHeader(http.StatusUnauthorized)
 		}
+	}
+}
+
+func (auth *Authentication) CreateSpecificUserFetcher(
+	db *database.Database,
+) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		rw := common.RequestWrapper(r)
+		userId, err := rw.FindUserId()
+		if err != nil || userId == 0 {
+			http.Error(w, "User Id couldn't found", http.StatusBadRequest)
+			return
+		}
+		userInfo, err := db.GetUserDetailsById(userId)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusBadRequest)
+		}
+
+		userJson, err := json.Marshal(userInfo)
+		if err != nil {
+			http.Error(w, "an unexpected error occured.", http.StatusBadRequest)
+			return
+		}
+		common.SetHeader(w)
+		w.Write(userJson)
 	}
 }
