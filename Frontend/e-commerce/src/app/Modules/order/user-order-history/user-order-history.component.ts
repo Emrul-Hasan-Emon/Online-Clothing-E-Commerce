@@ -22,6 +22,13 @@ export class UserOrderHistoryComponent implements OnInit {
       (orderHistory: any) => {
         console.log('Order History ---> ', orderHistory);
         this.orderHistory = orderHistory;
+        this.orderHistory = orderHistory.sort((a, b) => {
+          const dateComparison = new Date(b.orderDate).getTime() - new Date(a.orderDate).getTime();
+          if (dateComparison === 0) {
+            return b.orderID - a.orderID; // If dates are the same, prioritize the order with higher order ID
+          }
+          return dateComparison;
+        });
       }
     )
   }

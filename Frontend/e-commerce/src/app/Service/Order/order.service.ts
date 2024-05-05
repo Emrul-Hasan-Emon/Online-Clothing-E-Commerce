@@ -41,6 +41,10 @@ export class OrderService {
     return this.http.post(`${this.baseUrl}/insert`, this.orderDetails);
   }
 
+  public fetchAllOrders() {
+    return this.http.get(`${this.baseUrl}/all`);
+  }
+
   public fetchOrderDetails(userId: string) {
     return this.http.get(`${this.baseUrl}/user/${userId}`);
   }
@@ -48,7 +52,7 @@ export class OrderService {
   public removeOrderDetails(orderId: string) {
     this.http.get(`${this.baseUrl}/remove/${orderId}`);
   }
-  
+
   private setOrderAddressInfo(orderAddressInfo: any) {
     this.orderDetails.name = orderAddressInfo.name;
     this.orderDetails.contact = orderAddressInfo.contact;

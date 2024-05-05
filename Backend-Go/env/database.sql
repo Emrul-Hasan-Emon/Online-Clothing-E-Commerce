@@ -22,99 +22,34 @@ ALTER TABLE Products ADD COLUMN Gender VARCHAR(255) NOT NULL DEFAULT 'Male';
 
 ALTER TABLE Products ADD COLUMN Description VARCHAR(1000) NOT NULL DEFAULT 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, assumenda? Id consequatur totam necessitatibus animi eius iusto quia laboriosam eum laudantium hic! Rem, commodi praesentium harum officia porro autem incidunt ad aspernatur laboriosam at fugit debitis ipsa, recusandae veniam voluptatem, quaerat necessitatibus placeat eligendi! Fugit, natus rerum, molestias neque officiis, quam vitae eum quod sint eius in. Accusantium neque explicabo corrupti maiores iure culpa repudiandae rerum!';
 
--- Insert into Products Table
-INSERT INTO Products (Name, Brand, Category_id, Category, Price, Colors, Size, InStock, Quantity, Discount, ImageUrl)
-VALUES 
-('Kurtas-1', 'A', 'kurtas', 'kurtas', 2000, '["White", "Blue", "Black", "Brown", "Green", "Purple", "Yellow", "Orange"]', 
- '[{"name": "S", "quantity": 20},{"name": "L", "quantity": 20},{"name": "M", "quantity": 20},{"name": "XL", "quantity": 20},{"name": "XXL", "quantity": 20}]',
-  true, 100, 70, ''),
-('Kurtas-2', 'B', 'kurtas', 'kurtas', 2000, '["White", "Blue", "Black", "Brown", "Green", "Purple", "Yellow", "Orange"]', 
- '[{"name": "S", "quantity": 20},{"name": "L", "quantity": 20},{"name": "M", "quantity": 20},{"name": "XL", "quantity": 20},{"name": "XXL", "quantity": 20}]',
-  true, 100, 70, ''),
-('Kurtas-3', 'C', 'kurtas', 'kurtas', 2000, '["White", "Blue", "Black", "Brown", "Green", "Purple", "Yellow", "Orange"]', 
- '[{"name": "S", "quantity": 20},{"name": "L", "quantity": 20},{"name": "M", "quantity": 20},{"name": "XL", "quantity": 20},{"name": "XXL", "quantity": 20}]',
-  true, 100, 70, ''),
-('Kurtas-4', 'D', 'kurtas', 'kurtas', 2000, '["White", "Blue", "Black", "Brown", "Green", "Purple", "Yellow", "Orange"]', 
- '[{"name": "S", "quantity": 20},{"name": "L", "quantity": 20},{"name": "M", "quantity": 20},{"name": "XL", "quantity": 20},{"name": "XXL", "quantity": 20}]',
-  true, 100, 70, ''),
-('Kurtas-5', 'E', 'kurtas', 'kurtas', 2000, '["White", "Blue", "Black", "Brown", "Green", "Purple", "Yellow", "Orange"]', 
- '[{"name": "S", "quantity": 20},{"name": "L", "quantity": 20},{"name": "M", "quantity": 20},{"name": "XL", "quantity": 20},{"name": "XXL", "quantity": 20}]',
-  true, 100, 70, '');
-  
- INSERT INTO Products (Name, Brand, Category_id, Category, Price, Colors, Size, InStock, Quantity, Discount, ImageUrl)
-VALUES 
-('Shirt-1', 'A', 'shirt', 'shirt', 2000, '["White", "Blue", "Black", "Brown", "Green", "Purple", "Yellow", "Orange"]', 
- '[{"name": "S", "quantity": 20},{"name": "L", "quantity": 20},{"name": "M", "quantity": 20},{"name": "XL", "quantity": 20},{"name": "XXL", "quantity": 20}]',
-  true, 100, 70, ''),
-('Shirt-2', 'B', 'shirt', 'shirt', 2000, '["White", "Blue", "Black", "Brown", "Green", "Purple", "Yellow", "Orange"]', 
- '[{"name": "S", "quantity": 20},{"name": "L", "quantity": 20},{"name": "M", "quantity": 20},{"name": "XL", "quantity": 20},{"name": "XXL", "quantity": 20}]',
-  true, 100, 70, ''),
-('Shirt-3', 'C', 'shirt', 'shirt', 2000, '["White", "Blue", "Black", "Brown", "Green", "Purple", "Yellow", "Orange"]', 
- '[{"name": "S", "quantity": 20},{"name": "L", "quantity": 20},{"name": "M", "quantity": 20},{"name": "XL", "quantity": 20},{"name": "XXL", "quantity": 20}]',
-  true, 100, 70, ''),
-('Shirt-4', 'D', 'shirt', 'shirt', 2000, '["White", "Blue", "Black", "Brown", "Green", "Purple", "Yellow", "Orange"]', 
- '[{"name": "S", "quantity": 20},{"name": "L", "quantity": 20},{"name": "M", "quantity": 20},{"name": "XL", "quantity": 20},{"name": "XXL", "quantity": 20}]',
-  true, 100, 70, ''),
-('Shirt-5', 'E', 'shirt', 'shirt', 2000, '["White", "Blue", "Black", "Brown", "Green", "Purple", "Yellow", "Orange"]', 
- '[{"name": "S", "quantity": 20},{"name": "L", "quantity": 20},{"name": "M", "quantity": 20},{"name": "XL", "quantity": 20},{"name": "XXL", "quantity": 20}]',
-  true, 100, 70, '');
-  
-  INSERT INTO Products (Name, Brand, Category_id, Category, Price, Colors, Size, InStock, Quantity, Discount, ImageUrl)
-VALUES 
-('Pants-1', 'A', 'pants','pants', 2000, '["White", "Blue", "Black", "Brown", "Green", "Purple", "Yellow", "Orange"]', 
- '[{"name": "S", "quantity": 20},{"name": "L", "quantity": 20},{"name": "M", "quantity": 20},{"name": "XL", "quantity": 20},{"name": "XXL", "quantity": 20}]',
-  true, 100, 70, ''),
-('Pants-2', 'B','pants', 'pants', 2000, '["White", "Blue", "Black", "Brown", "Green", "Purple", "Yellow", "Orange"]', 
- '[{"name": "S", "quantity": 20},{"name": "L", "quantity": 20},{"name": "M", "quantity": 20},{"name": "XL", "quantity": 20},{"name": "XXL", "quantity": 20}]',
-  true, 100, 70, ''),
-('Pants-3', 'C', 'pants', 'pants', 2000, '["White", "Blue", "Black", "Brown", "Green", "Purple", "Yellow", "Orange"]', 
- '[{"name": "S", "quantity": 20},{"name": "L", "quantity": 20},{"name": "M", "quantity": 20},{"name": "XL", "quantity": 20},{"name": "XXL", "quantity": 20}]',
-  true, 100, 70, ''),
-('Pants-4', 'D', 'pants', 'pants', 2000, '["White", "Blue", "Black", "Brown", "Green", "Purple", "Yellow", "Orange"]', 
- '[{"name": "S", "quantity": 20},{"name": "L", "quantity": 20},{"name": "M", "quantity": 20},{"name": "XL", "quantity": 20},{"name": "XXL", "quantity": 20}]',
-  true, 100, 70, ''),
-('Pants-5', 'E', 'pants', 'pants', 2000, '["White", "Blue", "Black", "Brown", "Green", "Purple", "Yellow", "Orange"]', 
- '[{"name": "S", "quantity": 20},{"name": "L", "quantity": 20},{"name": "M", "quantity": 20},{"name": "XL", "quantity": 20},{"name": "XXL", "quantity": 20}]',
-  true, 100, 70, '');
-  
- INSERT INTO Products (Name, Brand, Category_id, Category, Price, Colors, Size, InStock, Quantity, Discount, ImageUrl)
-VALUES
-('Sweaters-1', 'A', 'sweaters', 'sweaters', 2000, '["White", "Blue", "Black", "Brown", "Green", "Purple", "Yellow", "Orange"]', 
- '[{"name": "S", "quantity": 20},{"name": "L", "quantity": 20},{"name": "M", "quantity": 20},{"name": "XL", "quantity": 20},{"name": "XXL", "quantity": 20}]',
-  true, 100, 70, ''),
-('Sweaters-2', 'B', 'sweaters', 'sweaters', 2000, '["White", "Blue", "Black", "Brown", "Green", "Purple", "Yellow", "Orange"]', 
- '[{"name": "S", "quantity": 20},{"name": "L", "quantity": 20},{"name": "M", "quantity": 20},{"name": "XL", "quantity": 20},{"name": "XXL", "quantity": 20}]',
-  true, 100, 70, ''),
-('Sweaters-3', 'C', 'sweaters', 'sweaters', 2000, '["White", "Blue", "Black", "Brown", "Green", "Purple", "Yellow", "Orange"]', 
- '[{"name": "S", "quantity": 20},{"name": "L", "quantity": 20},{"name": "M", "quantity": 20},{"name": "XL", "quantity": 20},{"name": "XXL", "quantity": 20}]',
-  true, 100, 70, ''),
-('Sweaters-4', 'D', 'sweaters', 'sweaters', 2000, '["White", "Blue", "Black", "Brown", "Green", "Purple", "Yellow", "Orange"]', 
- '[{"name": "S", "quantity": 20},{"name": "L", "quantity": 20},{"name": "M", "quantity": 20},{"name": "XL", "quantity": 20},{"name": "XXL", "quantity": 20}]',
-  true, 100, 70, ''),
-('Sweaters-5', 'E', 'sweaters', 'sweaters', 2000, '["White", "Blue", "Black", "Brown", "Green", "Purple", "Yellow", "Orange"]', 
- '[{"name": "S", "quantity": 20},{"name": "L", "quantity": 20},{"name": "M", "quantity": 20},{"name": "XL", "quantity": 20},{"name": "XXL", "quantity": 20}]',
-  true, 100, 70, '');
-  
- INSERT INTO Products (Name, Brand, Category_id, Category, Price, Colors, Size, InStock, Quantity, Discount, ImageUrl)
-VALUES
-('T-shirts-1', 'A', 't-shirts', 't-shirts', 2000, '["White", "Blue", "Black", "Brown", "Green", "Purple", "Yellow", "Orange"]', 
- '[{"name": "S", "quantity": 20},{"name": "L", "quantity": 20},{"name": "M", "quantity": 20},{"name": "XL", "quantity": 20},{"name": "XXL", "quantity": 20}]',
-  true, 100, 70, ''),
-('T-shirts-2', 'B', 't-shirts', 't-shirts', 2000, '["White", "Blue", "Black", "Brown", "Green", "Purple", "Yellow", "Orange"]', 
- '[{"name": "S", "quantity": 20},{"name": "L", "quantity": 20},{"name": "M", "quantity": 20},{"name": "XL", "quantity": 20},{"name": "XXL", "quantity": 20}]',
-  true, 100, 70, ''),
-('T-shirts-3', 'C', 't-shirts', 't-shirts', 2000, '["White", "Blue", "Black", "Brown", "Green", "Purple", "Yellow", "Orange"]', 
- '[{"name": "S", "quantity": 20},{"name": "L", "quantity": 20},{"name": "M", "quantity": 20},{"name": "XL", "quantity": 20},{"name": "XXL", "quantity": 20}]',
-  true, 100, 70, '');
-  
-  INSERT INTO Products (Name, Brand, Category_id, Category, Price, Colors, Size, InStock, Quantity, Discount, ImageUrl)
-VALUES
-('Jackets-1', 'A', 'jackets', 'jackets', 2000, '["White", "Blue", "Black", "Brown", "Green", "Purple", "Yellow", "Orange"]', 
- '[{"name": "S", "quantity": 20},{"name": "L", "quantity": 20},{"name": "M", "quantity": 20},{"name": "XL", "quantity": 20},{"name": "XXL", "quantity": 20}]',
-  true, 100, 70, ''),
-('Jackets-2', 'B', 'jackets', 'jackets', 2000, '["White", "Blue", "Black", "Brown", "Green", "Purple", "Yellow", "Orange"]', 
- '[{"name": "S", "quantity": 20},{"name": "L", "quantity": 20},{"name": "M", "quantity": 20},{"name": "XL", "quantity": 20},{"name": "XXL", "quantity": 20}]',
-  true, 100, 70, ''),
-('Jackets-3', 'C', 'jackets', 'jackets', 2000, '["White", "Blue", "Black", "Brown", "Green", "Purple", "Yellow", "Orange"]', 
- '[{"name": "S", "quantity": 20},{"name": "L", "quantity": 20},{"name": "M", "quantity": 20},{"name": "XL", "quantity": 20},{"name": "XXL", "quantity": 20}]',
-  true, 100, 70, '');
+-- Saree
+INSERT INTO Products (Name, Brand, Category, Category_id, Price, Colors, Size, InStock, Quantity, Discount, ImageUrl, Gender, Description)
+VALUES ('Saree-1', 'A', 'Saree', 'saree', 2550, '[]', '[{"Name": "S", "Color": "Black", "Quantity": 12}, {"Name": "M", "Color": "Black", "Quantity": 23}]', 1, 35, 5, 'assets/Women/Saree/saree_1.jpeg', 'Women', '    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, dolore tempora! Accusamus sint dolorum, dicta assumenda nostrum optio architecto nam perferendis similique tempora at quos atque ullam natus doloremque reiciendis.     Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, dolore tempora! Accusamus sint dolorum, dicta assumenda nostrum optio architecto nam perferendis similique tempora at quos atque ullam natus doloremque reiciendis.');
+
+INSERT INTO Products (Name, Brand, Category, Category_id, Price, Colors, Size, InStock, Quantity, Discount, ImageUrl, Gender, Description)
+VALUES ('Saree-2', 'B', 'Saree', 'saree', 3250, '[]', '[{"Name": "S", "Color": "Black", "Quantity": 43}, {"Name": "M", "Color": "Black", "Quantity": 17}]', 1, 60, 0, 'assets/Women/Saree/saree_2.jpeg', 'Women', '    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, dolore tempora! Accusamus sint dolorum, dicta assumenda nostrum optio architecto nam perferendis similique tempora at quos atque ullam natus doloremque reiciendis.     Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, dolore tempora! Accusamus sint dolorum, dicta assumenda nostrum optio architecto nam perferendis similique tempora at quos atque ullam natus doloremque reiciendis.');
+
+-- Borkha
+INSERT INTO Products (Name, Brand, Category, Category_id, Price, Colors, Size, InStock, Quantity, Discount, ImageUrl, Gender, Description)
+VALUES ('Borkha-1', 'A', 'Borkha', 'borkha', 2000, '[]', '[{"Name": "S", "Color": "Black", "Quantity": 43}, {"Name": "M", "Color": "Black", "Quantity": 17}]', 1, 60, 20, 'assets/Women/Borkha/borkha_1.jpeg', 'Women', '    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, dolore tempora! Accusamus sint dolorum, dicta assumenda nostrum optio architecto nam perferendis similique tempora at quos atque ullam natus doloremque reiciendis.     Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, dolore tempora! Accusamus sint dolorum, dicta assumenda nostrum optio architecto nam perferendis similique tempora at quos atque ullam natus doloremque reiciendis.');
+
+INSERT INTO Products (Name, Brand, Category, Category_id, Price, Colors, Size, InStock, Quantity, Discount, ImageUrl, Gender, Description)
+VALUES ('Borkha-2', 'B', 'Borkha', 'borkha', 1500, '[]', '[{"Name": "S", "Color": "Black", "Quantity": 43}, {"Name": "M", "Color": "Black", "Quantity": 17}]', 1, 60, 0, 'assets/Women/Borkha/borkha_2.jpeg', 'Women', '    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, dolore tempora! Accusamus sint dolorum, dicta assumenda nostrum optio architecto nam perferendis similique tempora at quos atque ullam natus doloremque reiciendis.     Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, dolore tempora! Accusamus sint dolorum, dicta assumenda nostrum optio architecto nam perferendis similique tempora at quos atque ullam natus doloremque reiciendis.');
+
+INSERT INTO Products (Name, Brand, Category, Category_id, Price, Colors, Size, InStock, Quantity, Discount, ImageUrl, Gender, Description)
+VALUES ('Borkha-3', 'C', 'Borkha', 'borkha', 1250, '[]', '[{"Name": "S", "Color": "Black", "Quantity": 43}, {"Name": "M", "Color": "Black", "Quantity": 17}]', 1, 60, 0, 'assets/Women/Borkha/borkha_3.webp', 'Women', '    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, dolore tempora! Accusamus sint dolorum, dicta assumenda nostrum optio architecto nam perferendis similique tempora at quos atque ullam natus doloremque reiciendis.     Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, dolore tempora! Accusamus sint dolorum, dicta assumenda nostrum optio architecto nam perferendis similique tempora at quos atque ullam natus doloremque reiciendis.');
+
+-- Men's Sweater
+INSERT INTO Products (Name, Brand, Category, Category_id, Price, Colors, Size, InStock, Quantity, Discount, ImageUrl, Gender, Description)
+VALUES ('Sweater-1', 'A', 'Sweater', 'sweater', 2550, '[]', '[{"Name": "S", "Color": "Black", "Quantity": 12}, {"Name": "M", "Color": "Black", "Quantity": 23}]', 1, 35, 5, 'assets/Men/Sweater/sweater_1.jpg', 'Men', '    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, dolore tempora! Accusamus sint dolorum, dicta assumenda nostrum optio architecto nam perferendis similique tempora at quos atque ullam natus doloremque reiciendis.     Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, dolore tempora! Accusamus sint dolorum, dicta assumenda nostrum optio architecto nam perferendis similique tempora at quos atque ullam natus doloremque reiciendis.');
+
+INSERT INTO Products (Name, Brand, Category, Category_id, Price, Colors, Size, InStock, Quantity, Discount, ImageUrl, Gender, Description)
+VALUES ('Sweater-2', 'B', 'Sweater', 'sweater', 3250, '[]', '[{"Name": "S", "Color": "Black", "Quantity": 43}, {"Name": "M", "Color": "Black", "Quantity": 17}]', 1, 60, 0, 'assets/Men/Sweater/sweater_2.jpg', 'Men', '    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, dolore tempora! Accusamus sint dolorum, dicta assumenda nostrum optio architecto nam perferendis similique tempora at quos atque ullam natus doloremque reiciendis.     Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, dolore tempora! Accusamus sint dolorum, dicta assumenda nostrum optio architecto nam perferendis similique tempora at quos atque ullam natus doloremque reiciendis.');
+
+-- Women's Sweater
+INSERT INTO Products (Name, Brand, Category, Category_id, Price, Colors, Size, InStock, Quantity, Discount, ImageUrl, Gender, Description)
+VALUES ('Sweater-1', 'A', 'Sweater', 'sweater', 2550, '[]', '[{"Name": "S", "Color": "Black", "Quantity": 12}, {"Name": "M", "Color": "Black", "Quantity": 23}]', 1, 35, 5, 'assets/Women/Sweater/sweater_1.jpg', 'Women', '    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, dolore tempora! Accusamus sint dolorum, dicta assumenda nostrum optio architecto nam perferendis similique tempora at quos atque ullam natus doloremque reiciendis.     Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, dolore tempora! Accusamus sint dolorum, dicta assumenda nostrum optio architecto nam perferendis similique tempora at quos atque ullam natus doloremque reiciendis.');
+
+INSERT INTO Products (Name, Brand, Category, Category_id, Price, Colors, Size, InStock, Quantity, Discount, ImageUrl, Gender, Description)
+VALUES ('Sweater-2', 'B', 'Sweater', 'sweater', 3250, '[]', '[{"Name": "S", "Color": "Black", "Quantity": 43}, {"Name": "M", "Color": "Black", "Quantity": 17}]', 1, 60, 0, 'assets/Women/Sweater/sweater_2.jpeg', 'Women', '    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, dolore tempora! Accusamus sint dolorum, dicta assumenda nostrum optio architecto nam perferendis similique tempora at quos atque ullam natus doloremque reiciendis.     Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, dolore tempora! Accusamus sint dolorum, dicta assumenda nostrum optio architecto nam perferendis similique tempora at quos atque ullam natus doloremque reiciendis.');
+
