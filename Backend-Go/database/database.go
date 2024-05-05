@@ -212,3 +212,49 @@ func (db *Database) DeleteProductFromDatabase(productId int) error {
 	_, err = stmt.Exec(productId)
 	return err
 }
+
+func (db *Database) DeleteProductPermanently(productId int) error {
+	stmt, err := db.db.Prepare("DELETE FROM online_clothing_management_system.Products WHERE Id = ?")
+	if err != nil {
+		return err
+	}
+	defer stmt.Close()
+
+	_, err = stmt.Exec(productId)
+	return err
+}
+
+func (db *Database) UpdateProductDetails(product model.Product) error {
+	stmt, err := db.db.Prepare("UPDATE online_clothing_management_system.Products SET Name=?, Brand=?, Category=?, Category_id=?, Price=?, Size=?, InStock=?, Quantity=?, Discount=?, ImageUrl=?, Gender=?, Description=?, IsDeleted=? WHERE Id=?")
+	if err != nil {
+		return err
+	}
+
+	// Marshal product.Size into JSON format
+	sizeJSON, err := json.Marshal(product.Size)
+	if err != nil {
+		return err
+	}
+
+	// Execute the update statement with the updated values
+	_, err = stmt.Exec(
+		product.Name,
+		product.Brand,
+		product.Category,
+		product.CategoryID,
+		product.Price,
+		sizeJSON,
+		product.InStock,
+		product.Quantity,
+		product.Discount,
+		product.ImageURL,
+		product.Gender,
+		product.Description,
+		product.IsDeleted,
+		product.ID,
+	)
+	if err != nil {
+		return err
+	}
+	return nil
+}

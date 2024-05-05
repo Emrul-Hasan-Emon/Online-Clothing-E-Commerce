@@ -22,6 +22,8 @@ ALTER TABLE Products ADD COLUMN Gender VARCHAR(255) NOT NULL DEFAULT 'Male';
 
 ALTER TABLE Products ADD COLUMN Description VARCHAR(1000) NOT NULL DEFAULT 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, assumenda? Id consequatur totam necessitatibus animi eius iusto quia laboriosam eum laudantium hic! Rem, commodi praesentium harum officia porro autem incidunt ad aspernatur laboriosam at fugit debitis ipsa, recusandae veniam voluptatem, quaerat necessitatibus placeat eligendi! Fugit, natus rerum, molestias neque officiis, quam vitae eum quod sint eius in. Accusantium neque explicabo corrupti maiores iure culpa repudiandae rerum!';
 
+ALTER TABLE Products ADD COLUMN IsDeleted BOOLEAN NOT NULL DEFAULT false;
+
 -- Saree
 INSERT INTO Products (Name, Brand, Category, Category_id, Price, Colors, Size, InStock, Quantity, Discount, ImageUrl, Gender, Description)
 VALUES ('Saree-1', 'A', 'Saree', 'saree', 2550, '[]', '[{"Name": "S", "Color": "Black", "Quantity": 12}, {"Name": "M", "Color": "Black", "Quantity": 23}]', 1, 35, 5, 'assets/Women/Saree/saree_1.jpeg', 'Women', '    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, dolore tempora! Accusamus sint dolorum, dicta assumenda nostrum optio architecto nam perferendis similique tempora at quos atque ullam natus doloremque reiciendis.     Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, dolore tempora! Accusamus sint dolorum, dicta assumenda nostrum optio architecto nam perferendis similique tempora at quos atque ullam natus doloremque reiciendis.');

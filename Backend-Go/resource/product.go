@@ -124,3 +124,28 @@ func (pr *Product) DeleteProduct(
 		json.NewEncoder(w).Encode("successfully deleted the product")
 	}
 }
+
+func (pr *Product) UpdateProduct(
+	db *database.Database,
+) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		var product model.Product
+		err := json.NewDecoder(r.Body).Decode(&product)
+
+		if err != nil {
+			w.WriteHeader(http.StatusBadRequest)
+			return
+		}
+
+		product.IsDeleted = false
+		err = db.UpdateProductDetails(product)
+
+		if err != nil {
+			fmt.Println(err)
+			http.Error(w, "An error occured while inserting product details", http.StatusBadGateway)
+			return
+		}
+		w.WriteHeader(http.StatusOK)
+		json.NewEncoder(w).Encode(product)
+	}
+}
