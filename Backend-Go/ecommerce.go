@@ -45,5 +45,7 @@ func main() {
 
 	cartRouter := router.SubRouteBuilder("/cart")
 	cartRouter.Add("Create Carts", http.MethodPost, "/insert", pr.CreateCartInserter(db))
+	cartRouter.Add("Get Cart Details", http.MethodGet, "/{orderId}", pr.CreateCartFetcher(db))
+
 	log.Fatal(http.ListenAndServe(config.Server().String(), router.Router()))
 }

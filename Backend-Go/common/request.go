@@ -37,3 +37,11 @@ func (w *wrapper) FindUserId() (int, error) {
 	}
 	return strconv.Atoi(id)
 }
+
+func (w *wrapper) FindOrderId() (int, error) {
+	id := reqMuxParam(w.req, "orderId")
+	if id == "" {
+		return 0, nil
+	}
+	return strconv.Atoi(id)
+}

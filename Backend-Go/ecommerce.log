@@ -1,3 +1,4 @@
-[DEBUG] [2024-05-04 23:13:11,741] [???] [database.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/database.openDatabase:32] ==> Connected to database localhost:3306: 
-[DEBUG] [2024-05-04 23:13:11,741] [???] [database.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/database.openDatabase:37] ==> Database available localhost:3306:
-[DEBUG] [2024-05-04 23:14:57,187] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /order/user/1 Get Order History 569.968µs
+[DEBUG] [2024-05-05 10:40:07,258] [???] [database.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/database.openDatabase:32] ==> Connected to database localhost:3306: 
+[DEBUG] [2024-05-05 10:40:07,259] [???] [database.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/database.openDatabase:37] ==> Database available localhost:3306:
+[DEBUG] [2024-05-05 10:40:09,332] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /cart/1 Get Cart Details 419.78µs
+[DEBUG] [2024-05-05 10:40:36,331] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /cart/3 Get Cart Details 381.769µs

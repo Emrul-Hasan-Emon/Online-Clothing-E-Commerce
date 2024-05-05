@@ -16,3 +16,32 @@ func (db *Database) InsertCartDetails(cartDetails []model.Cart) error {
 	}
 	return nil
 }
+
+func (db *Database) FetchCartDetails(orderId int) ([]model.Cart, error) {
+	var carts []model.Cart
+	query := "SELECT * FROM online_clothing_management_system.Cart WHERE OrderID = ?"
+	rows, err := db.db.Query(query, orderId)
+	if err != nil {
+		return []model.Cart{}, err
+	}
+
+	for rows.Next() {
+		var cart model.Cart
+		err := rows.Scan(
+			&cart.ID,
+			&cart.OrderID,
+			&cart.UserID,
+			&cart.Size,
+			&cart.Color,
+			&cart.Quantity,
+			&cart.TotalPrice,
+			&cart.Discount,
+			&cart.PayablePrice,
+		)
+		if err != nil {
+			return []model.Cart{}, nil
+		}
+		carts = append(carts, cart)
+	}
+	return carts, nil
+}
