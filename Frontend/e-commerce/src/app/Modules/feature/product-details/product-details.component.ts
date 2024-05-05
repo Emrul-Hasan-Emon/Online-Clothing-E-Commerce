@@ -89,8 +89,6 @@ export class ProductDetailsComponent implements OnInit {
     )
   }
   addToCart() {
-    console.log('Size ---> ', this.selectedSize);
-    console.log('Color ---> ', this.color);
     if(!this.selectedSize) {
       alert('Please select a Size');
     }
@@ -100,7 +98,7 @@ export class ProductDetailsComponent implements OnInit {
       alert('Please select quantity');
     }
     else {
-      this.cartService.addAnotherProductToCart(this.product, this.selectedSize, this.color, this.productQuantity);
+      this.cartService.addAnotherProductToCart(this.productID, this.product, this.selectedSize, this.color, this.productQuantity);
       this.router.navigate(['cart-show']);
     }
 }

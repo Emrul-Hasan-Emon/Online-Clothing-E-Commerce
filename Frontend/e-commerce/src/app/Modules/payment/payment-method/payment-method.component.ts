@@ -77,7 +77,8 @@ export class PaymentMethodComponent implements OnInit {
           (orderDetails: any) => {
             this.cartService.insertCartDetails(orderDetails.userId, orderDetails.orderID).subscribe(
               (response) => {
-                this.router.navigate(['order-history']);
+                this.cartService.removeCartFromLocalStorage();
+                this.router.navigate(['user-order-history']);
               },
               (error) => {
                 console.log(error);

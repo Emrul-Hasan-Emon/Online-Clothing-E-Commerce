@@ -10,7 +10,7 @@ import { CartService } from 'src/app/Service/cart.service';
 export class CartComponent implements OnInit{
   cartDetails: any;
   mark = false;
-
+  
   quantity: number;
   totalNumberOfProducts: number;
   totalPrice: number;

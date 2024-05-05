@@ -20,7 +20,7 @@
                     <td> {{  order.payableCost | currency:'BDT':'symbol':'1.0-0' }}</td>
                     <td>{{ formatDate(order.orderDate) }}</td>
                     <td>
-                        <button (click)="showOrderDetails(order.orderID)">
+                        <button (click)="showOrderDetails(order.orderID, order.status)">
                             View Details
                         </button>
                     </td>

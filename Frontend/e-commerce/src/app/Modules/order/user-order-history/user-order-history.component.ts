@@ -51,7 +51,7 @@ export class UserOrderHistoryComponent implements OnInit {
     return monthNames[monthIndex];
   }
 
-  showOrderDetails(orderID: number) {
-    this.router.navigate(['single-order-history-details', orderID]);
+  showOrderDetails(orderID: number, status: string) {
+    this.router.navigate(['single-order-history-details', orderID], { queryParams: { status: status } });
   }
 }

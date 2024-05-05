@@ -41,14 +41,18 @@ export class CartService {
   }
 
   public fetchCartDetailsForOrder(orderID: number) {
-    
+    return this.http.get(`${this.baseUrl}/${orderID}`);
   }
+  
   private updateLocalStorage() {
     localStorage.setItem('userCart', JSON.stringify(this.cartDetails));
     this.cartSource.next(this.cartDetails);
   }
 
-  public addAnotherProductToCart(product: Product, selectedSize: string, selectedColor: string, quantity: number) {
+  public removeCartFromLocalStorage() {
+    localStorage.removeItem('userCart');
+  }
+  public addAnotherProductToCart(productId: string, product: Product, selectedSize: string, selectedColor: string, quantity: number) {
     let discountInfo = 0;
     if(product.Discount) discountInfo = product.Discount;
 
@@ -65,7 +69,8 @@ export class CartService {
       Quantity: quantity,
       TotalPrice: subPrice,
       Discount: discount,
-      PayablePrice: total
+      PayablePrice: total,
+      ProductId: +productId
     };
 
     this.cartDetails.push(singleCart);

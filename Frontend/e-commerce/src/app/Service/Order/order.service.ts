@@ -44,6 +44,7 @@ export class OrderService {
   public fetchOrderDetails(userId: string) {
     return this.http.get(`${this.baseUrl}/user/${userId}`);
   }
+  
   private setOrderAddressInfo(orderAddressInfo: any) {
     this.orderDetails.name = orderAddressInfo.name;
     this.orderDetails.contact = orderAddressInfo.contact;
