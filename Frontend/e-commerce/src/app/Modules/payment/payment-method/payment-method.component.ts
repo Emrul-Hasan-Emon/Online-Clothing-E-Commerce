@@ -81,7 +81,7 @@ export class PaymentMethodComponent implements OnInit {
                 this.router.navigate(['user-order-history']);
               },
               (error) => {
-                console.log(error);
+                this.orderService.removeOrderDetails(orderDetails.orderID);
                 alert('An error occured. Please try again');
               }
             )

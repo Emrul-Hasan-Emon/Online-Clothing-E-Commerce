@@ -45,6 +45,10 @@ export class OrderService {
     return this.http.get(`${this.baseUrl}/user/${userId}`);
   }
   
+  public removeOrderDetails(orderId: string) {
+    this.http.get(`${this.baseUrl}/remove/${orderId}`);
+  }
+  
   private setOrderAddressInfo(orderAddressInfo: any) {
     this.orderDetails.name = orderAddressInfo.name;
     this.orderDetails.contact = orderAddressInfo.contact;
