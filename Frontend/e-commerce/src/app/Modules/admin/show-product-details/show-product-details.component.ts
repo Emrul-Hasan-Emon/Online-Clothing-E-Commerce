@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/Model/product';
 import { ProductDeleteService } from 'src/app/Service/Product-Delete/product-delete.service';
+import { ProductUpdateService } from 'src/app/Service/Product-update/product-update.service';
 import { ProductFetchService } from 'src/app/Service/product-fetch.service';
 
 @Component({
@@ -17,6 +18,7 @@ export class ShowProductDetailsComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private productFetchService: ProductFetchService,
     private productDeleteService: ProductDeleteService,
+    private productUpdateService: ProductUpdateService,
     private router: Router
   ) {}
 
@@ -26,7 +28,7 @@ export class ShowProductDetailsComponent implements OnInit {
         this.productID = params.get('id');
         this.fetchProductDetails();
       }
-    )
+    );
   }
 
   private fetchProductDetails() {
@@ -41,8 +43,16 @@ export class ShowProductDetailsComponent implements OnInit {
     )
   }
 
+  updateProduct() {
+    const confirm = window.confirm('Are you sure you want to update this product?');
+    if(confirm) {
+      this.productUpdateService.setProductDetailsForProduct(this.product);
+      this.router.navigate(['admin/products-add']);
+    }
+  }
+
   deleteProduct() {
-    const confirmed = window.confirm('Are you sure you want to delete this product?');
+    const confirm = window.confirm('Are you sure you want to delete this product?');
     if(confirm) {
       this.productDeleteService.deleteProduct(this.product.id.toString()).subscribe(
         (response: any) => {
