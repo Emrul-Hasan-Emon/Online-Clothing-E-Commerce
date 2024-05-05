@@ -42,6 +42,7 @@ func main() {
 	orderRouter := router.SubRouteBuilder("/order")
 	orderRouter.Add("Create New Order", http.MethodPost, "/insert", pr.CreateNewOrder(db))
 	orderRouter.Add("Get Order History", http.MethodGet, "/user/{userId}", pr.FetchOrderHistory(db))
+	orderRouter.Add("Remove Order Record", http.MethodGet, "/remove/{orderId}", pr.RemoveOrder(db))
 
 	cartRouter := router.SubRouteBuilder("/cart")
 	cartRouter.Add("Create Carts", http.MethodPost, "/insert", pr.CreateCartInserter(db))

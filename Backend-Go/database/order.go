@@ -65,3 +65,9 @@ func (db *Database) FetchOrderHistory(userId int) ([]model.Order, error) {
 	}
 	return orderHistory, nil
 }
+
+func (db *Database) RemoveOrderRecord(orderId int) error {
+	query := "DELETE FROM online_clothing_management_system.Orders WHERE OrderID = ?"
+	_, err := db.db.Exec(query, orderId)
+	return err
+}
