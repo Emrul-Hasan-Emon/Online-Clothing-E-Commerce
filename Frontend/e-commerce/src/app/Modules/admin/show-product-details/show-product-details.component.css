@@ -45,3 +45,37 @@ th {
     background-color: #04AA6D;
     color: white;
 }
+.action-buttons {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+  
+.update-button,
+.delete-button {
+    display: block;
+    width: 100px;
+    height: 60px;
+    font-size: 20px;
+    margin-bottom: 10px;
+    padding: 8px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+  
+.update-button {
+    background-color: #2196F3;
+}
+  
+.delete-button {
+    background-color: #f44336;
+}
+
+.update-button:hover,
+.delete-button:hover {
+    background-color: #333;
+}

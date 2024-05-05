@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/Model/product';
+import { ProductDeleteService } from 'src/app/Service/Product-Delete/product-delete.service';
 import { ProductFetchService } from 'src/app/Service/product-fetch.service';
 
 @Component({
@@ -14,7 +15,9 @@ export class ShowProductDetailsComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private productFetchService: ProductFetchService
+    private productFetchService: ProductFetchService,
+    private productDeleteService: ProductDeleteService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -36,5 +39,20 @@ export class ShowProductDetailsComponent implements OnInit {
         alert('An error occured while fetching product details');
       }
     )
+  }
+
+  deleteProduct() {
+    const confirmed = window.confirm('Are you sure you want to delete this product?');
+    if(confirm) {
+      this.productDeleteService.deleteProduct(this.product.id.toString()).subscribe(
+        (response: any) => {
+          alert('Product Deleted SuccessFully');
+          this.router.navigate(['admin/productsTable']);
+        },
+        (error) => {
+          alert(`Product Couldn't be deleted`);
+        }
+      );
+    }
   }
 }

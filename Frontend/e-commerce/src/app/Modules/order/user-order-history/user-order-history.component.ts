@@ -29,7 +29,7 @@ export class UserOrderHistoryComponent implements OnInit {
           return dateComparison;
         });
       }
-    )
+    );
   }
   ngOnInit(): void {
     this.authService.getLoginCredentials().subscribe(

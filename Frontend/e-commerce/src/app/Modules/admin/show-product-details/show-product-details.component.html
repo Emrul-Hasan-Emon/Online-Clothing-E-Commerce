@@ -1,7 +1,11 @@
 <div class="product-container">
+    <div class="action-buttons">
+        <button class="update-button">Update</button>
+        <button class="delete-button" (click)="deleteProduct()">Delete</button>
+      </div>
     <div class="first-container">
         <div class="product-image">
-            <img src="https://prod.saralifestyle.com/Images/Products/VariationWisetImage/b3e234f81e184536aba23191beff9d60.jpeg" alt="Shirt">
+            <img [src]="product.ImageURL" [alt]="product.Name">
         </div>
         <div class="product-description">
             <h1>Product Name: {{ product.Name }}</h1>
