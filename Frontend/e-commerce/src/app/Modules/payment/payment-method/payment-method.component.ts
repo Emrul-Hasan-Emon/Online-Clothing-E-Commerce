@@ -95,3 +95,4 @@ export class PaymentMethodComponent implements OnInit {
     }
   }
 }
+

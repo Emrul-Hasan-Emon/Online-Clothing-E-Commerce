@@ -5,6 +5,7 @@ import { ShowSingleOrderDetailsComponent } from './show-single-order-details/sho
 import { FeatureModule } from '../feature/feature.module';
 import { OrderHistoryComponent } from './order-history/order-history.component';
 import { UserOrderHistoryComponent } from './user-order-history/user-order-history.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -17,7 +18,8 @@ import { UserOrderHistoryComponent } from './user-order-history/user-order-histo
   ],
   imports: [
     CommonModule,
-    FeatureModule
+    FeatureModule,
+    FormsModule
   ],
   exports: [
     ShowSingleOrderDetailsComponent

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/Service/auth.service';
 import { CartService } from 'src/app/Service/cart.service';
 import { ProductFetchService } from 'src/app/Service/product-fetch.service';
 
@@ -9,6 +10,8 @@ import { ProductFetchService } from 'src/app/Service/product-fetch.service';
   styleUrls: ['./show-single-order-details.component.css']
 })
 export class ShowSingleOrderDetailsComponent implements OnInit {
+  isUser = false;
+  isAdmin = false;
   orderID;
   orderDetails: any;
   productDetails: any = [];
@@ -21,7 +24,8 @@ export class ShowSingleOrderDetailsComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private activatedRoute: ActivatedRoute,
-    private productFetchService: ProductFetchService
+    private productFetchService: ProductFetchService,
+    private authService: AuthService
   ) {}
 
   calculateCost() {
@@ -60,6 +64,12 @@ export class ShowSingleOrderDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.isUser = this.authService.isUserLogged;
+    this.isAdmin = this.authService.isAdminLogged;
+    this.isAdmin = true;
+
+    console.log(this.isAdmin);
+
     this.activatedRoute.queryParams.subscribe(params => {
       this.orderStatus = params['status'];
     });
@@ -71,5 +81,9 @@ export class ShowSingleOrderDetailsComponent implements OnInit {
         this.fetchOrderDetails();
       }
     )
+  }
+
+  statusFilterSelected(event) {
+    console.log(event);
   }
 }

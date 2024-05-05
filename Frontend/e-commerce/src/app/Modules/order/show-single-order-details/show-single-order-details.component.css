@@ -26,3 +26,41 @@ img {
     width: 70px;
     height: auto;
 }
+
+.calculation {
+    margin: 20px 0px;
+    align-content: center;
+    width: 20%;
+    height: 400px;
+    padding: 20px;
+    background-color: rgb(54, 53, 53);
+    color: white;
+    box-shadow: 10px 10px 30px rgb(14, 13, 13);
+    border-radius: 5px;
+}
+
+.cart-list app-cart-item {
+    margin-bottom: 20px;
+}
+
+.calculation button {
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 10px;
+    border-radius: 5px;
+    width: 100%;
+    height: auto;
+    background-color: green;
+}
+
+.filters {
+    margin-bottom: 20px;
+}
+  
+.filters label {
+    font-weight: bold;
+}
+
+div select {
+    height: 50px;
+}

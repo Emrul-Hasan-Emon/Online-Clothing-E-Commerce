@@ -1,5 +1,24 @@
 <div class="singe-order-details-container">
-    <div class="order-status">
+    <div class="order flex justify-between" *ngIf="isAdmin === true">
+        <div class="status">
+            <h3>Status: {{ orderStatus }}</h3>
+        </div>
+        <div class="change-status">
+            <div class="filters">
+                <label for="status-filter" class="text-2xl font-bold">Change Status</label>
+                <select id="status-filter" [(ngModel)]="orderStatus">
+                  <option value="Pending">Pending</option>
+                  <option value="Confirm">Confirm</option>
+                  <option value="Shipping">Shipping</option>
+                  <option value="Delivered">Delivered</option>
+                </select>
+              </div>
+        </div>
+        <div class="assign-to">
+
+        </div>
+    </div>
+    <div class="order-status" *ngIf="isUser === true">
         <h3>Status: {{ orderStatus }}</h3>
     </div>
     <div class="order-details">

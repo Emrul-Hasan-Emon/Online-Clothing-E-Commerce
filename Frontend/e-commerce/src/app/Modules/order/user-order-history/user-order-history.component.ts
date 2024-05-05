@@ -9,7 +9,6 @@ import { AuthService } from 'src/app/Service/auth.service';
   styleUrls: ['./user-order-history.component.css']
 })
 export class UserOrderHistoryComponent implements OnInit {
-  item = [1, 2, 3, 4, 5, 6];
   orderHistory: any;
   constructor(
     private authService: AuthService,
@@ -38,7 +37,7 @@ export class UserOrderHistoryComponent implements OnInit {
         console.log('User Information ---> ', userInfo);
         this.fetchOrderHistory(userInfo.id);
       }
-    )
+    );
   }
 
   formatDate(dateString: string): string {

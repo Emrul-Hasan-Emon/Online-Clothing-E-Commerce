@@ -19,7 +19,7 @@
             <ng-container *ngFor="let product of products; index as idx">
                 <tr>
                     <td>{{ idx }}</td>
-                    <td> {{ product.ID }}</td>
+                    <td> {{ product.id }}</td>
                     <td> {{ product.Name }} </td>
                     <td> {{ product.Brand }} </td>
                     <td> {{ product.Category }} </td>
@@ -30,8 +30,8 @@
                         </button>
                     </td>
                     <td>
-                        <button>
-                            Remove Products
+                        <button (click)="deleteProduct(product)">
+                            Remove Product
                         </button>
                     </td>
                 </tr>
