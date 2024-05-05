@@ -30,6 +30,42 @@ func (db *Database) InsertNewOrder(order model.Order) (int, error) {
 	return int(orderID), nil
 }
 
+func (db *Database) FetchAllOrders() ([]model.Order, error) {
+	var orderHistory []model.Order
+	query := "SELECT * FROM online_clothing_management_system.Orders"
+	rows, err := db.db.Query(query)
+	if err != nil {
+		return []model.Order{}, err
+	}
+	for rows.Next() {
+		var order model.Order
+		err := rows.Scan(
+			&order.OrderID,
+			&order.UserID,
+			&order.Name,
+			&order.Contact,
+			&order.Email,
+			&order.Address,
+			&order.City,
+			&order.District,
+			&order.PaymentNumber,
+			&order.TransactionNumber,
+			&order.TotalCost,
+			&order.Discount,
+			&order.ShippingCost,
+			&order.PayableCost,
+			&order.OrderStatus,
+			&order.OrderDate,
+			&order.OrderTime,
+		)
+		if err != nil {
+			return []model.Order{}, nil
+		}
+		orderHistory = append(orderHistory, order)
+	}
+	return orderHistory, nil
+}
+
 func (db *Database) FetchOrderHistory(userId int) ([]model.Order, error) {
 	var orderHistory []model.Order
 	query := "SELECT * FROM online_clothing_management_system.Orders WHERE UserID = ?"

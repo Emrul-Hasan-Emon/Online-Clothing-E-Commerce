@@ -64,6 +64,23 @@ func (pr *Product) FetchOrderHistory(
 	}
 }
 
+func (pr *Product) FetchAllOrders(
+	db *database.Database,
+) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		orders, err := db.FetchAllOrders()
+		if err != nil {
+			http.Error(w, "an error occured while fetching orders", http.StatusBadRequest)
+			return
+		}
+		orderJsonData, err := json.Marshal(orders)
+		if err != nil {
+			return
+		}
+		common.SetHeader(w)
+		w.Write(orderJsonData)
+	}
+}
 func (pr *Product) RemoveOrder(
 	db *database.Database,
 ) http.HandlerFunc {
