@@ -129,8 +129,15 @@ func (pr *Product) UpdateProduct(
 	db *database.Database,
 ) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		rw := common.RequestWrapper(r)
+		productId, err := rw.FindProductId()
+		if err != nil {
+			log.Errorf("error to fetch start index. Error: %s", err.Error())
+			return
+		}
+
 		var product model.Product
-		err := json.NewDecoder(r.Body).Decode(&product)
+		err = json.NewDecoder(r.Body).Decode(&product)
 
 		if err != nil {
 			w.WriteHeader(http.StatusBadRequest)
@@ -138,7 +145,7 @@ func (pr *Product) UpdateProduct(
 		}
 
 		product.IsDeleted = false
-		err = db.UpdateProductDetails(product)
+		err = db.UpdateProductDetails(product, productId)
 
 		if err != nil {
 			fmt.Println(err)

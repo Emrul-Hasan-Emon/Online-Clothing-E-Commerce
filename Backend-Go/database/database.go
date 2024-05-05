@@ -224,7 +224,8 @@ func (db *Database) DeleteProductPermanently(productId int) error {
 	return err
 }
 
-func (db *Database) UpdateProductDetails(product model.Product) error {
+func (db *Database) UpdateProductDetails(product model.Product, productId int) error {
+	fmt.Println(product)
 	stmt, err := db.db.Prepare("UPDATE online_clothing_management_system.Products SET Name=?, Brand=?, Category=?, Category_id=?, Price=?, Size=?, InStock=?, Quantity=?, Discount=?, ImageUrl=?, Gender=?, Description=?, IsDeleted=? WHERE Id=?")
 	if err != nil {
 		return err
@@ -251,7 +252,7 @@ func (db *Database) UpdateProductDetails(product model.Product) error {
 		product.Gender,
 		product.Description,
 		product.IsDeleted,
-		product.ID,
+		productId,
 	)
 	if err != nil {
 		return err

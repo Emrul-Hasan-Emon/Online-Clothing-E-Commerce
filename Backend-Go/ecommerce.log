@@ -1,3 +1,6 @@
-[DEBUG] [2024-05-05 23:57:13,270] [???] [database.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/database.openDatabase:32] ==> Connected to database localhost:3306: 
-[DEBUG] [2024-05-05 23:57:13,271] [???] [database.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/database.openDatabase:37] ==> Database available localhost:3306:
-[DEBUG] [2024-05-05 23:57:18,142] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> POST /products/update Update Product 10.971782ms
+[DEBUG] [2024-05-06 00:14:22,872] [???] [database.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/database.openDatabase:32] ==> Connected to database localhost:3306: 
+[DEBUG] [2024-05-06 00:14:22,872] [???] [database.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/database.openDatabase:37] ==> Database available localhost:3306:
+[DEBUG] [2024-05-06 00:15:42,367] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/44 Get Product By ID 394.851µs
+[DEBUG] [2024-05-06 00:15:44,827] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/44 Get Product By ID 484.512µs
+[DEBUG] [2024-05-06 00:16:30,159] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> POST /products/update/44 Update Product 16.193801ms
+[DEBUG] [2024-05-06 00:16:37,132] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/44 Get Product By ID 485.513µs
