@@ -18,4 +18,5 @@ type Product struct {
 	ImageURL    string    `json:"ImageURL,omitempty"`
 	Gender      string    `json:"Gender,omitempty"`
 	Description string    `json:"Description,omitempty"`
+	IsDeleted   bool      `json:"isDeleted,omitempty"`
 }

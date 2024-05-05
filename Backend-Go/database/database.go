@@ -43,7 +43,7 @@ func (db *Database) Close() {
 }
 
 func (db *Database) FetchAllProduct() ([]model.Product, error) {
-	query := "SELECT * FROM online_clothing_management_system.Products"
+	query := "SELECT * FROM online_clothing_management_system.Products WHERE IsDeleted = false"
 
 	rows, err := db.db.Query(query)
 	if err != nil {
@@ -58,7 +58,7 @@ func (db *Database) FetchAllProduct() ([]model.Product, error) {
 		var colorsJSON string
 		var sizeJSON string
 
-		err := rows.Scan(&p.ID, &p.Name, &p.Brand, &p.Category, &p.CategoryID, &p.Price, &colorsJSON, &sizeJSON, &p.InStock, &p.Quantity, &p.Discount, &p.ImageURL, &p.Gender, &p.Description)
+		err := rows.Scan(&p.ID, &p.Name, &p.Brand, &p.Category, &p.CategoryID, &p.Price, &colorsJSON, &sizeJSON, &p.InStock, &p.Quantity, &p.Discount, &p.ImageURL, &p.Gender, &p.Description, &p.IsDeleted)
 		if err != nil {
 			panic(err.Error())
 		}
@@ -82,8 +82,7 @@ func (db *Database) FetchAllProduct() ([]model.Product, error) {
 }
 
 func (db *Database) FetchProductByID(productId model.ProductID) (model.Product, error) {
-	query := "SELECT * FROM online_clothing_management_system.Products WHERE Id = ?"
-
+	query := "SELECT * FROM online_clothing_management_system.Products WHERE Id = ? AND IsDeleted = false"
 	// fmt.Println("Product ID: ", productId)
 	// Execute the query with the specified ID
 	row := db.db.QueryRow(query, productId)
@@ -92,7 +91,7 @@ func (db *Database) FetchProductByID(productId model.ProductID) (model.Product, 
 	var colorsJSON string
 	var sizeJSON string
 
-	err := row.Scan(&p.ID, &p.Name, &p.Brand, &p.Category, &p.CategoryID, &p.Price, &colorsJSON, &sizeJSON, &p.InStock, &p.Quantity, &p.Discount, &p.ImageURL, &p.Gender, &p.Description)
+	err := row.Scan(&p.ID, &p.Name, &p.Brand, &p.Category, &p.CategoryID, &p.Price, &colorsJSON, &sizeJSON, &p.InStock, &p.Quantity, &p.Discount, &p.ImageURL, &p.Gender, &p.Description, &p.IsDeleted)
 	if err != nil {
 		panic(err.Error())
 	}
@@ -167,9 +166,9 @@ func (db *Database) InsertNewProduct(product model.Product) error {
 	if err != nil {
 		return err
 	}
-	query := `INSERT INTO online_clothing_management_system.Products (Name, Brand, Category_id, Category, Price, Colors, Size, InStock, Quantity, Discount, ImageUrl, Gender, Description) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+	query := `INSERT INTO online_clothing_management_system.Products (Name, Brand, Category_id, Category, Price, Colors, Size, InStock, Quantity, Discount, ImageUrl, Gender, Description, IsDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
 	_, err = db.db.Exec(query, product.Name, product.Brand, product.CategoryID, product.Category, product.Price, jsonColor,
-		jsonSize, product.InStock, product.Quantity, product.Discount, product.ImageURL, product.Gender, product.Description)
+		jsonSize, product.InStock, product.Quantity, product.Discount, product.ImageURL, product.Gender, product.Description, product.IsDeleted)
 	return err
 }
 
@@ -201,4 +200,15 @@ func (db *Database) GetUserDetailsById(userId int) (model.User, error) {
 	}
 	user.Password = ""
 	return user, nil
+}
+
+func (db *Database) DeleteProductFromDatabase(productId int) error {
+	// Prepare the SQL statement for updating the product
+	stmt, err := db.db.Prepare("UPDATE online_clothing_management_system.Products SET IsDeleted = true WHERE Id = ?")
+	if err != nil {
+		return err
+	}
+	defer stmt.Close()
+	_, err = stmt.Exec(productId)
+	return err
 }

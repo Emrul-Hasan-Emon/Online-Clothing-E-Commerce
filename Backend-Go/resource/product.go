@@ -93,7 +93,7 @@ func (pr *Product) InsertNewProduct(
 			http.Error(w, "Product Name Exit", http.StatusBadRequest)
 			return
 		}
-
+		product.IsDeleted = false
 		err = db.InsertNewProduct(product)
 		if err != nil {
 			fmt.Println(err)
@@ -104,6 +104,23 @@ func (pr *Product) InsertNewProduct(
 		json.NewEncoder(w).Encode(product)
 	}
 }
-func (pr *Product) Testing(mapper *database.DatabaseMapper, db *database.Database) {
-	db.FetchAllProduct()
+
+func (pr *Product) DeleteProduct(
+	db *database.Database,
+) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		rw := common.RequestWrapper(r)
+		productId, err := rw.FindProductId()
+		if err != nil {
+			log.Errorf("error to fetch start index. Error: %s", err.Error())
+			return
+		}
+		err = db.DeleteProductFromDatabase(productId)
+		if err != nil {
+			http.Error(w, "couldn't delete product", http.StatusBadRequest)
+			return
+		}
+		w.WriteHeader(http.StatusOK)
+		json.NewEncoder(w).Encode("successfully deleted the product")
+	}
 }
