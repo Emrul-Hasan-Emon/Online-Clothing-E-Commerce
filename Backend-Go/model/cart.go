@@ -10,4 +10,5 @@ type Cart struct {
 	TotalPrice   float64 `json:"TotalPrice,omitempty"`
 	Discount     float64 `json:"Discount,omitempty"`
 	PayablePrice float64 `json:"PayablePrice,omitempty"`
+	ProductID    int     `json:"ProductId"`
 }

@@ -3,13 +3,13 @@ package database
 import "github.com/Emrul-Hasan-Emon/repositories/ecommerce/model"
 
 func (db *Database) InsertCartDetails(cartDetails []model.Cart) error {
-	stmt, err := db.db.Prepare("INSERT INTO online_clothing_management_system.Cart (OrderID, UserID, Size, Color, Quantity, TotalPrice, Discount, PayablePrice) VALUES (?, ?, ?, ?, ?, ?, ?, ?)")
+	stmt, err := db.db.Prepare("INSERT INTO online_clothing_management_system.Cart (OrderID, UserID, Size, Color, Quantity, TotalPrice, Discount, PayablePrice, ProductID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)")
 	if err != nil {
 		return err
 	}
 	defer stmt.Close()
 	for _, detail := range cartDetails {
-		_, err := stmt.Exec(detail.OrderID, detail.UserID, detail.Size, detail.Color, detail.Quantity, detail.TotalPrice, detail.Discount, detail.PayablePrice)
+		_, err := stmt.Exec(detail.OrderID, detail.UserID, detail.Size, detail.Color, detail.Quantity, detail.TotalPrice, detail.Discount, detail.PayablePrice, detail.ProductID)
 		if err != nil {
 			return err
 		}
@@ -37,6 +37,7 @@ func (db *Database) FetchCartDetails(orderId int) ([]model.Cart, error) {
 			&cart.TotalPrice,
 			&cart.Discount,
 			&cart.PayablePrice,
+			&cart.ProductID,
 		)
 		if err != nil {
 			return []model.Cart{}, nil

@@ -9,3 +9,9 @@ CREATE TABLE Cart (
     Discount DECIMAL(10, 2),
     PayablePrice DECIMAL(10, 2)
 );
+
+-- Add the new column
+ALTER TABLE Cart ADD COLUMN ProductID INT;
+
+-- Update the existing rows with ProductID = 44
+UPDATE Cart SET ProductID = 44;
