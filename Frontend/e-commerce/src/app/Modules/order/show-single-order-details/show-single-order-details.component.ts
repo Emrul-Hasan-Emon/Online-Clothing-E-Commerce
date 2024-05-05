@@ -10,9 +10,13 @@ import { ProductFetchService } from 'src/app/Service/product-fetch.service';
 })
 export class ShowSingleOrderDetailsComponent implements OnInit {
   orderID;
-  orderDetails;
-  productDetails;
+  orderDetails: any;
+  productDetails: any = [];
   orderStatus;
+  totalPrice = 0;
+  discount = 0;
+  shippingCost = 60;
+  payablePrice = 0;
 
   constructor(
     private cartService: CartService,
@@ -20,19 +24,34 @@ export class ShowSingleOrderDetailsComponent implements OnInit {
     private productFetchService: ProductFetchService
   ) {}
 
+  calculateCost() {
+    this.orderDetails.forEach(item => {
+      this.totalPrice += item.TotalPrice;
+      this.discount += item.Discount ? item.Discount : 0;
+      this.payablePrice += item.PayablePrice;
+    });
+
+    this.payablePrice += this.shippingCost;
+  }
+
   private fetchProductDetails(productId: string) {
     this.productFetchService.getSpecificProduct(productId).subscribe(
       (productDetails: any) => {
         console.log('Product Details ---> ', productDetails);
-        this.productDetails = productDetails;
+        this.productDetails.push(productDetails);
       }
     )
   }
   private fetchOrderDetails() {
     this.cartService.fetchCartDetailsForOrder(this.orderID).subscribe(
       (orderDetails: any) => {
+        console.log('Order details ---->  ', orderDetails);
         this.orderDetails = orderDetails;
-        console.log(orderDetails);
+
+        orderDetails.forEach(item => {
+          this.fetchProductDetails(item.ProductId);
+        });
+        this.calculateCost();
       },
       (error) => {
         alert('An error occured while fetching order details');
@@ -43,7 +62,6 @@ export class ShowSingleOrderDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe(params => {
       this.orderStatus = params['status'];
-      console.log('Received status:', status);
     });
 
     this.activatedRoute.paramMap.subscribe(

@@ -1,0 +1,28 @@
+table {
+    /* margin: 20px; */
+    border-collapse: collapse;
+    width: 100%;
+    border-spacing: 0;
+}
+
+th, td {
+    padding: 12px 8px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+thead th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+    color: #333;
+}
+
+tr:hover {
+    background-color: rgb(68, 63, 63);
+    color: white;
+}
+
+img {
+    width: 70px;
+    height: auto;
+}

@@ -1,8 +1,53 @@
 <div class="singe-order-details-container">
     <div class="order-status">
-        <h3>Status: On the way</h3>
+        <h3>Status: {{ orderStatus }}</h3>
     </div>
     <div class="order-details">
-        <app-cart></app-cart>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product Image</th>
+                    <th>Name</th>
+                    <th>Brand</th>
+                    <th>Quantity</th>
+                    <th>Total Cost</th>
+                    <th>Discount</th>
+                    <th>Payable Cost</th>
+                </tr>
+            </thead>
+            <ng-container *ngFor="let order of orderDetails; index as idx">
+                <tr>
+                    <td><img [src]="productDetails[idx].ImageURL"></td>
+                    <td> {{  productDetails[idx].Name }}</td>
+                    <td>{{ productDetails[idx].Brand }}</td>
+                    <td> {{ order.Quantity }} </td>
+                    <td> {{ order.TotalPrice }} </td>
+                    <td> {{ order.Discount ? order.Discount: 0 }} </td>
+                    <td> {{ order.PayablePrice }} </td>
+                </tr>
+            </ng-container>
+          </table>
+    </div>
+    <div class="calculation mt-20">
+        <p class="text-xl font-bold">Price Details</p>
+        <hr/>
+
+        <div class="total-price flex justify-between">
+            <p>Total Price</p>
+            <p>{{totalPrice}} BDT</p>
+        </div>
+        <div class="discount-price flex justify-between">
+            <p>Discount</p>
+            <p>{{discount}} BDT</p>
+        </div>
+        <div class="total-products flex justify-between">
+            <p>Shipping Cost</p>
+            <p>{{shippingCost}} BDT</p>
+        </div>
+        <hr/>
+        <div class="payable-price flex justify-between">
+            <p class="text-xl font-bold">Payable Price</p>
+            <p>{{payablePrice}} BDT</p>
+        </div>
     </div>
 </div>
