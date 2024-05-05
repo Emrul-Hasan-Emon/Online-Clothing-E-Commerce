@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
@@ -6,9 +7,14 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ProductUpdateService {
   private productDetails: any;
+  private baseUrl: string = 'products'
   public productUpdateEvent =  new BehaviorSubject<any>(null);
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  public updateProducts(product: any, productId: string) {
+    return this.http.post(`${this.baseUrl}/update/${productId}`, product);
+  }
 
   public setProductDetailsForProduct(productDetails: any) {
     this.productDetails = productDetails;

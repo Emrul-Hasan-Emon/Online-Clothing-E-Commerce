@@ -172,6 +172,31 @@ export class AddProductComponent implements OnInit, OnDestroy {
     }
   }
 
+  private updateProduct(product: any) {
+    this.productUpdateService.updateProducts(product, this.productDetails.id).subscribe(
+      (updatedProduct: any) => {
+        alert('Product Update Successfull');
+        this.addProductForm.reset();
+      },
+      (error) => {
+        alert('An error occured while updating product');
+      }
+    );
+  }
+
+  private insertNewProduct(product: any) {
+    this.productPostService.insertProduct(product).subscribe(
+      (newInsertedProduct) => {
+        alert('Product Insertion Successfull');
+        this.addProductForm.reset();
+      },
+      (error) => {
+        console.log(error);
+        alert('Duplication of product name');
+      }
+    );
+  }
+  
   productDetailsSubmitted() {
     console.log("New Product Details ----> ", this.addProductForm.value);
     const formValues = this.addProductForm.value;
@@ -199,17 +224,12 @@ export class AddProductComponent implements OnInit, OnDestroy {
 
     console.log('Product ----> ', product);
 
-    this.productPostService.insertProduct(product).subscribe(
-      (newInsertedProduct) => {
-        alert('Product Insertion Successfull');
-        this.addProductForm.reset();
-        console.log('New Inserted Product', newInsertedProduct)
-      },
-      (error) => {
-        console.log(error);
-        alert('Duplication of product name');
-      }
-    )
+    if(this.isUpdated) {
+      this.updateProduct(product);
+    } else {
+      this.insertNewProduct(product);
+    }
+    
   }
 
   ngOnDestroy(): void {
