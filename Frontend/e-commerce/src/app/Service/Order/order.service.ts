@@ -37,10 +37,13 @@ export class OrderService {
     
   }
 
-  private insertNewOrderDetails() {
-    this.http.post(this.baseUrl, this.orderDetails);
+  public insertNewOrderDetails() {
+    return this.http.post(`${this.baseUrl}/insert`, this.orderDetails);
   }
 
+  public fetchOrderDetails(userId: string) {
+    return this.http.get(`${this.baseUrl}/user/${userId}`);
+  }
   private setOrderAddressInfo(orderAddressInfo: any) {
     this.orderDetails.name = orderAddressInfo.name;
     this.orderDetails.contact = orderAddressInfo.contact;
@@ -59,10 +62,9 @@ export class OrderService {
   public createNewOrder(number: string, transactionNumber: string) {
     this.setOrderAddressInfo(this.orderAddressInfo.getOrderAdressInfo());
     this.setOrderCost(this.cartService.getTotalCartCost());
-    this.orderDetails.userId = this.authService.userInfo.id;
+    this.orderDetails.userId = +this.authService.userInfo.id;
     this.orderDetails.paymentNumber = number;
     this.orderDetails.transactionNumber = transactionNumber;
     console.log('Complete Order Details ---> ', this.orderDetails);
-    this.insertNewOrderDetails();
   }
 }

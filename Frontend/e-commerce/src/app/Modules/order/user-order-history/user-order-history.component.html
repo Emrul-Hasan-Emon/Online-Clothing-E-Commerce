@@ -13,14 +13,14 @@
                     <th>Actions</th>
                 </tr>
             </thead>
-            <ng-container *ngFor="let i of item">
+            <ng-container *ngFor="let order of orderHistory; index as idx">
                 <tr>
-                    <td>1</td>
-                    <td>alshdj12312</td>
-                    <td> {{  2000 | currency:'BDT':'symbol':'1.0-0' }}</td>
-                    <td>25th April</td>
+                    <td> {{ idx+1 }}</td>
+                    <td>{{ order.orderID}}</td>
+                    <td> {{  order.payableCost | currency:'BDT':'symbol':'1.0-0' }}</td>
+                    <td>{{ formatDate(order.orderDate) }}</td>
                     <td>
-                        <button>
+                        <button (click)="showOrderDetails(order.orderID)">
                             View Details
                         </button>
                     </td>

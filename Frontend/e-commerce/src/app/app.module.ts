@@ -17,8 +17,7 @@ import { CartModule } from './Modules/cart/cart.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    OrderHistoryComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -29,10 +28,10 @@ import { CartModule } from './Modules/cart/cart.module';
     SharedModule,
     AdminModule,
     PaymentModule,
-    OrderModule,
     AuthModule,
     HttpClientModule,
-    CartModule
+    CartModule,
+    OrderModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]

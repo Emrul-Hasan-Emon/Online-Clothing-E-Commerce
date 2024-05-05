@@ -10,5 +10,13 @@
     "/category": {
         "target": "http://localhost:8083",
         "secure": false
+    },
+    "/order": {
+        "target": "http://localhost:8083",
+        "secure": false
+    },
+    "/cart": {
+        "target": "http://localhost:8083",
+        "secure": false
     }
 }

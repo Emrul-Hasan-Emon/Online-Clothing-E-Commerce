@@ -1,0 +1,94 @@
+/* .order-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.order-status {
+    font-size: 20px;
+    flex-grow: 1;
+    font-weight: 500;
+    justify-content: center;
+}
+
+.order-status-form {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-content: center;
+    margin: 10px 0;
+}
+
+.order-status input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.order-details-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 2;
+}
+.order-details {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 20px;
+    box-shadow: 10px 10px 30px rgb(192, 191, 191);
+}
+
+.image img {
+    width: 150px;
+    height: auto;
+    border-radius: 3px;
+}
+
+.image-and-details {
+    display: flex;
+    align-items: center;
+}
+
+.price,
+.delivery {
+    align-self: center;
+} */
+
+.order-container {
+    margin: 20px 0;
+}
+
+table {
+    /* margin: 20px; */
+    border-collapse: collapse;
+    width: 100%;
+    border-spacing: 0;
+}
+
+th, td {
+    padding: 12px 8px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+thead th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+    color: #333;
+}
+
+button {
+    padding: 8px 16px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #3498db;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+tr:hover {
+    background-color: rgb(68, 63, 63);
+    color: white;
+}
+
+button:hover {
+    background-color: orange;
+}

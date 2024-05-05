@@ -1,4 +1,6 @@
 export interface Cart {
+    OrderID?: number,
+    UserID?: number,
     Id: number,
     Size: string,
     Color: string,

@@ -16,6 +16,7 @@ import { RegisterComponent } from './Modules/auth/register/register.component';
 import { CartShowComponent } from './Modules/cart/cart-show/cart-show.component';
 import { PaymentMethodComponent } from './Modules/payment/payment-method/payment-method.component';
 import { SinglePaymentMethodComponent } from './Modules/payment/single-payment-method/single-payment-method.component';
+import { UserOrderHistoryComponent } from './Modules/order/user-order-history/user-order-history.component';
 
 const routes: Routes = [
   // { 
@@ -33,11 +34,12 @@ const routes: Routes = [
   { path: "products", component: ProductsShowPageComponent },
   { path: "checkout/payment/:id", component: PaymentComponent },
   { path: "payment-success", component: PaymentSuccessComponent },
-  { path: "order-history", component: OrderHistoryComponent },
+  { path: "orderhistory", component: OrderHistoryComponent},
+  { path: "user-order-history", component: UserOrderHistoryComponent},
   { path: "order/:id", component: OrderDetailsComponent },
   { path: "", component: ProductsShowPageComponent },
   { path: "checkout", component: CheckoutComponent},
-  { path: "single-order-history-details", component: ShowSingleOrderDetailsComponent},
+  { path: "single-order-history-details/:id", component: ShowSingleOrderDetailsComponent},
   { path: "payment-method", component: PaymentMethodComponent},
   { 
     path: 'admin',

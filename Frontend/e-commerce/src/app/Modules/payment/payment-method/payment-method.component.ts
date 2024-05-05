@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { OrderAddressService } from 'src/app/Service/Order-Address/order-address.service';
 import { OrderService } from 'src/app/Service/Order/order.service';
+import { AuthService } from 'src/app/Service/auth.service';
+import { CartService } from 'src/app/Service/cart.service';
 
 @Component({
   selector: 'app-payment-method',
@@ -20,7 +22,9 @@ export class PaymentMethodComponent implements OnInit {
   constructor(
     private router: Router,
     private orderAddressService: OrderAddressService,
-    private orderService: OrderService
+    private orderService: OrderService,
+    private cartService: CartService,
+    private authService: AuthService
   ) {}
   
   private initiateForm() {
@@ -31,7 +35,6 @@ export class PaymentMethodComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('Hello');
     this.orderAddressInfo = this.orderAddressService.getOrderAdressInfo();  
     if(!this.orderAddressInfo) {
       alert('No address information found');
@@ -69,6 +72,24 @@ export class PaymentMethodComponent implements OnInit {
       const confirmed = window.confirm('Are you sure you want to submit?');
       if(confirmed) {
         this.orderService.createNewOrder(this.number, this.transactionNumber);
+
+        this.orderService.insertNewOrderDetails().subscribe(
+          (orderDetails: any) => {
+            this.cartService.insertCartDetails(orderDetails.userId, orderDetails.orderID).subscribe(
+              (response) => {
+                this.router.navigate(['order-history']);
+              },
+              (error) => {
+                console.log(error);
+                alert('An error occured. Please try again');
+              }
+            )
+
+          },
+          (error) => {
+            alert(`Your order couldn't made. Please try again`);
+          }
+        )
       }
     }
   }

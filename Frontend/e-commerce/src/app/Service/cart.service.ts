@@ -3,6 +3,7 @@ import { Cart } from '../Model/cart';
 import { Product } from '../Model/product';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { CartCost } from '../Model/cost';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -12,13 +13,17 @@ export class CartService {
   public cartSource =  new BehaviorSubject<any>(null);
   cartEvent = this.cartSource.asObservable();
 
+  private baseUrl: string = 'cart';
+
   public cartCost = {
     TotalPrice: 0,
     Discount: 0,
     PayablePrice: 0
   };
 
-  constructor() {
+  constructor(
+    private http: HttpClient
+  ) {
     const storedCart = localStorage.getItem('userCart');
     if (storedCart) {
       this.cartDetails = JSON.parse(storedCart);
@@ -26,6 +31,18 @@ export class CartService {
     }
    }
 
+  public insertCartDetails(userId: number, orderId: number) {
+    this.cartDetails.forEach(item => {
+      item.UserId = userId;
+      item.OrderId = orderId;
+    });
+
+    return this.http.post(`${this.baseUrl}/insert`, this.cartDetails);
+  }
+
+  public fetchCartDetailsForOrder(orderID: number) {
+    
+  }
   private updateLocalStorage() {
     localStorage.setItem('userCart', JSON.stringify(this.cartDetails));
     this.cartSource.next(this.cartDetails);
@@ -40,6 +57,8 @@ export class CartService {
     const total = subPrice - discount;
     
     const singleCart = {
+      OrderId: 0,
+      UserId: 0,
       Id: product.id,
       Size: selectedSize,
       Color: selectedColor,
