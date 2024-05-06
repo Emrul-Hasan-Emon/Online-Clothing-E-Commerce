@@ -49,7 +49,7 @@ export class ProductsTableComponent implements OnInit {
         (error) => {
           alert(`Product Couldn't be deleted`);
         }
-      )
+      );
     }
   }
 }
