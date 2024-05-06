@@ -1,3 +1,2 @@
-[DEBUG] [2024-05-06 22:44:40,192] [???] [database.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/database.openDatabase:32] ==> Connected to database localhost:3306: 
-[DEBUG] [2024-05-06 22:44:40,192] [???] [database.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/database.openDatabase:37] ==> Database available localhost:3306:
-[DEBUG] [2024-05-06 22:46:01,035] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /delivery/delivery Fetch Delivery Man List 593.929µs
+[DEBUG] [2024-05-06 22:59:48,799] [???] [database.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/database.openDatabase:32] ==> Connected to database localhost:3306: 
+[DEBUG] [2024-05-06 22:59:48,800] [???] [database.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/database.openDatabase:37] ==> Database available localhost:3306:

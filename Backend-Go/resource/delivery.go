@@ -33,3 +33,23 @@ func (pr *Product) CreateDeliveryManListFetcher(
 		w.Write(jsonData)
 	}
 }
+
+func (pr *Product) CreateDeliveryCountFetcher(
+	db *database.Database,
+) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		deliveryCountList, err := db.FetchDeliveryQuantityInformation()
+		if err != nil {
+			http.Error(w, "an error occured while fetching delivery count details", http.StatusBadRequest)
+			return
+		}
+
+		jsonData, err := json.Marshal(deliveryCountList)
+		if err != nil {
+			http.Error(w, "an unexpected error occured", http.StatusBadRequest)
+			return
+		}
+		common.SetHeader(w)
+		w.Write(jsonData)
+	}
+}

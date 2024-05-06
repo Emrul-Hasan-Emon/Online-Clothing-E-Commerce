@@ -33,3 +33,26 @@ func (db *Database) FetchDeliveryInformation(role string) ([]model.User, error) 
 	}
 	return deliveryInfo, nil
 }
+
+func (db *Database) FetchDeliveryQuantityInformation() ([]model.DeliveryCount, error) {
+	query := `SELECT * FROM online_clothing_management_system.DeliveryCount`
+	rows, err := db.db.Query(query)
+	if err != nil {
+		return []model.DeliveryCount{}, err
+	}
+	var deliveryCountList []model.DeliveryCount
+	for rows.Next() {
+		var d model.DeliveryCount
+		err := rows.Scan(
+			&d.DeliveryCountID,
+			&d.UserID,
+			&d.Quantity,
+		)
+
+		if err != nil {
+			return []model.DeliveryCount{}, err
+		}
+		deliveryCountList = append(deliveryCountList, d)
+	}
+	return deliveryCountList, nil
+}
