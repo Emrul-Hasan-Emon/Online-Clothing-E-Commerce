@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { count } from 'rxjs';
+import { DeliveryService } from 'src/app/Service/Delivery/delivery.service';
 import { AuthService } from 'src/app/Service/auth.service';
 import { CartService } from 'src/app/Service/cart.service';
 import { ProductFetchService } from 'src/app/Service/product-fetch.service';
@@ -20,12 +22,15 @@ export class ShowSingleOrderDetailsComponent implements OnInit {
   discount = 0;
   shippingCost = 60;
   payablePrice = 0;
-
+  deliveryInfo;
+  status;
+  
   constructor(
     private cartService: CartService,
     private activatedRoute: ActivatedRoute,
     private productFetchService: ProductFetchService,
-    private authService: AuthService
+    private authService: AuthService,
+    private deliveryService: DeliveryService
   ) {}
 
   calculateCost() {
@@ -63,11 +68,44 @@ export class ShowSingleOrderDetailsComponent implements OnInit {
     )
   }
 
+  formDeliveryManArray(quantityInfo: any, delivery: any) {
+    const userCountArray = quantityInfo.map(quantity => {
+      const user = delivery.find(deliveryPerson => deliveryPerson.id === quantity.userID);
+      return {
+        userID: quantity.userID,
+        count: quantity.deliveryCount,
+        name: user ? user.name: 'Delivery Man'
+      };
+    });
+    this.deliveryInfo = userCountArray.sort((a, b) => a.count - b.count);
+  }
+
+  private doAdminJobs() {
+    this.deliveryService.fetchAllDeliveryManDetails().subscribe(
+      (delivery: any) => {
+        this.deliveryService.fetchDeliveryQuantityInfo().subscribe(
+          (quantityInfo: any) => {
+            this.formDeliveryManArray(quantityInfo, delivery);
+          },
+          (error) => {
+            alert(`delivery men details couldn't be fetched`);
+          }
+        )
+      }, 
+      (error) => {
+        alert('delivery men details couldnt be fetched');
+      }
+    )
+  }
+
   ngOnInit(): void {
     this.isUser = this.authService.isUserLogged;
     this.isAdmin = this.authService.isAdminLogged;
     this.isAdmin = true;
 
+    if(this.isAdmin) {
+      this.doAdminJobs();
+    }
     console.log(this.isAdmin);
 
     this.activatedRoute.queryParams.subscribe(params => {

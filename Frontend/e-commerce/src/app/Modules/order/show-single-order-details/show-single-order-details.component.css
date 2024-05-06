@@ -64,3 +64,22 @@ img {
 div select {
     height: 50px;
 }
+
+button {
+    padding: 8px 16px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #3498db;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+tr:hover {
+    background-color: rgb(68, 63, 63);
+    color: white;
+}
+
+button:hover {
+    background-color: orange;
+}

@@ -6,17 +6,34 @@
         <div class="change-status">
             <div class="filters">
                 <label for="status-filter" class="text-2xl font-bold">Change Status</label>
-                <select id="status-filter" [(ngModel)]="orderStatus" (change)="statusFilterSelected()">
-                  <option value="Pending">Pending</option>
-                  <option value="Confirm">Confirm</option>
-                  <option value="Shipping">Shipping</option>
-                  <option value="Delivered">Delivered</option>
+                <select id="status-filter" [(ngModel)]="status" (change)="statusFilterSelected()">
+                    <option value="Pending" [disabled]="orderStatus === 'Pending' || orderStatus === 'Confirm' || orderStatus === 'Shipping' || orderStatus === 'Delivered'">Pending</option>
+                    <option value="Confirm" [disabled]="orderStatus === 'Confirm' || orderStatus === 'Shipping' || orderStatus === 'Delivered'">Confirm</option>
+                    <option value="Shipping" [disabled]="orderStatus === 'Shipping' || orderStatus === 'Delivered'">Shipping</option>
+                    <option value="Delivered" [disabled]="orderStatus === 'Delivered'">Delivered</option>
                 </select>
               </div>
         </div>
     </div>
-    <div class="assign-to" *ngIf="orderStatus === 'Shipping'">
-        <h2>Hello</h2>
+    <div class="assign-to" *ngIf="status === 'Shipping' && isAdmin === true">
+        <table>
+            <thead>
+                <tr>
+                    <td>User ID</td>
+                    <td>Name</td>
+                    <td>Current Assigned Order</td>
+                    <td>Assign</td>
+                </tr>
+            </thead>
+            <ng-container *ngFor="let d of deliveryInfo">
+                <tr>
+                    <td>{{ d.userID }}</td>
+                    <td>{{ d.name }}</td>
+                    <td>{{ d.count }}</td>
+                    <td> <button>Assign Order</button></td>
+                </tr>
+            </ng-container>
+        </table>
     </div>
     <div class="order-status" *ngIf="isUser === true">
         <h3>Status: {{ orderStatus }}</h3>
