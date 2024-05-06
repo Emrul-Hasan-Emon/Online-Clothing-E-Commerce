@@ -17,6 +17,7 @@ import { CartShowComponent } from './Modules/cart/cart-show/cart-show.component'
 import { PaymentMethodComponent } from './Modules/payment/payment-method/payment-method.component';
 import { SinglePaymentMethodComponent } from './Modules/payment/single-payment-method/single-payment-method.component';
 import { UserOrderHistoryComponent } from './Modules/order/user-order-history/user-order-history.component';
+import { DeliveryHomeComponent } from './Modules/delivery/delivery-home/delivery-home.component';
 
 const routes: Routes = [
   // { 
@@ -47,7 +48,8 @@ const routes: Routes = [
   },
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent },
-  { path: "single-payment-method/:method", component: SinglePaymentMethodComponent }
+  { path: "single-payment-method/:method", component: SinglePaymentMethodComponent },
+  { path: "delivery-home", component: DeliveryHomeComponent }
 ];
 
 @NgModule({

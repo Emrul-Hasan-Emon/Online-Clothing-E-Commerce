@@ -14,7 +14,6 @@ import { OrderModule } from './Modules/order/order.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AuthModule } from './Modules/auth/auth.module';
 import { CartModule } from './Modules/cart/cart.module';
-
 @NgModule({
   declarations: [
     AppComponent
