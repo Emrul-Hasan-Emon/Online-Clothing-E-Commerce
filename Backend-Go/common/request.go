@@ -45,3 +45,11 @@ func (w *wrapper) FindOrderId() (int, error) {
 	}
 	return strconv.Atoi(id)
 }
+
+func (w *wrapper) FindRole() (string, error) {
+	id := reqMuxParam(w.req, "role")
+	if id == "" {
+		return "", nil
+	}
+	return id, nil
+}

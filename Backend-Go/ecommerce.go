@@ -51,5 +51,8 @@ func main() {
 	cartRouter.Add("Create Carts", http.MethodPost, "/insert", pr.CreateCartInserter(db))
 	cartRouter.Add("Get Cart Details", http.MethodGet, "/{orderId}", pr.CreateCartFetcher(db))
 
+	deliveryRouter := router.SubRouteBuilder("/delivery")
+	deliveryRouter.Add("Fetch Delivery Man List", http.MethodGet, "/{role}", pr.CreateDeliveryManListFetcher(db))
+
 	log.Fatal(http.ListenAndServe(config.Server().String(), router.Router()))
 }
