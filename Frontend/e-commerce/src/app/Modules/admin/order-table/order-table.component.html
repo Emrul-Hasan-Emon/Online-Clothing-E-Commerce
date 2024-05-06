@@ -2,6 +2,28 @@
     <div>
         <h2 class="text-center">Order History (Admin)</h2>
     </div>
+    <div class="filter-container flex justify-between flex-wrap">
+        <div class="all">
+            <input type="radio" name="statusFilter" id="all" [(ngModel)]="selectedStatus" value="all" (change)="onStatusChange()" [checked]="selectedStatus === 'all'">
+            <label class="ml-2" for="all">All</label>
+        </div>
+        <div class="pending">
+            <input type="radio" name="statusFilter" id="pending" [(ngModel)]="selectedStatus" value="pending" (change)="onStatusChange()" [checked]="selectedStatus === 'pending'">
+            <label class="ml-2" for="all">Pending</label>
+        </div>
+        <div class="confirmed">
+            <input type="radio" name="statusFilter" id="confirmed" [(ngModel)]="selectedStatus" value="confirmed" (change)="onStatusChange()" [checked]="selectedStatus === 'confirmed'">
+            <label class="ml-2" for="all">Confirmed</label>
+        </div>
+        <div class="shipping">
+            <input type="radio" name="statusFilter" id="shipping" [(ngModel)]="selectedStatus" value="shipping" (change)="onStatusChange()" [checked]="selectedStatus === 'shipping'">
+            <label class="ml-2" for="all">Shipping</label>
+        </div>
+        <div class="delivered">
+            <input type="radio" name="statusFilter" id="delivered" [(ngModel)]="selectedStatus" value="delivered" (change)="onStatusChange()" [checked]="selectedStatus === 'delivered'">
+            <label class="ml-2" for="all">Delivered</label>
+        </div>
+    </div>
     <div class="order-container">
         <table>
             <thead>

@@ -83,7 +83,7 @@ export class ShowSingleOrderDetailsComponent implements OnInit {
     )
   }
 
-  statusFilterSelected(event) {
-    console.log(event);
+  statusFilterSelected() {
+    console.log('Order Status ---> ', this.orderStatus);
   }
 }

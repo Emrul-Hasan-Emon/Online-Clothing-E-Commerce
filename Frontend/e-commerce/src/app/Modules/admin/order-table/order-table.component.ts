@@ -11,29 +11,38 @@ import { AuthService } from 'src/app/Service/auth.service';
 export class OrderTableComponent implements OnInit {
   item = [1, 2,3 , 4, 5, 6, 7, 8, 9, 10];
   orderHistory: any;
+  allOrderHistory: any;
+  selectedStatus: any;
+
   constructor(
     private authService: AuthService,
     private orderService: OrderService,
     private router: Router
   ) {}
 
+  sortOrderHistory() {
+    this.orderHistory = this.orderHistory.sort((a, b) => {
+      const dateComparison = new Date(b.orderDate).getTime() - new Date(a.orderDate).getTime();
+      if (dateComparison === 0) {
+        return b.orderID - a.orderID; // If dates are the same, prioritize the order with higher order ID
+      }
+      return dateComparison;
+    });
+  }
+
   fetchOrderHistory() {
     this.orderService.fetchAllOrders().subscribe(
       (orderHistory: any) => {
         console.log('Order History ---> ', orderHistory);
         this.orderHistory = orderHistory;
-        this.orderHistory = orderHistory.sort((a, b) => {
-          const dateComparison = new Date(b.orderDate).getTime() - new Date(a.orderDate).getTime();
-          if (dateComparison === 0) {
-            return b.orderID - a.orderID; // If dates are the same, prioritize the order with higher order ID
-          }
-          return dateComparison;
-        });
+        this.allOrderHistory = orderHistory;
+        this.sortOrderHistory();
       }
     );
   }
 
   ngOnInit(): void {
+    this.selectedStatus = 'all';
    this.fetchOrderHistory();
   }
 
@@ -56,5 +65,16 @@ export class OrderTableComponent implements OnInit {
 
   showOrderDetails(orderID: number, status: string) {
     this.router.navigate(['single-order-history-details', orderID], { queryParams: { status: status } });
+  }
+
+  onStatusChange() {
+    console.log('Selected Status ---> ', this.selectedStatus);
+    this.orderHistory = this.allOrderHistory.filter(order => 
+      order.status.toLowerCase() === this.selectedStatus.toLowerCase()
+    );
+    if(this.selectedStatus === 'all') {
+      this.orderHistory = this.allOrderHistory;
+    }
+    this.sortOrderHistory();
   }
 }
