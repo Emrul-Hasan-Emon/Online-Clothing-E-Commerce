@@ -108,9 +108,8 @@ func (db *Database) RemoveOrderRecord(orderId int) error {
 	return err
 }
 
-func (db *Database) ChangeOrderStatus(orderID int) error {
-	shipping := "Shipping"
+func (db *Database) ChangeOrderStatus(orderID int, status string) error {
 	query := "UPDATE online_clothing_management_system.Orders SET OrderStatus = ? WHERE OrderID = ?"
-	_, err := db.db.Exec(query, shipping, orderID)
+	_, err := db.db.Exec(query, status, orderID)
 	return err
 }

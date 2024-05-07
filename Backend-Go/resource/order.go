@@ -110,7 +110,15 @@ func (pr *Product) CreateOrderStatusChanger(
 			http.Error(w, "order couldn't found", http.StatusBadRequest)
 			return
 		}
-		err = db.ChangeOrderStatus(orderId)
+
+		var status model.OrderStatus
+		err = json.NewDecoder(r.Body).Decode(&status)
+		if err != nil {
+			http.Error(w, "an error occured while fetching request body details", http.StatusBadRequest)
+			return
+		}
+
+		err = db.ChangeOrderStatus(orderId, status.Status)
 
 		if err != nil {
 			http.Error(w, "an error occured while changing the order status", http.StatusBadRequest)

@@ -19,3 +19,7 @@ type Order struct {
 	OrderDate         string  `json:"orderDate,omitempty"`
 	OrderTime         string  `json:"orderTime,omitempty"`
 }
+
+type OrderStatus struct {
+	Status string `json:"status"`
+}
