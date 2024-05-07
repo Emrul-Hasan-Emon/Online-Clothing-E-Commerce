@@ -83,3 +83,9 @@ tr:hover {
 button:hover {
     background-color: orange;
 }
+
+.delivery-status {
+    background-color: red;
+    font-weight: bold;
+    font-size: 25px;
+}

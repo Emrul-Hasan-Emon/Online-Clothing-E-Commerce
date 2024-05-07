@@ -14,9 +14,12 @@ import { OrderModule } from './Modules/order/order.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AuthModule } from './Modules/auth/auth.module';
 import { CartModule } from './Modules/cart/cart.module';
+import { DeliveryModule } from './Modules/delivery/delivery.module';
+import { DeliveryHomeComponent } from './delivery-home/delivery-home.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DeliveryHomeComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,8 @@ import { CartModule } from './Modules/cart/cart.module';
     AuthModule,
     HttpClientModule,
     CartModule,
-    OrderModule
+    OrderModule,
+    DeliveryModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]

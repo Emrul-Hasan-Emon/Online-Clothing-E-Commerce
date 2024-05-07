@@ -15,6 +15,9 @@
               </div>
         </div>
     </div>
+    <div class="delivery-status" *ngIf="deliveryOrderStatus === 'Delivered'">
+        This order is delivered.
+    </div>
     <div class="assign-to" *ngIf="status === 'Shipping' && orderStatus !== 'Shipping' && isAdmin === true">
         <table>
             <thead>

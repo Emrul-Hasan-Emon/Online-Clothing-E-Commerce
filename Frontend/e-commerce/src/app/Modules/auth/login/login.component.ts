@@ -32,14 +32,20 @@ export class LoginComponent implements OnInit {
 
 
   private userValidation(userData: Response) {
-    this.authService.isUserLogged = true;
+    this.authService.userLoggedIn(userData);
     this.router.navigate(['home']);
   }
 
   private adminValidation(userData: Response) {
-    this.authService.isAdminLogged = true;
+    this.authService.adminLoggedIn(userData);
     this.router.navigate(['admin']);
   }
+
+  private deliveryManValidation(userData: Response) {
+    this.authService.deliveryManLoggedIn(userData);
+    this.router.navigate(['dl']);
+  }
+
   validateTheUser(userData: any) {
     this.authService.authenticateUser(userData).subscribe(
       (response: Response) => {
@@ -48,6 +54,9 @@ export class LoginComponent implements OnInit {
         }
         else if(response.role == 'admin') {
           this.adminValidation(response);
+        }
+        else {
+          this.deliveryManValidation(response);
         }
         
         const dataString = JSON.stringify(response);

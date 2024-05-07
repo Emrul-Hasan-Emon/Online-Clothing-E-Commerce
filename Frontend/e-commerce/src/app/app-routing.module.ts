@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FeatureModule } from './Modules/feature/feature.module';
 import { HomeComponent } from './Modules/feature/home/home.component';
 import { ProductsShowPageComponent } from './Modules/feature/products-show-page/products-show-page.component';
 import { CartComponent } from './Modules/feature/cart/cart.component';
@@ -13,7 +12,6 @@ import { OrderDetailsComponent } from './Modules/order/order-details/order-detai
 import { ShowSingleOrderDetailsComponent } from './Modules/order/show-single-order-details/show-single-order-details.component';
 import { LoginComponent } from './Modules/auth/login/login.component';
 import { RegisterComponent } from './Modules/auth/register/register.component';
-import { CartShowComponent } from './Modules/cart/cart-show/cart-show.component';
 import { PaymentMethodComponent } from './Modules/payment/payment-method/payment-method.component';
 import { SinglePaymentMethodComponent } from './Modules/payment/single-payment-method/single-payment-method.component';
 import { UserOrderHistoryComponent } from './Modules/order/user-order-history/user-order-history.component';
@@ -46,10 +44,13 @@ const routes: Routes = [
     path: 'admin',
     loadChildren: () => import('./Modules/admin/admin.module').then(m => m.AdminModule)
   },
+  {
+    path: 'dl',
+    loadChildren: () => import('./Modules/delivery/delivery.module').then(m => m.DeliveryModule)
+  },
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent },
-  { path: "single-payment-method/:method", component: SinglePaymentMethodComponent },
-  { path: "delivery-home", component: DeliveryHomeComponent }
+  { path: "single-payment-method/:method", component: SinglePaymentMethodComponent }
 ];
 
 @NgModule({

@@ -21,6 +21,10 @@ export class DeliveryService {
     return this.http.post(`${this.baseUrl}/place`, d);
   }
 
+  public fetchDeliveryOrderStatus(orderId: string) {
+    return this.http.get(`${this.baseUrl}/status/${orderId}`);
+  }
+
   public fetchAllDeliveryManDetails() {
     return this.http.get(`${this.baseUrl}/delivery`);
   }

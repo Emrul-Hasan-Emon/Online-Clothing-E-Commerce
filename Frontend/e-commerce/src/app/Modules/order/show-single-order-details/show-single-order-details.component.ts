@@ -25,7 +25,8 @@ export class ShowSingleOrderDetailsComponent implements OnInit, OnDestroy {
   payablePrice = 0;
   deliveryInfo;
   status;
-  
+  deliveryOrderStatus;
+
   constructor(
     private cartService: CartService,
     private activatedRoute: ActivatedRoute,
@@ -109,8 +110,17 @@ export class ShowSingleOrderDetailsComponent implements OnInit, OnDestroy {
       (error) => {
         alert('An error occured while fetching order status');
       }
-    )
+    );
   }
+
+  private fetchDeliveryOrderStatus() {
+    this.deliveryService.fetchDeliveryOrderStatus(this.orderID).subscribe(
+      (response: any) => {
+        this.deliveryOrderStatus = response.toString();
+      }
+    );
+  }
+
   ngOnInit(): void {
     this.isUser = this.authService.isUserLogged;
     this.isAdmin = this.authService.isAdminLogged;
@@ -131,6 +141,7 @@ export class ShowSingleOrderDetailsComponent implements OnInit, OnDestroy {
         console.log('orderId --> ', this.orderID);
         this.fetchOrderDetails();
         this.fetchOrderStatus();
+        this.fetchDeliveryOrderStatus();
       }
     )
   }
