@@ -15,7 +15,7 @@
               </div>
         </div>
     </div>
-    <div class="assign-to" *ngIf="status === 'Shipping' && isAdmin === true">
+    <div class="assign-to" *ngIf="status === 'Shipping' && orderStatus !== 'Shipping' && isAdmin === true">
         <table>
             <thead>
                 <tr>

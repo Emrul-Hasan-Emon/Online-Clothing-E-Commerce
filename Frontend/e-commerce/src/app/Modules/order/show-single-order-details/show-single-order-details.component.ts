@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { count } from 'rxjs';
 import { DeliveryService } from 'src/app/Service/Delivery/delivery.service';
+import { OrderService } from 'src/app/Service/Order/order.service';
 import { AuthService } from 'src/app/Service/auth.service';
 import { CartService } from 'src/app/Service/cart.service';
 import { ProductFetchService } from 'src/app/Service/product-fetch.service';
@@ -11,7 +12,7 @@ import { ProductFetchService } from 'src/app/Service/product-fetch.service';
   templateUrl: './show-single-order-details.component.html',
   styleUrls: ['./show-single-order-details.component.css']
 })
-export class ShowSingleOrderDetailsComponent implements OnInit {
+export class ShowSingleOrderDetailsComponent implements OnInit, OnDestroy {
   isUser = false;
   isAdmin = false;
   orderID;
@@ -30,7 +31,8 @@ export class ShowSingleOrderDetailsComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private productFetchService: ProductFetchService,
     private authService: AuthService,
-    private deliveryService: DeliveryService
+    private deliveryService: DeliveryService,
+    private orderService: OrderService
   ) {}
 
   calculateCost() {
@@ -126,12 +128,25 @@ export class ShowSingleOrderDetailsComponent implements OnInit {
     console.log('Order Status ---> ', this.orderStatus);
   }
 
+  private changeOrderStatus(status: string) {
+    this.orderService.changeOrderStatus(this.orderID, status).subscribe(
+      (response: any) => {
+        alert('Order Change status is changed');
+        this.orderStatus = "Shipping";
+      },
+      (error) => {
+        alert('An error occured while changing order status');
+      }
+    )
+  }
+
   assignOrder(d: any) {
     const confirm = window.confirm(`Are you sure to assign the order to ${d.name}?`);
     if(confirm) {
       this.deliveryService.assignOrderToADeliveryMan(d.userID, this.orderID).subscribe(
         (response: any) => {
           alert(`The order is assigned to ${d.name}`);
+          this.changeOrderStatus("Shipping");
           this.doAdminJobs();
         },
         (error) => {
@@ -139,5 +154,14 @@ export class ShowSingleOrderDetailsComponent implements OnInit {
         }
       )
     }
+  }
+
+  ngOnDestroy(): void {
+      if(this.status != this.orderStatus) {
+        const confirm = window.confirm('Do you want change the order status?');
+        if(confirm) {
+          this.orderStatus = this.status;
+        }
+      }
   }
 }

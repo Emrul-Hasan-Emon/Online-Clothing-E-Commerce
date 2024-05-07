@@ -37,6 +37,13 @@ export class OrderService {
     
   }
 
+  public changeOrderStatus(orderID: string, status: string) {
+    const order = {
+      status: status
+    }
+    return this.http.post(`${this.baseUrl}/change/${orderID}`, order);
+  }
+
   public insertNewOrderDetails() {
     return this.http.post(`${this.baseUrl}/insert`, this.orderDetails);
   }
