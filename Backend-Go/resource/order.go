@@ -99,3 +99,23 @@ func (pr *Product) RemoveOrder(
 		common.SetHeader(w)
 	}
 }
+
+func (pr *Product) CreateOrderStatusChanger(
+	db *database.Database,
+) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		rw := common.RequestWrapper(r)
+		orderId, err := rw.FindOrderId()
+		if err != nil {
+			http.Error(w, "order couldn't found", http.StatusBadRequest)
+			return
+		}
+		err = db.ChangeOrderStatus(orderId)
+
+		if err != nil {
+			http.Error(w, "an error occured while changing the order status", http.StatusBadRequest)
+			return
+		}
+		common.SetHeader(w)
+	}
+}
