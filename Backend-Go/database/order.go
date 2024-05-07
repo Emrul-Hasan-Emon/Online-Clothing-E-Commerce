@@ -113,3 +113,14 @@ func (db *Database) ChangeOrderStatus(orderID int, status string) error {
 	_, err := db.db.Exec(query, status, orderID)
 	return err
 }
+
+func (db *Database) FetchOrderStatus(orderID int) (string, error) {
+	query := "SELECT OrderStatus FROM online_clothing_management_system.Orders WHERE OrderID = ?"
+	row := db.db.QueryRow(query, orderID)
+	var status string
+	err := row.Scan(&status)
+	if err != nil {
+		return "", err
+	}
+	return status, err
+}
