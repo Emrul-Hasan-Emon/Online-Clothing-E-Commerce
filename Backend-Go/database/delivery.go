@@ -1,6 +1,8 @@
 package database
 
-import "github.com/Emrul-Hasan-Emon/repositories/ecommerce/model"
+import (
+	"github.com/Emrul-Hasan-Emon/repositories/ecommerce/model"
+)
 
 func (db *Database) FetchDeliveryInformation(role string) ([]model.User, error) {
 	query := `SELECT * FROM online_clothing_management_system.User WHERE Role = ? AND IsDeleted = false`
@@ -55,4 +57,38 @@ func (db *Database) FetchDeliveryQuantityInformation() ([]model.DeliveryCount, e
 		deliveryCountList = append(deliveryCountList, d)
 	}
 	return deliveryCountList, nil
+}
+
+func (db *Database) InsertNewDelivery(delivery model.Delivery) error {
+	shipping := "Shipping"
+	stmt, err := db.db.Prepare("INSERT INTO online_clothing_management_system.Delivery (OrderID, UserID, OrderStatus) VALUES (?, ?, ?)")
+	if err != nil {
+		return err
+	}
+	defer stmt.Close()
+
+	_, err = stmt.Exec(delivery.OrderID, delivery.UserID, shipping)
+	return err
+}
+
+func (db *Database) FetchDeliveryCount(UserID int) (int, error) {
+	query := `SELECT Quantity FROM online_clothing_management_system.DeliveryCount WHERE UserID = ?`
+	row := db.db.QueryRow(query, UserID)
+
+	var quantity int
+	err := row.Scan(&quantity)
+	if err != nil {
+		return -1, nil
+	}
+	return quantity, nil
+}
+
+func (db *Database) UpdateCountInDeliveryCount(UserID, count int) error {
+	stmt, err := db.db.Prepare("UPDATE online_clothing_management_system.DeliveryCount SET Quantity = ? WHERE UserID = ?")
+	if err != nil {
+		return err
+	}
+	defer stmt.Close()
+	_, err = stmt.Exec(count, UserID)
+	return err
 }

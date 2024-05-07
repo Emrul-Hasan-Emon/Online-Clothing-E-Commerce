@@ -6,6 +6,7 @@ import (
 
 	"github.com/Emrul-Hasan-Emon/repositories/ecommerce/common"
 	"github.com/Emrul-Hasan-Emon/repositories/ecommerce/database"
+	"github.com/Emrul-Hasan-Emon/repositories/ecommerce/model"
 )
 
 func (pr *Product) CreateDeliveryManListFetcher(
@@ -51,5 +52,39 @@ func (pr *Product) CreateDeliveryCountFetcher(
 		}
 		common.SetHeader(w)
 		w.Write(jsonData)
+	}
+}
+
+func (pr *Product) CreateNewDeliveryCreater(
+	db *database.Database,
+) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		var deliver model.Delivery
+		err := json.NewDecoder(r.Body).Decode(&deliver)
+		if err != nil {
+			http.Error(w, "an unexpected error occured", http.StatusBadRequest)
+			return
+		}
+
+		deliveryCount, err := db.FetchDeliveryCount(deliver.UserID)
+		if err != nil || deliveryCount == -1 {
+			http.Error(w, "no user id found", http.StatusBadRequest)
+			return
+		}
+		deliveryCount++
+
+		err = db.InsertNewDelivery(deliver)
+		if err != nil {
+			http.Error(w, "couldn't place new order", http.StatusBadRequest)
+			return
+		}
+
+		err = db.UpdateCountInDeliveryCount(deliver.UserID, deliveryCount)
+		if err != nil {
+			http.Error(w, "couldn't place new order", http.StatusBadRequest)
+			return
+		}
+		w.WriteHeader(http.StatusOK)
+		json.NewEncoder(w).Encode("successfully placed order")
 	}
 }

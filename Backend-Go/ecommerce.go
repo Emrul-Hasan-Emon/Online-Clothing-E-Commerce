@@ -54,6 +54,7 @@ func main() {
 	deliveryRouter := router.SubRouteBuilder("/delivery")
 	deliveryRouter.Add("Fetch Delivery Man List", http.MethodGet, "/{role}", pr.CreateDeliveryManListFetcher(db))
 	deliveryRouter.Add("Fetch Delivery Count", http.MethodGet, "/d/count", pr.CreateDeliveryCountFetcher(db))
+	deliveryRouter.Add("Place New Delivery", http.MethodPost, "/place", pr.CreateNewDeliveryCreater(db))
 
 	log.Fatal(http.ListenAndServe(config.Server().String(), router.Router()))
 }
