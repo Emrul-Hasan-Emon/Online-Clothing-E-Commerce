@@ -30,7 +30,7 @@
                     <td>{{ d.userID }}</td>
                     <td>{{ d.name }}</td>
                     <td>{{ d.count }}</td>
-                    <td> <button>Assign Order</button></td>
+                    <td> <button (click)="assignOrder(d)">Assign Order</button></td>
                 </tr>
             </ng-container>
         </table>

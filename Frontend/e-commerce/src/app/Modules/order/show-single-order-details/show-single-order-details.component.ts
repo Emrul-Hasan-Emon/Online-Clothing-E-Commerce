@@ -122,6 +122,22 @@ export class ShowSingleOrderDetailsComponent implements OnInit {
   }
 
   statusFilterSelected() {
+    this.doAdminJobs();
     console.log('Order Status ---> ', this.orderStatus);
+  }
+
+  assignOrder(d: any) {
+    const confirm = window.confirm(`Are you sure to assign the order to ${d.name}?`);
+    if(confirm) {
+      this.deliveryService.assignOrderToADeliveryMan(d.userID, this.orderID).subscribe(
+        (response: any) => {
+          alert(`The order is assigned to ${d.name}`);
+          this.doAdminJobs();
+        },
+        (error) => {
+          alert('An error occured');
+        }
+      )
+    }
   }
 }
