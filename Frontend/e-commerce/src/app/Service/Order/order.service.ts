@@ -56,6 +56,9 @@ export class OrderService {
     return this.http.get(`${this.baseUrl}/user/${userId}`);
   }
   
+  public fetchOrderStatus(orderId: string) {
+    return this.http.get(`${this.baseUrl}/status/${orderId}`)
+  }
   public removeOrderDetails(orderId: string) {
     this.http.get(`${this.baseUrl}/remove/${orderId}`);
   }

@@ -100,11 +100,22 @@ export class ShowSingleOrderDetailsComponent implements OnInit, OnDestroy {
     )
   }
 
+  private fetchOrderStatus() {
+    this.orderService.fetchOrderStatus(this.orderID).subscribe(
+      (response: any) => {
+        this.orderStatus = response.toString();
+        this.status = this.orderStatus
+      },
+      (error) => {
+        alert('An error occured while fetching order status');
+      }
+    )
+  }
   ngOnInit(): void {
     this.isUser = this.authService.isUserLogged;
     this.isAdmin = this.authService.isAdminLogged;
     this.isAdmin = true;
-
+    
     if(this.isAdmin) {
       this.doAdminJobs();
     }
@@ -119,13 +130,13 @@ export class ShowSingleOrderDetailsComponent implements OnInit, OnDestroy {
         this.orderID = params.get('id');
         console.log('orderId --> ', this.orderID);
         this.fetchOrderDetails();
+        this.fetchOrderStatus();
       }
     )
   }
 
   statusFilterSelected() {
     this.doAdminJobs();
-    console.log('Order Status ---> ', this.orderStatus);
   }
 
   private changeOrderStatus(status: string) {
@@ -148,6 +159,7 @@ export class ShowSingleOrderDetailsComponent implements OnInit, OnDestroy {
           alert(`The order is assigned to ${d.name}`);
           this.changeOrderStatus("Shipping");
           this.doAdminJobs();
+          this.fetchOrderStatus();
         },
         (error) => {
           alert('An error occured');
@@ -161,6 +173,7 @@ export class ShowSingleOrderDetailsComponent implements OnInit, OnDestroy {
         const confirm = window.confirm('Do you want change the order status?');
         if(confirm) {
           this.orderStatus = this.status;
+          this.changeOrderStatus(this.status);
         }
       }
   }
