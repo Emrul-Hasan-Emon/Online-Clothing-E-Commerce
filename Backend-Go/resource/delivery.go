@@ -88,3 +88,28 @@ func (pr *Product) CreateNewDeliveryCreater(
 		json.NewEncoder(w).Encode("successfully placed order")
 	}
 }
+
+func (pr *Product) CreateDeliveryStatusFetcher(
+	db *database.Database,
+) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		rw := common.RequestWrapper(r)
+		orderId, err := rw.FindOrderId()
+		if err != nil {
+			http.Error(w, "order couldn't found", http.StatusBadRequest)
+			return
+		}
+		orderStatus, err := db.FetchDeliveryStatus(orderId)
+		if orderStatus == "" || err != nil {
+			http.Error(w, "order status couldn't be fetched", http.StatusBadRequest)
+			return
+		}
+		common.SetHeader(w)
+		jsonData, err := json.Marshal(orderStatus)
+		if err != nil {
+			http.Error(w, "an unexpected error occured", http.StatusBadRequest)
+			return
+		}
+		w.Write(jsonData)
+	}
+}

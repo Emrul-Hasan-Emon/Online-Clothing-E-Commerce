@@ -92,3 +92,14 @@ func (db *Database) UpdateCountInDeliveryCount(UserID, count int) error {
 	_, err = stmt.Exec(count, UserID)
 	return err
 }
+
+func (db *Database) FetchDeliveryStatus(orderId int) (string, error) {
+	query := "SELECT OrderStatus FROM online_clothing_management_system.Delivery WHERE OrderID = ?"
+	row := db.db.QueryRow(query, orderId)
+	var status string
+	err := row.Scan(&status)
+	if err != nil {
+		return "", err
+	}
+	return status, err
+}
