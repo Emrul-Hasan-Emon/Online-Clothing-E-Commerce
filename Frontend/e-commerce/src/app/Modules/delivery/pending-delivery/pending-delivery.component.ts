@@ -31,7 +31,7 @@ export class PendingDeliveryComponent implements OnInit {
         this.orderDetails = orders.filter(order => orderIds.includes(order.orderID));
         console.log("Filtered Orders: ", this.orderDetails);
       }
-    )
+    );
   }
   private fetchPendingDelivery() {
     this.deliveryService.fetchPendingDelivery(+this.userDetails.id, "Shipping").subscribe(

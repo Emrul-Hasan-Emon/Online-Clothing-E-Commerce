@@ -13,6 +13,14 @@ export class DeliveryService {
     return this.http.get(`${this.baseUrl}/change/${orderId}`);
   }
 
+  public fetchCompletedDelivery(userID: number, status: string) {
+    const d = {
+      "userID": userID,
+      "orderStatus": status
+    };
+    return this.http.post(`${this.baseUrl}/info`, d);
+  }
+
   public fetchPendingDelivery(userID: number, status: string) {
     const d = {
       "userID": userID,

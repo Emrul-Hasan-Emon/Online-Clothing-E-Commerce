@@ -2,10 +2,11 @@
     <div>
         <h2 class="text-center">Completed Delivery</h2>
     </div>
-    <div>
-        
+    <div class="earnings-number">
+        <h3 class="text-center">Total Completed Order: {{ totalOrder }}</h3>
+        <h3 class="text-center">Total Earnings: {{ totalEarnings }} BDT</h3>
     </div>
-    <div>
+    <div class="delivery-container">
         <table>
             <thead>
                 <td>Customer Name</td>
@@ -13,8 +14,18 @@
                 <td>Addres</td>
                 <td>District</td>
                 <td>City</td>
-                <td>Delivery Status</td>
+                <td>Status</td>
             </thead>
+            <ng-container *ngFor="let order of orderDetails">
+                <tr>
+                    <td>{{ order.name }}</td>
+                    <td>{{ order.contact }}</td>
+                    <td> {{ order.address }}</td>
+                    <td>{{ order.district }}</td>
+                    <td> {{ order.city }}</td>
+                    <td>Delivered</td>
+                </tr>
+            </ng-container>
         </table>
     </div>
 </div>
