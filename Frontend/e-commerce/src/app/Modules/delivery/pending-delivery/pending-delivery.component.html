@@ -2,7 +2,7 @@
     <div>
         <h2 class="text-center">Pending Delivery</h2>
     </div>
-    <div class="delivery-container">
+    <div class="delivery-container" *ngIf="pendingDeliveryDetails">
         <table>
             <thead>
                 <tr>
@@ -25,5 +25,8 @@
                 </tr>
             </ng-container>
         </table>
+    </div>
+    <div *ngIf="!pendingDeliveryDetails">
+        <h1>No Pending Delivery</h1>
     </div>
 </div>

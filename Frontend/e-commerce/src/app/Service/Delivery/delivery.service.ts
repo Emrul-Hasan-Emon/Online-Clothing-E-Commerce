@@ -9,6 +9,10 @@ export class DeliveryService {
 
   constructor(private http: HttpClient) { }
 
+  public changeDeliveryOrderStatus(orderId: number) {
+    return this.http.get(`${this.baseUrl}/change/${orderId}`);
+  }
+
   public fetchPendingDelivery(userID: number, status: string) {
     const d = {
       "userID": userID,

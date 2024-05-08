@@ -62,7 +62,15 @@ export class PendingDeliveryComponent implements OnInit {
   deliverOrder() {
     const confirm = window.confirm(`Are you sure that you delivered order properly?`)
     if(confirm) {
-
+      this.deliveryService.changeDeliveryOrderStatus(this.pendingDeliveryDetails[0].orderID).subscribe(
+        (response: any) => {
+          alert('Order Status is changed');
+          this.fetchPendingDelivery();
+        },
+        (error) => {
+          alert(`Coudln't change order status`);
+        }
+      )
     }
   }
 }
