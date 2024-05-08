@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AutoCompleteCompleteEvent } from 'primeng/autocomplete';
 import { AuthService } from 'src/app/Service/auth.service';
 
 @Component({
@@ -11,9 +12,21 @@ export class CustomerTableComponent implements OnInit {
   users;
   allUsers;
   role: string = 'all';
+  searchOptions: string[] = [];
+  selectedUser: string = '';
+  suggestions: string[] = [];
+  
   constructor(
     private authService: AuthService
   ) {}
+
+  private storeSearchOptions() {
+    this.allUsers.forEach(user => {
+      this.searchOptions.push(user.name);
+    });
+    this.suggestions = this.searchOptions;
+    console.log('Suggestion -->  ', this.suggestions);
+  }
 
   private fetchAllusers() {
     this.authService.fetchAllUsers().subscribe(
@@ -21,6 +34,7 @@ export class CustomerTableComponent implements OnInit {
         console.log("All users --> ", response);
         this.allUsers = response;
         this.users = response;
+        this.storeSearchOptions();
       },
       (error) => {
         alert(`An error occured while fetching all user information`);
@@ -37,6 +51,15 @@ export class CustomerTableComponent implements OnInit {
     );
     if(this.role === 'all') {
       this.users = this.allUsers;
+    }
+  }
+
+  onSearch() {
+    this.onRoleChange();
+    if(this.selectedUser.trim() !== '') {
+      this.users = this.users.filter(user =>
+        user.name.toLowerCase().includes(this.selectedUser.toLowerCase())
+      );
     }
   }
 }

@@ -10,7 +10,7 @@ import { CustomerTableComponent } from './customer-table/customer-table.componen
 import { AddProductComponent } from './add-product/add-product.component';
 import { ShowProductDetailsComponent } from './show-product-details/show-product-details.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { AutoCompleteModule } from 'primeng/autocomplete';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     AdminRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    AutoCompleteModule
   ],
 })
 export class AdminModule { }

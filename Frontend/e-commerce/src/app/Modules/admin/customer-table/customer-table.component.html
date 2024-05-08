@@ -2,6 +2,14 @@
     <div>
         <h2 class="text-center">Customer Table (Admin)</h2>
     </div>
+    <div class="search-box flex justify-between">
+        <div>
+            <input type="text" placeholder="Search by user name" [(ngModel)]="selectedUser">
+        </div>
+        <div>
+            <button class="filter-button" (click)="onSearch()">Search</button>
+        </div>
+    </div>
     <div class="filter-container flex justify-between flex-wrap">
         <div class="all">
             <input type="radio" name="statusFilter" id="all" [(ngModel)]="role" value="all" (change)="onRoleChange()" [checked]="role === 'all'">

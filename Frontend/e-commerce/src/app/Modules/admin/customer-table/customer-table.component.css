@@ -39,3 +39,15 @@ tr:hover {
 button:hover {
     background-color: orange;
 }
+
+.filter-button {
+    align-self: flex-end;
+  }
+  
+  .search-box input {
+      width: 400px;
+      height: 40px;
+      border: 1px solid black;
+      border-radius: 3px;
+      margin-bottom: 20px;
+  }
