@@ -17,6 +17,7 @@ export class OrderTableComponent implements OnInit {
   endDate: string = '';
   filteredOrderHistory: any;
   filterMark: boolean = false;
+  searchQuery: string = '';
 
   constructor(
     private authService: AuthService,
@@ -100,5 +101,16 @@ export class OrderTableComponent implements OnInit {
     this.filterMark = false;
     this.selectedStatus = 'all';
     this.orderHistory = this.allOrderHistory;
+  }
+
+  onSearch() {
+    this.onStatusChange();
+    if (this.searchQuery.trim() !== '') {
+      this.orderHistory = this.orderHistory.filter(order =>
+        order.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+    } else {
+      this.orderHistory = this.allOrderHistory;
+    }
   }
 }

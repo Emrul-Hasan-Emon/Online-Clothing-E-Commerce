@@ -2,7 +2,15 @@
     <div>
         <h2 class="text-center">Order History (Admin)</h2>
     </div>
-    <div class="filter-container flex justify-between flex-wrap">
+    <div class="filter-container flex-col justify-between flex-wrap">
+        <div class="search-box flex justify-between">
+            <div>
+                <input type="text" placeholder="Search by user name" [(ngModel)]="searchQuery">
+            </div>
+            <div>
+                <button class="filter-button" (click)="onSearch()">Search</button>
+            </div>
+        </div>
         <div class="date-range">
             <!-- Date range inputs -->
             <div class="date-input mr-6">
@@ -13,11 +21,13 @@
                 <label for="endDate">End Date:</label>
                 <input type="date" id="endDate" name="endDate" [(ngModel)]="endDate" placeholder="mm/dd/yyyy">
             </div>
+            <div>
+                <button class="filter-button" (click)="onDateRangeFilter()">Filter</button>
+                <ng-container *ngIf="filterMark">
+                    <button class="filter-button" (click)="undoFilteres()">Undo Filter</button>
+                </ng-container>
+            </div>
         </div>
-        <button class="filter-button" (click)="onDateRangeFilter()">Filter</button>
-        <ng-container *ngIf="filterMark">
-            <button class="filter-button" (click)="undoFilteres()">Undo Filter</button>
-        </ng-container>
     </div>
     <div class="filter-container flex justify-between flex-wrap">
         <div class="all">
