@@ -110,3 +110,22 @@ func (auth *Authentication) CreateSpecificUserFetcher(
 		w.Write(userJson)
 	}
 }
+
+func (auth *Authentication) CreateAllUserFetcher(
+	db *database.Database,
+) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		users, err := db.GetAllUsers()
+		if err != nil {
+			http.Error(w, "couldn't fetch all users", http.StatusBadRequest)
+			return
+		}
+		userJson, err := json.Marshal(users)
+		if err != nil {
+			http.Error(w, "an unexpected error occured.", http.StatusBadRequest)
+			return
+		}
+		common.SetHeader(w)
+		w.Write(userJson)
+	}
+}

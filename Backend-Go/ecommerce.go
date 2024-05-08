@@ -30,11 +30,12 @@ func main() {
 	authRouter.Add("Log In", http.MethodPost, "/login", auth.ValidateUser(db))
 	authRouter.Add("Token Validate", http.MethodGet, "/validate", auth.ValidateToken())
 	authRouter.Add("Fetch User Details", http.MethodGet, "/user/{userId}", auth.CreateSpecificUserFetcher(db))
+	authRouter.Add("Fetch All Users", http.MethodGet, "/all", auth.CreateAllUserFetcher(db))
 
 	productRouter := router.SubRouteBuilder("/products")
 	productRouter.Add("Get All Products", http.MethodGet, "/", pr.CreateProductFetcher(db))
 	productRouter.Add("Get Product By ID", http.MethodGet, "/{productId}", pr.CreateSingleProductFetcher(db))
-	productRouter.Add("Inser New Product", http.MethodPost, "/insert", pr.InsertNewProduct(db))
+	productRouter.Add("Insert New Product", http.MethodPost, "/insert", pr.InsertNewProduct(db))
 	productRouter.Add("Delete Product", http.MethodGet, "/delete/{productId}", pr.DeleteProduct(db))
 	productRouter.Add("Update Product", http.MethodPost, "/update/{productId}", pr.UpdateProduct(db))
 
@@ -60,5 +61,6 @@ func main() {
 	deliveryRouter.Add("Fetch Delivery Status", http.MethodGet, "/status/{orderId}", pr.CreateDeliveryStatusFetcher(db))
 	deliveryRouter.Add("Fetch New Delivery Information", http.MethodPost, "/info", pr.CreateDeliveryDetailsFetcher(db))
 	deliveryRouter.Add("Change Delivery Order Status", http.MethodGet, "/change/{orderId}", pr.CreateDeliveryStatusChanger(db))
+
 	log.Fatal(http.ListenAndServe(config.Server().String(), router.Router()))
 }

@@ -202,6 +202,39 @@ func (db *Database) GetUserDetailsById(userId int) (model.User, error) {
 	return user, nil
 }
 
+func (db *Database) GetAllUsers() ([]model.User, error) {
+	query := `SELECT * FROM online_clothing_management_system.User WHERE IsDeleted = false`
+	rows, err := db.db.Query(query)
+	if err != nil {
+		return []model.User{}, err
+	}
+
+	var users []model.User
+	for rows.Next() {
+		var user model.User
+
+		err := rows.Scan(
+			&user.ID,
+			&user.Name,
+			&user.PhoneNumber,
+			&user.Email,
+			&user.Gender,
+			&user.Address,
+			&user.Role,
+			&user.DateOfBirth,
+			&user.Password,
+			&user.IsDeleted,
+			&user.City,
+			&user.District,
+		)
+		if err != nil {
+			return []model.User{}, err
+		}
+		users = append(users, user)
+	}
+	return users, nil
+}
+
 func (db *Database) DeleteProductFromDatabase(productId int) error {
 	// Prepare the SQL statement for updating the product
 	stmt, err := db.db.Prepare("UPDATE online_clothing_management_system.Products SET IsDeleted = true WHERE Id = ?")
