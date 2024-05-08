@@ -25,7 +25,7 @@ export class ShowSingleOrderDetailsComponent implements OnInit, OnDestroy {
   payablePrice = 0;
   deliveryInfo;
   status;
-  deliveryOrderStatus;
+  deliveryOrderStatus: string = '';
 
   constructor(
     private cartService: CartService,

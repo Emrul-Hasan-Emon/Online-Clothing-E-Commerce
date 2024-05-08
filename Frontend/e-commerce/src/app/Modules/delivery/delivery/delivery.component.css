@@ -1,0 +1,32 @@
+.delivery-container {
+    display: flex;
+}
+
+.navigation {
+    width: 15%;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #f1f1f1;
+    height: 100%;
+    width: 100%;
+}
+
+li a {
+    display: block;
+    text-decoration: none;
+    padding: 8px 16px;
+    color: #000;
+}
+
+li a:hover {
+    background-color: #555;
+    color: white;
+}
+
+.delivery-result-container {
+    width: 70%;
+}

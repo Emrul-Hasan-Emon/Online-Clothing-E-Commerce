@@ -1,1 +1,12 @@
-<p>delivery works!</p>
+<div class="delivery-container">
+    <div class="navigation">
+        <ul>
+            <li><a routerLink="pending">Pending Delivery</a></li>
+            <li><a routerLink="completed">Completed Delivery</a></li>
+            <li><a routerLink="earnings">Total Earnings</a></li>
+        </ul>
+    </div>
+    <div class="delivery-result-container">
+        <router-outlet></router-outlet>
+    </div>
+</div>
