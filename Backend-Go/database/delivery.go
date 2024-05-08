@@ -125,3 +125,13 @@ func (db *Database) FetchNewDeliveryInformation(delivery model.DeliveryBody) ([]
 	}
 	return deliveryInfo, nil
 }
+
+func (db *Database) UpdateDeliveryStatus(orderID int) error {
+	stmt, err := db.db.Prepare("UPDATE online_clothing_management_system.Delivery SET OrderStatus = ? WHERE OrderID = ?")
+	if err != nil {
+		return err
+	}
+	defer stmt.Close()
+	_, err = stmt.Exec("Delivered", orderID)
+	return err
+}

@@ -138,3 +138,22 @@ func (pr *Product) CreateDeliveryDetailsFetcher(
 		w.Write(jsonData)
 	}
 }
+
+func (pr *Product) CreateDeliveryStatusChanger(
+	db *database.Database,
+) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		rw := common.RequestWrapper(r)
+		orderID, err := rw.FindOrderId()
+		if err != nil || orderID == 0 {
+			http.Error(w, "User Id couldn't found", http.StatusBadRequest)
+			return
+		}
+		err = db.UpdateDeliveryStatus(orderID)
+		if err != nil {
+			http.Error(w, "an error occured while changin delivery status", http.StatusBadRequest)
+			return
+		}
+		w.WriteHeader(http.StatusOK)
+	}
+}
