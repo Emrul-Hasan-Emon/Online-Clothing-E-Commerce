@@ -2,30 +2,59 @@
     <div>
         <h2 class="text-center">Customer Table (Admin)</h2>
     </div>
-    <div class="search-box flex justify-between">
-        <div>
-            <input type="text" placeholder="Search by user name" [(ngModel)]="selectedUser">
+    <div>
+        <div class="search-box flex justify-between">
+            <div>
+                <input type="text" placeholder="Search by user name" [(ngModel)]="selectedUser">
+            </div>
+            <div>
+                <button class="filter-button" (click)="onChange()">Search</button>
+            </div>
         </div>
-        <div>
-            <button class="filter-button" (click)="onSearch()">Search</button>
+        <div class="filter-container flex justify-between flex-wrap">
+
         </div>
-    </div>
-    <div class="filter-container flex justify-between flex-wrap">
-        <div class="all">
-            <input type="radio" name="statusFilter" id="all" [(ngModel)]="role" value="all" (change)="onRoleChange()" [checked]="role === 'all'">
-            <label class="ml-2" for="all">All</label>
+        <div class="mb-10">
+            <div>
+                <p class="font-bold">Filter By User Role: </p>
+            </div>
+            <div class="filter-container flex justify-between flex-wrap">
+                <div class="all">
+                    <input type="radio" name="statusFilter" id="all" [(ngModel)]="role" value="all" (change)="onChange()" [checked]="role === 'all'">
+                    <label class="ml-2" for="all">All</label>
+                </div>
+                <div class="admin">
+                    <input type="radio" name="statusFilter" id="admin" [(ngModel)]="role" value="admin" (change)="onChange()" [checked]="role === 'admin'">
+                    <label class="ml-2" for="admin">Admin</label>
+                </div>
+                <div class="user">
+                    <input type="radio" name="statusFilter" id="user" [(ngModel)]="role" value="user" (change)="onChange()" [checked]="role === 'user'">
+                    <label class="ml-2" for="user">User</label>
+                </div>
+                <div class="role">
+                    <input type="radio" name="statusFilter" id="delivery" [(ngModel)]="role" value="delivery" (change)="onChange()" [checked]="role === 'delivery'">
+                    <label class="ml-2" for="delivery">Delivery</label>
+                </div>
+            </div>
         </div>
-        <div class="admin">
-            <input type="radio" name="statusFilter" id="admin" [(ngModel)]="role" value="admin" (change)="onRoleChange()" [checked]="role === 'admin'">
-            <label class="ml-2" for="admin">Admin</label>
-        </div>
-        <div class="user">
-            <input type="radio" name="statusFilter" id="user" [(ngModel)]="role" value="user" (change)="onRoleChange()" [checked]="role === 'user'">
-            <label class="ml-2" for="user">User</label>
-        </div>
-        <div class="role">
-            <input type="radio" name="statusFilter" id="delivery" [(ngModel)]="role" value="delivery" (change)="onRoleChange()" [checked]="role === 'delivery'">
-            <label class="ml-2" for="delivery">Delivery</label>
+        <div class="mb-5">
+            <div>
+                <p class="font-bold">Filter By Gender</p>
+            </div>
+            <div class="filter-container flex justify-between flex-wrap">
+                <div class="all">
+                    <input type="radio" name="genderFilter" id="all" [(ngModel)]="gender" value="all" (change)="onChange()" [checked]="role === 'all'">
+                    <label class="ml-2" for="all">All</label>
+                </div>
+                <div class="male">
+                    <input type="radio" name="genderFilter" id="male" [(ngModel)]="gender" value="male" (change)="onChange()" [checked]="role === 'admin'">
+                    <label class="ml-2" for="admin">Male</label>
+                </div>
+                <div class="female">
+                    <input type="radio" name="genderFilter" id="female" [(ngModel)]="gender" value="female" (change)="onChange()" [checked]="role === 'user'">
+                    <label class="ml-2" for="user">Femle</label>
+                </div>
+            </div>
         </div>
     </div>
     <div class="customer-container">
@@ -48,7 +77,7 @@
                     <td> {{ user.name }}</td>
                     <td> {{ user.gender }} </td>
                     <td>{{ user.role}}</td>
-                    <td> {{ user.contact }} </td>
+                    <td> {{ user.phoneNumber }} </td>
                     <td> {{ user.address }} </td>
                     <td> {{ user.district }} </td>
                     <td> {{ user.city}} </td>

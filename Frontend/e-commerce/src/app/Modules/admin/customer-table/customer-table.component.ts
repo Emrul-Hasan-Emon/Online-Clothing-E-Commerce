@@ -15,7 +15,8 @@ export class CustomerTableComponent implements OnInit {
   searchOptions: string[] = [];
   selectedUser: string = '';
   suggestions: string[] = [];
-  
+  gender: string = 'all';
+
   constructor(
     private authService: AuthService
   ) {}
@@ -45,20 +46,24 @@ export class CustomerTableComponent implements OnInit {
       this.fetchAllusers();
   }
 
-  onRoleChange() {
-    this.users = this.allUsers.filter(user =>
-      user.role.toLowerCase() == this.role.toLowerCase()
-    );
-    if(this.role === 'all') {
-      this.users = this.allUsers;
-    }
-  }
-
-  onSearch() {
-    this.onRoleChange();
+  onChange() {
     if(this.selectedUser.trim() !== '') {
       this.users = this.users.filter(user =>
         user.name.toLowerCase().includes(this.selectedUser.toLowerCase())
+      );
+    } else {
+      this.users = this.allUsers;
+    }
+
+    if(this.role !== 'all') {
+      this.users = this.users.filter(user =>
+        user.role.toLowerCase() == this.role.toLowerCase()
+      );
+    }
+
+    if(this.gender !== 'all') {
+      this.users = this.users.filter(user =>
+        user.role.toLowerCase() == this.gender.toLowerCase()
       );
     }
   }
