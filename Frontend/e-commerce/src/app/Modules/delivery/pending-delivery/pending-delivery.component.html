@@ -11,6 +11,7 @@
                     <td>Addres</td>
                     <td>District</td>
                     <td>City</td>
+                    <td>Delivery Status</td>
                 </tr>
             </thead>
             <ng-container *ngFor="let order of orderDetails">
@@ -20,6 +21,7 @@
                     <td> {{ order.address }}</td>
                     <td>{{ order.district }}</td>
                     <td> {{ order.city }}</td>
+                    <td><button (click)="deliverOrder()">Delivered</button></td>
                 </tr>
             </ng-container>
         </table>

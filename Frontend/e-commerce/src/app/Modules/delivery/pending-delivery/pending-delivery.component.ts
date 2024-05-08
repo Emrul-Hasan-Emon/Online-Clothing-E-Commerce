@@ -34,7 +34,7 @@ export class PendingDeliveryComponent implements OnInit {
     )
   }
   private fetchPendingDelivery() {
-    this.deliveryService.fetchPendingDelivery(+this.userDetails.id).subscribe(
+    this.deliveryService.fetchPendingDelivery(+this.userDetails.id, "Shipping").subscribe(
       (deliveryDetails: any) => {
         this.pendingDeliveryDetails = deliveryDetails;
         console.log("Pending Delivery Details --> ", this.pendingDeliveryDetails);
@@ -57,5 +57,12 @@ export class PendingDeliveryComponent implements OnInit {
   ngOnInit(): void {
     this.getUserCredentials();    
     this.fetchPendingDelivery();
+  }
+
+  deliverOrder() {
+    const confirm = window.confirm(`Are you sure that you delivered order properly?`)
+    if(confirm) {
+
+    }
   }
 }
