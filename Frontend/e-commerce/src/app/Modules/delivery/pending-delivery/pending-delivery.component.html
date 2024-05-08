@@ -1,1 +1,27 @@
-<p>pending-delivery works!</p>
+<div>
+    <div>
+        <h2 class="text-center">Pending Delivery</h2>
+    </div>
+    <div class="delivery-container">
+        <table>
+            <thead>
+                <tr>
+                    <td>Customer Name</td>
+                    <td>Customer Contact</td>
+                    <td>Addres</td>
+                    <td>District</td>
+                    <td>City</td>
+                </tr>
+            </thead>
+            <ng-container *ngFor="let order of orderDetails">
+                <tr>
+                    <td>{{ order.name }}</td>
+                    <td>{{ order.contact }}</td>
+                    <td> {{ order.address }}</td>
+                    <td>{{ order.district }}</td>
+                    <td> {{ order.city }}</td>
+                </tr>
+            </ng-container>
+        </table>
+    </div>
+</div>
