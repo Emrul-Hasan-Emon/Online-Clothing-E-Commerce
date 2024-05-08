@@ -113,3 +113,28 @@ func (pr *Product) CreateDeliveryStatusFetcher(
 		w.Write(jsonData)
 	}
 }
+
+func (pr *Product) CreateDeliveryDetailsFetcher(
+	db *database.Database,
+) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		var deliver model.DeliveryBody
+		err := json.NewDecoder(r.Body).Decode(&deliver)
+		if err != nil {
+			http.Error(w, "request body is not found", http.StatusBadRequest)
+			return
+		}
+		deliveryDetails, err := db.FetchNewDeliveryInformation(deliver)
+		if err != nil {
+			http.Error(w, "no delivery information found", http.StatusBadRequest)
+			return
+		}
+		jsonData, err := json.Marshal(deliveryDetails)
+		if err != nil {
+			http.Error(w, "an unexpected error occured", http.StatusBadRequest)
+			return
+		}
+		w.WriteHeader(http.StatusOK)
+		w.Write(jsonData)
+	}
+}

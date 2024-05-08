@@ -103,3 +103,25 @@ func (db *Database) FetchDeliveryStatus(orderId int) (string, error) {
 	}
 	return status, err
 }
+
+func (db *Database) FetchNewDeliveryInformation(delivery model.DeliveryBody) ([]model.DeliverDetails, error) {
+	query := "SELECT OrderID, OrderStatus FROM online_clothing_management_system.Delivery WHERE UserID = ? AND OrderStatus = ?"
+	rows, err := db.db.Query(query, delivery.UserID, delivery.OrderStatus)
+
+	if err != nil {
+		return nil, err
+	}
+
+	defer rows.Close()
+
+	var deliveryInfo []model.DeliverDetails
+	for rows.Next() {
+		var d model.DeliverDetails
+		err := rows.Scan(&d.OrderID, &d.OrderStatus)
+		if err != nil {
+			return nil, err
+		}
+		deliveryInfo = append(deliveryInfo, d)
+	}
+	return deliveryInfo, nil
+}

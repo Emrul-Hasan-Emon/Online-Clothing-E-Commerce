@@ -58,6 +58,7 @@ func main() {
 	deliveryRouter.Add("Fetch Delivery Count", http.MethodGet, "/d/count", pr.CreateDeliveryCountFetcher(db))
 	deliveryRouter.Add("Place New Delivery", http.MethodPost, "/place", pr.CreateNewDeliveryCreater(db))
 	deliveryRouter.Add("Fetch Delivery Status", http.MethodGet, "/status/{orderId}", pr.CreateDeliveryStatusFetcher(db))
+	deliveryRouter.Add("Fetch New Delivery Information", http.MethodPost, "/info", pr.CreateDeliveryDetailsFetcher(db))
 
 	log.Fatal(http.ListenAndServe(config.Server().String(), router.Router()))
 }
