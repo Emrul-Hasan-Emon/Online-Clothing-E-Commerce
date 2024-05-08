@@ -40,6 +40,9 @@ export class AuthService {
     return this.http.post(`${this.baseUrl}/login`, userData)
   }
 
+  public fetchAllUsers() {
+    return this.http.get(`${this.baseUrl}/all`);
+  }
   public fetchSpecificUserInfo(userId: number) {
     return this.http.get(`${this.baseUrl}/user/${userId}`);
   }

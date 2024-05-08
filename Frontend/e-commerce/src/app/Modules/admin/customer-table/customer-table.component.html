@@ -2,28 +2,48 @@
     <div>
         <h2 class="text-center">Customer Table (Admin)</h2>
     </div>
+    <div class="filter-container flex justify-between flex-wrap">
+        <div class="all">
+            <input type="radio" name="statusFilter" id="all" [(ngModel)]="role" value="all" (change)="onRoleChange()" [checked]="role === 'all'">
+            <label class="ml-2" for="all">All</label>
+        </div>
+        <div class="admin">
+            <input type="radio" name="statusFilter" id="admin" [(ngModel)]="role" value="admin" (change)="onRoleChange()" [checked]="role === 'admin'">
+            <label class="ml-2" for="admin">Admin</label>
+        </div>
+        <div class="user">
+            <input type="radio" name="statusFilter" id="user" [(ngModel)]="role" value="user" (change)="onRoleChange()" [checked]="role === 'user'">
+            <label class="ml-2" for="user">User</label>
+        </div>
+        <div class="role">
+            <input type="radio" name="statusFilter" id="delivery" [(ngModel)]="role" value="delivery" (change)="onRoleChange()" [checked]="role === 'delivery'">
+            <label class="ml-2" for="delivery">Delivery</label>
+        </div>
+    </div>
     <div class="customer-container">
         <table>
             <thead>
                 <tr>
-                    <th>Serial</th>
-                    <th>Customer ID</th>
-                    <th>Customer Name</th>
-                    <th>Registered Date</th>
-                    <th>Actions</th>
+                    <th>User ID</th>
+                    <th>User Name</th>
+                    <th>Gender</th>
+                    <th>Role</th>
+                    <th>Contact</th>
+                    <th>Address</th>
+                    <th>District</th>
+                    <th>City</th>
                 </tr>
             </thead>
-            <ng-container *ngFor="let idx of item">
+            <ng-container *ngFor="let user of users">
                 <tr>
-                    <td>{{ idx }}</td>
-                    <td>emon1234455</td>
-                    <td> Emrul Hasan Emon </td>
-                    <td>25th April</td>
-                    <td>
-                        <button>
-                            View Details
-                        </button>
-                    </td>
+                    <td>{{ user.id }}</td>
+                    <td> {{ user.name }}</td>
+                    <td> {{ user.gender }} </td>
+                    <td>{{ user.role}}</td>
+                    <td> {{ user.contact }} </td>
+                    <td> {{ user.address }} </td>
+                    <td> {{ user.district }} </td>
+                    <td> {{ user.city}} </td>
                 </tr>
             </ng-container>
           </table>
