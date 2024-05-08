@@ -80,6 +80,7 @@ export class NavbarComponent implements OnInit {
     this.isLogged = false;
     localStorage.removeItem('token');
     localStorage.removeItem('userinfo');
+    this.router.navigate(['login']);
   }
 
   navigateToCartDetails() {

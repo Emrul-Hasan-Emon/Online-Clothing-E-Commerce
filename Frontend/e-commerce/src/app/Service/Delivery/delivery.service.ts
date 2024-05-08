@@ -9,6 +9,24 @@ export class DeliveryService {
 
   constructor(private http: HttpClient) { }
 
+  public fetchPendingDelivery(userID: number) {
+    const d = {
+      "userID": userID,
+      "orderStatus": "Shipping"
+    };
+
+    return this.http.post(`${this.baseUrl}/info`, d);
+  }
+
+  public fetchDeliveredDelivery(userID: number) {
+    const d = {
+      "userID": userID,
+      "orderStatus": "Delivered"
+    };
+
+    return this.http.post(`${this.baseUrl}/info`, d);
+  }
+
   public assignOrderToADeliveryMan(userId: string, orderId: string) {
     const userID = +userId
     const orderID = +orderId
