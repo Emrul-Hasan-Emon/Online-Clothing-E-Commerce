@@ -9,10 +9,14 @@ import { AuthService } from 'src/app/Service/auth.service';
   styleUrls: ['./order-table.component.css']
 })
 export class OrderTableComponent implements OnInit {
-  item = [1, 2,3 , 4, 5, 6, 7, 8, 9, 10];
   orderHistory: any;
   allOrderHistory: any;
   selectedStatus: any;
+  names: string[] = [];
+  startDate: string = '';
+  endDate: string = '';
+  filteredOrderHistory: any;
+  filterMark: boolean = false;
 
   constructor(
     private authService: AuthService,
@@ -33,17 +37,17 @@ export class OrderTableComponent implements OnInit {
   fetchOrderHistory() {
     this.orderService.fetchAllOrders().subscribe(
       (orderHistory: any) => {
-        console.log('Order History ---> ', orderHistory);
         this.orderHistory = orderHistory;
         this.allOrderHistory = orderHistory;
         this.sortOrderHistory();
+        console.log('Order History ---> ', orderHistory);
       }
     );
   }
 
   ngOnInit(): void {
     this.selectedStatus = 'all';
-   this.fetchOrderHistory();
+    this.fetchOrderHistory();
   }
 
   formatDate(dateString: string): string {
@@ -76,5 +80,25 @@ export class OrderTableComponent implements OnInit {
       this.orderHistory = this.allOrderHistory;
     }
     this.sortOrderHistory();
+  }
+
+  onDateRangeFilter() {
+    if (this.startDate && this.endDate) {
+      this.orderHistory = this.allOrderHistory.filter(order => {
+        const orderDate = new Date(order.orderDate);
+        const startDate = new Date(this.startDate);
+        const endDate = new Date(this.endDate);
+        return orderDate >= startDate && orderDate <= endDate;
+      });
+      this.filterMark = true;
+    } else {
+      this.orderHistory = this.allOrderHistory;
+    }
+  }
+
+  undoFilteres() {
+    this.filterMark = false;
+    this.selectedStatus = 'all';
+    this.orderHistory = this.allOrderHistory;
   }
 }

@@ -39,3 +39,28 @@ tr:hover {
 button:hover {
     background-color: orange;
 }
+
+.date-range {
+  display: flex;
+  justify-content: space-between;
+}
+
+.date-input {
+  display: flex;
+  align-items: center;
+}
+
+.date-input label {
+  margin-right: 10px;
+}
+
+.date-input input[type="date"] {
+  padding: 5px; 
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 150px;
+}
+
+.filter-button {
+  align-self: flex-end;
+}

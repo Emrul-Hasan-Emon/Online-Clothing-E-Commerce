@@ -3,6 +3,23 @@
         <h2 class="text-center">Order History (Admin)</h2>
     </div>
     <div class="filter-container flex justify-between flex-wrap">
+        <div class="date-range">
+            <!-- Date range inputs -->
+            <div class="date-input mr-6">
+                <label for="startDate">Start Date:</label>
+                <input type="date" id="startDate" name="startDate" [(ngModel)]="startDate" placeholder="mm/dd/yyyy">
+            </div>
+            <div class="date-input">
+                <label for="endDate">End Date:</label>
+                <input type="date" id="endDate" name="endDate" [(ngModel)]="endDate" placeholder="mm/dd/yyyy">
+            </div>
+        </div>
+        <button class="filter-button" (click)="onDateRangeFilter()">Filter</button>
+        <ng-container *ngIf="filterMark">
+            <button class="filter-button" (click)="undoFilteres()">Undo Filter</button>
+        </ng-container>
+    </div>
+    <div class="filter-container flex justify-between flex-wrap">
         <div class="all">
             <input type="radio" name="statusFilter" id="all" [(ngModel)]="selectedStatus" value="all" (change)="onStatusChange()" [checked]="selectedStatus === 'all'">
             <label class="ml-2" for="all">All</label>
@@ -29,6 +46,7 @@
             <thead>
                 <tr>
                     <th>Serial</th>
+                    <th>User Name</th>
                     <th>Order ID</th>
                     <th>Price</th>
                     <th>Date</th>
@@ -38,6 +56,7 @@
             <ng-container *ngFor="let order of orderHistory; index as idx">
                 <tr>
                     <td> {{ idx+1 }}</td>
+                    <td> {{ order.name }}</td>
                     <td>{{ order.orderID}}</td>
                     <td> {{  order.payableCost | currency:'BDT':'symbol':'1.0-0' }}</td>
                     <td>{{ formatDate(order.orderDate) }}</td>
