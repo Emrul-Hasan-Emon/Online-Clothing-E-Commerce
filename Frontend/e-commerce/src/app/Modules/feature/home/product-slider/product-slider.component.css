@@ -14,3 +14,9 @@
     flex-wrap: wrap;
     justify-content: space-between;
 }
+
+.see-more {
+    font-size: 18px;
+    font-weight: 400;
+    color: blue;
+}

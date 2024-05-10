@@ -5,11 +5,7 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './home-product-card.component.html',
   styleUrls: ['./home-product-card.component.css']
 })
-export class HomeProductCardComponent implements OnInit{
+export class HomeProductCardComponent {
   @Input() // It will take input from Product Slider Component
   product: any;
-
-  ngOnInit(): void {
-    
-  }
 }

@@ -1,38 +1,28 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-slider',
   templateUrl: './product-slider.component.html',
   styleUrls: ['./product-slider.component.css']
 })
-export class ProductSliderComponent implements OnInit{
+export class ProductSliderComponent {
   @Input() // It will take the title from Home Component
   title: any;
   
   @Input()
   products: any;
 
+  @Input()
+  categoryId: string;
+
+  constructor(
+    private router: Router
+  ) {}
+
   responsiveOptions: any[] | undefined;
 
-  ngOnInit(): void {
-      console.log("Jeans Product: ", this.products);  
-
-      this.responsiveOptions = [
-        {
-            breakpoint: '1199px',
-            numVisible: 1,
-            numScroll: 1
-        },
-        {
-            breakpoint: '991px',
-            numVisible: 2,
-            numScroll: 1
-        },
-        {
-            breakpoint: '767px',
-            numVisible: 1,
-            numScroll: 1
-        }
-    ];
+  buttonClicked() {
+    this.router.navigate(['products'], {queryParams : { categoryId: this.categoryId }});
   }
 }

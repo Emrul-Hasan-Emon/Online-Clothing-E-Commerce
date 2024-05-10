@@ -4,7 +4,7 @@
     </div>
     <div>
         <ng-container *ngFor="let title of dressTitle; let idx = index">
-            <app-product-slider [title]="title" [products]="products[idx]"></app-product-slider>
+            <app-product-slider [title]="title" [products]="products[idx]" [categoryId]="categoryId[idx]"></app-product-slider>
         </ng-container>
     </div>
 </div>
