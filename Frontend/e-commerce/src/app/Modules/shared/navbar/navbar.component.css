@@ -144,3 +144,12 @@ a {
     text-decoration: none;
     color: white;
 }
+
+.nav-links a.active {
+    font-size: 25px;
+    color: red;
+}
+
+button:hover {
+    color: red;
+}

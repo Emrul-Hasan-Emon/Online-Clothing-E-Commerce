@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SingleFilterShowComponent } from './single-filter-show/single-filter-show.component';
 import { RouterModule } from '@angular/router';
+import { BrowserModule } from '@angular/platform-browser';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     BrowserAnimationsModule,
     DropdownModule,
-    RouterModule
+    RouterModule,
+    BrowserModule
   ],
   exports: [
     FooterComponent,
