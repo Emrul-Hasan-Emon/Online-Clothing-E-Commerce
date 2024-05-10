@@ -20,13 +20,18 @@ export class ProductsShowPageComponent implements OnInit {
   selectedCategories: any[] = [];
   products: Product[];
   allProducts: Product[];
-
-  categories: any[] = [
-      { name: 'Accounting', key: 'A' },
-      { name: 'Marketing', key: 'M' },
-      { name: 'Production', key: 'P' },
-      { name: 'Research', key: 'R' }
-  ];
+  colorOptions: string[] = ['All', 'Black', 'White', 'Maroon', 'Orange', 'Yellow'];
+  sizesOptions: string[] = ['All', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL'];
+  discountOptions: string[] = ['All', 'Yes', 'No'];
+  priceOptions: string[] = ['Low to High', 'High to Low'];
+  brandOptions: string[] = ['All', 'A', 'B', 'C', 'D', 'E'];  
+  genderOptions: string[] = ['All', 'Male', 'Female'];
+  selectedColor: string = 'All';
+  selectedSize: string = 'All';
+  selectedPrice: string = '';
+  selectedDiscount: string = 'All';
+  selectedBrand: string = 'All';
+  selectedGender: string = 'All';
 
   constructor( 
     private activatedRoute: ActivatedRoute,
@@ -81,6 +86,109 @@ export class ProductsShowPageComponent implements OnInit {
     this.selectedSortOption = null;
   }
 
+  private filtersProduct() {
+    this.products = this.allProducts;
+
+    if(this.selectedColor != 'All') {
+        this.allProducts.forEach(product => {
+          var mark: boolean = false;
+
+          product.Size.forEach(size => {
+            if(size.Color === this.selectedColor) {
+              mark = true;
+            }
+          });
+          if(mark) {
+            this.products.push(product);
+          }
+        });
+    } else {
+      this.products = this.allProducts;
+    }
+
+    if(this.selectedSize != 'All') {
+      var tempProducts: Product[] = [];
+      this.products.forEach(product => {
+        var mark: boolean = false;
+        product.Size.forEach(size => {
+          if(size.Name === this.selectedSize) {
+            mark = true;
+          }
+        });
+        if(mark) {
+          tempProducts.push(product);
+        }
+      });
+      this.products = tempProducts;
+    }
+
+    if(this.selectedDiscount != 'All') {
+      var tempProducts: Product[] = [];
+      this.products.forEach(product => {
+        if(this.selectedDiscount === 'Yes' && product.Discount > 0) {
+          tempProducts.push(product);
+        }
+        if(this.selectedDiscount === 'No' && !product.Discount) {
+          tempProducts.push(product);
+        }
+      });
+      this.products = tempProducts;
+    }
+
+    if(this.selectedPrice === 'Low to High') {
+      this.products.sort((a, b) => a.Price - b.Price);
+    } else if (this.selectedPrice = 'HiHigh to Lowgh') {
+      this.products.sort((a, b) => b.Price - a.Price);
+    }
+
+    if(this.selectedBrand != 'All') {
+      var tempProducts: Product[] = [];
+      this.products.forEach(product => {
+        if(product.Brand.toLowerCase() === this.selectedBrand.toLowerCase()) {
+          tempProducts.push(product);
+        }
+      });
+      this.products = tempProducts;
+    }
+
+    if(this.selectedGender != 'All') {
+      var gender: string = '';
+      gender = (this.selectedGender === 'Male') ? 'Men' : 'Women';
+
+      var tempProducts: Product[] = [];
+      this.products.forEach(product => {
+        if(this.selectedGender.toLowerCase() === product.Gender.toLowerCase() || gender.toLowerCase() === product.Gender.toLowerCase()) {
+          tempProducts.push(product);
+        }
+      });
+      console.log('Temp Products -->  ', tempProducts);
+      this.products = tempProducts;
+    }
+  }
+  onGenderSelection(gender: string) {
+    this.selectedGender = gender;
+    this.filtersProduct();
+  }
+  onBrandSelection(brand: string) {
+    this.selectedBrand = brand;
+    this.filtersProduct();
+  }
+  onColorSelection(event: string) {
+    this.selectedColor = event;
+    this.filtersProduct();
+  }
+  onSizeSelect(size: string) {
+    this.selectedSize = size;
+    this.filtersProduct();
+  }
+  onPriceSelect(order: string) {
+    this.selectedPrice = order;
+    this.filtersProduct();
+  }
+  onDiscountSelect(ok: string) {
+    this.selectedDiscount = ok;
+    this.filtersProduct();
+  }
   onSortSelect(event) {
     console.log("Event: ", event);
   }
@@ -92,5 +200,9 @@ export class ProductsShowPageComponent implements OnInit {
   showProductDetails(product: any) {
     // console.log('Product ------> ', product);
     this.router.navigate(['product-details', product.id]);
+  }
+
+  applyFilters() {
+
   }
 }

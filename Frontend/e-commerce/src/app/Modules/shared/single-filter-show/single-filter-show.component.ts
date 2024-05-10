@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Sort } from 'src/app/Model/sortmodel';
 
 @Component({
@@ -6,20 +6,22 @@ import { Sort } from 'src/app/Model/sortmodel';
   templateUrl: './single-filter-show.component.html',
   styleUrls: ['./single-filter-show.component.css']
 })
-export class SingleFilterShowComponent {
+export class SingleFilterShowComponent implements OnInit {
   @Input()
-  sortingOptions: Sort[];
+  sortingOptions: any;
 
   @Input()
   placeholder: string;
 
   @Output() 
-  selectedSortOption = new EventEmitter<Sort>();
+  selectedSortOptionEvent = new EventEmitter<string>();
 
-  selectSortOption: Sort;
+  selectSortOption: string;
 
-  onSortSelect(event) {
-    console.log("Event: ", event)
-    this.selectedSortOption.emit(event.value)
+  ngOnInit(): void {
+      this.selectSortOption = '';
+  }
+  raiseChangeFilter() {
+    this.selectedSortOptionEvent.emit(this.selectSortOption);
   }
 }

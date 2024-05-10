@@ -2,22 +2,27 @@
     <div class="header">
         <h1 class="text">Products</h1>
         <div class="sort"> 
-            <app-single-filter-show [sortingOptions]="sortingOptions" [placeholder]="'Sort By'" (selectedSortOption)="sortOptionsSelected($event)"></app-single-filter-show>
+            <app-single-filter-show [sortingOptions]="genderOptions" [placeholder]="'Gender'" (selectedSortOptionEvent)="onGenderSelection($event)"></app-single-filter-show>
         </div>
     </div>
     <hr/>
     <div class="product-container">
         <div class="filters">
-            <h2>Filters</h2>
-            <app-single-filter-show [sortingOptions]="sortingOptions" [placeholder]="'Colors'" (selectedSortOption)="sortOptionsSelected($event)"></app-single-filter-show>
-            <app-single-filter-show [sortingOptions]="sortingOptions" [placeholder]="'Size'"></app-single-filter-show>
-            <app-single-filter-show [sortingOptions]="sortingOptions" [placeholder]="'Price'"></app-single-filter-show>
-            <app-single-filter-show [sortingOptions]="sortingOptions" [placeholder]="'Availability'"></app-single-filter-show>
+            <div>
+                <h2>Filters</h2>
+                <hr/>
+                <app-single-filter-show [sortingOptions]="colorOptions" [placeholder]="'Colors'" (selectedSortOptionEvent)="onColorSelection($event)"></app-single-filter-show>
+                <app-single-filter-show [sortingOptions]="sizesOptions" [placeholder]="'Size'" (selectedSortOptionEvent)="onSizeSelect($event)"></app-single-filter-show>
+                <app-single-filter-show [sortingOptions]="priceOptions" [placeholder]="'Price'" (selectedSortOptionEvent)="onPriceSelect($event)"></app-single-filter-show>
+                <app-single-filter-show [sortingOptions]="discountOptions" [placeholder]="'Discount'" (selectedSortOptionEvent)="onDiscountSelect($event)"></app-single-filter-show>
+                <app-single-filter-show [sortingOptions]="brandOptions" [placeholder]="'Brand'" (selectedSortOptionEvent)="onDiscountSelect($event)"></app-single-filter-show>
+    
+            </div>
         </div>
         <div class="products">
             <div class="product" *ngFor="let item of products">
                 <div (click)="showProductDetails(item)">
-                    <div *ngIf="item.Discount" class="discount-box">
+                    <div *ngIf="item.Discount > 0" class="discount-box">
                         {{ item.Discount }}% OFF
                     </div>
                     <div class="product-image">

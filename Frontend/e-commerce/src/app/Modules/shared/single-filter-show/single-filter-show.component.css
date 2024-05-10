@@ -1,7 +1,16 @@
 .single-filter-container {
-    margin-bottom: 10px; /* Adjust spacing between filters */
+    margin-bottom: 20px; /* Adjust spacing between filters */
 }
 
+select {
+    height: 50px;
+    border-radius: 3px;
+}
 .single-filter-container p-dropdown {
     width: 100%; /* Make the dropdown fill the container */
+}
+
+label {
+    display: block;
+    font-weight: bold;
 }

@@ -36,7 +36,7 @@ const routes: Routes = [
   { path: "orderhistory", component: OrderHistoryComponent},
   { path: "user-order-history", component: UserOrderHistoryComponent},
   { path: "order/:id", component: OrderDetailsComponent },
-  { path: "", component: ProductsShowPageComponent },
+  { path: "", component: HomeComponent },
   { path: "checkout", component: CheckoutComponent},
   { path: "single-order-history-details/:id", component: ShowSingleOrderDetailsComponent},
   { path: "payment-method", component: PaymentMethodComponent},

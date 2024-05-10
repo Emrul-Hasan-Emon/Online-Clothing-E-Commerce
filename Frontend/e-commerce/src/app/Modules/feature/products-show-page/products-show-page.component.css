@@ -100,4 +100,14 @@
     font-weight: bold;
 }
 
+.filters button {
+    background-color: skyblue;
+    height: 40px;
+    width: 100%;
+    border-radius: 3px;
+    font-weight: bold;
+}
 
+.filters button:hover {
+    background-color: orange;
+}
