@@ -7,6 +7,7 @@ import { CustomerTableComponent } from './customer-table/customer-table.componen
 import { ProductsTableComponent } from './products-table/products-table.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { ShowProductDetailsComponent } from './show-product-details/show-product-details.component';
+import { StockComponent } from './stock/stock.component';
 
 const routes: Routes = [
   { path: "", component: AdminHomeComponent, children: [
@@ -15,7 +16,8 @@ const routes: Routes = [
       { path: "customer-table", component: CustomerTableComponent },
       { path: "productsTable", component: ProductsTableComponent },
       { path: "products-add", component: AddProductComponent },
-      { path: "show-product-details/:id", component: ShowProductDetailsComponent}
+      { path: "show-product-details/:id", component: ShowProductDetailsComponent},
+      { path: "stock", component: StockComponent }
   ]}
 ];
 

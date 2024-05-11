@@ -1,0 +1,41 @@
+<div class="stock-container">
+    <div class="search-box flex justify-between">
+        <!-- <div>
+            <input type="text" placeholder="Search by Product Name" [(ngModel)]="searchProductByName">
+        </div>
+        <div>
+            <button class="filter-button">Search</button>
+        </div> -->
+        <div class="card flex justify-content-center">
+            <p-autoComplete 
+                [(ngModel)]="searchProductByName" 
+                [dropdown]="true" 
+                [suggestions]="searchOptions" 
+                [placeholder]="'Search By Product Name'"
+                (completeMethod)="filterCountry($event)" 
+                (onSelect)="onSelect($event)" />
+        </div>
+    </div>
+    <div *ngIf="mark === true">
+        <p class="font-bold">Product Name: {{ singleProduct.Name }}</p>
+        <p class="see-details"><button (click)="navigateToProductDetails()">See Details</button></p>
+        <div class="colors-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Size</th>
+                        <th>Color</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+                <ng-container *ngFor="let size of singleProduct.Size">
+                    <tr>
+                        <td> {{ size.Name }} </td>
+                        <td> {{ size.Color }} </td>
+                        <td> {{ size.Quantity }} </td>
+                    </tr>
+                </ng-container>
+            </table>
+        </div>
+    </div>
+</div>
