@@ -12,6 +12,7 @@ import { ShowProductDetailsComponent } from './show-product-details/show-product
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { StockComponent } from './stock/stock.component';
+import { SalesReportComponent } from './sales-report/sales-report.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { StockComponent } from './stock/stock.component';
     CustomerTableComponent,
     AddProductComponent,
     ShowProductDetailsComponent,
-    StockComponent
+    StockComponent,
+    SalesReportComponent
   ],
   imports: [
     CommonModule,

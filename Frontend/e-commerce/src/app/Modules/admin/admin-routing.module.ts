@@ -8,6 +8,7 @@ import { ProductsTableComponent } from './products-table/products-table.componen
 import { AddProductComponent } from './add-product/add-product.component';
 import { ShowProductDetailsComponent } from './show-product-details/show-product-details.component';
 import { StockComponent } from './stock/stock.component';
+import { SalesReportComponent } from './sales-report/sales-report.component';
 
 const routes: Routes = [
   { path: "", component: AdminHomeComponent, children: [
@@ -17,8 +18,9 @@ const routes: Routes = [
       { path: "productsTable", component: ProductsTableComponent },
       { path: "products-add", component: AddProductComponent },
       { path: "show-product-details/:id", component: ShowProductDetailsComponent},
-      { path: "stock", component: StockComponent }
-  ]}
+      { path: "stock", component: StockComponent },
+      { path: "sales", component: SalesReportComponent }
+    ]}
 ];
 
 @NgModule({

@@ -1,0 +1,64 @@
+table {
+    /* margin: 20px; */
+    border-collapse: collapse;
+    width: 100%;
+    border-spacing: 0;
+}
+
+th,
+td {
+    padding: 12px 8px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+thead th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+    color: #333;
+}
+
+button {
+    padding: 8px 16px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #3498db;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+tr:hover {
+    background-color: rgb(68, 63, 63);
+    color: white;
+}
+
+button:hover {
+    background-color: orange;
+}
+
+.date-range {
+    display: flex;
+    justify-content: space-between;
+}
+
+.date-input {
+    display: flex;
+    align-items: center;
+}
+
+.date-input label {
+    margin-right: 10px;
+}
+
+.date-input input[type="date"] {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 150px;
+}
+
+.filter-button {
+    align-self: flex-end;
+}
