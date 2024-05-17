@@ -14,6 +14,11 @@ export class CartItemComponent implements OnInit {
   productQuantity = 0;
   @Input()
   cartItem: Cart;
+  @Input()
+  cartNumber: number;
+
+  @Output()
+  deleteCartItem = new EventEmitter<number>();
 
   totalPrice: number = 0;
   discountedPrice: number = 0;
@@ -65,5 +70,9 @@ export class CartItemComponent implements OnInit {
 
   addAnotherOne() {
     this.router.navigate(['product-details', this.cartItem.Id]);
+  }
+
+  deleteCart() {
+    this.deleteCartItem.emit(this.cartNumber);
   }
 }

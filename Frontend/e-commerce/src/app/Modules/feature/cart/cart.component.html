@@ -4,8 +4,8 @@
     </ng-container>
     <ng-container *ngIf="mark == true">
         <div class="cart-list">
-            <ng-container *ngFor="let cartItem of cartDetails">
-                <app-cart-item [cartItem]="cartItem"></app-cart-item>
+            <ng-container *ngFor="let cartItem of cartDetails; let i = index">
+                <app-cart-item [cartItem]="cartItem" [cartNumber]="i" (deleteCartItem)="deleteCart($event)" ></app-cart-item>
             </ng-container>
         </div>
         <div class="calculation">

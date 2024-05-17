@@ -19,7 +19,7 @@
         </div>
     </div>
     <div class="cart-item-quantitty flex justify-between">
-        <div class="quantity-control">
+        <!-- <div class="quantity-control">
             <button class="decrement" 
                 [disabled]="productQuantity <= 0"
                 (click)="decrementQuantity()"    
@@ -29,12 +29,12 @@
                 class="increment"
                 (click)="incrementQuantity()"
             >+</button>
-        </div>
-        <div class="add-another-button">
+        </div> -->
+        <!-- <div class="add-another-button">
             <button type="submit" (click)="addAnotherOne()">Add another one</button>
-        </div>
+        </div> -->
         <div class="remove">
-            <button type="submit">Remove</button>
+            <button type="submit" (click)="deleteCart()">Remove</button>
         </div>
     </div>
 </div>

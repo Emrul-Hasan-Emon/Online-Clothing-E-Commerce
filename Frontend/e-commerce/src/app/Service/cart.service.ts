@@ -49,6 +49,17 @@ export class CartService {
     this.cartSource.next(this.cartDetails);
   }
 
+  public removeCartItem(index) {
+    let tempCart = [];
+    for (let idx = 0; idx < this.cartDetails.length; idx++) {
+      if(idx != index) {
+        tempCart.push(this.cartDetails[idx]);
+      }
+    }
+    this.cartDetails = tempCart;
+    this.updateLocalStorage();
+  }
+  
   public removeCartFromLocalStorage() {
     localStorage.removeItem('userCart');
   }

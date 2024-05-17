@@ -66,4 +66,9 @@ export class CartComponent implements OnInit{
       this.router.navigate(['login']);
     }
   }
+
+  deleteCart(event) {
+    console.log(event);
+    this.cartService.removeCartItem(event);
+  }
 }
