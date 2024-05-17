@@ -14,18 +14,25 @@
         <div class="description">
             <h1>{{ product.Name }}</h1>
             <h2>Brand Name: {{product.Brand}}</h2>
+            <p class="font-bold">Available: Yes</p>
             <p class="font-bold">Available Colors</p>
-            <div class="colors flex flex-wrap">
-                <div *ngFor="let color of colors">
-                    <input type="radio" name="color" [value]="color" (change)="onColorChange(color)"> {{ color }}
+            <div class="flex justify-between flex-wrap">
+                <div class="colors flex flex-wrap">
+                    <div *ngFor="let clr of colors">
+                        <input type="radio" name="color" [value]="clr" [(ngModel)]="color" (change)="onColorChange(clr)"> {{ clr }}
+                    </div>
                 </div>
             </div>
-            <p class="font-bold">Available: Yes</p>
             <p class="font-bold">Size</p>
-            <div class="size flex flex-wrap">
-                <div *ngFor="let size of sizes">
-                    <input type="radio" name="size" [value]="size" (change)="onSizeChange(size)"> {{ size }}
+            <div class="flex justify-between flex-wrap">
+                <div class="size flex flex-wrap">
+                    <div *ngFor="let size of sizes">
+                        <input type="radio" name="size" [value]="size" [(ngModel)]="selectedSize" (change)="onSizeChange(size)"> {{ size }}
+                    </div>
                 </div>
+            </div>
+            <div class="undo-selection flex flex-row-reverse" *ngIf="color != '' || selectedSize != ''">
+                <button (click)="undoSelection()">Undo Selection</button>
             </div>
             <div class="cart-item-quantitty flex">
                 <div class="text-2xl font-bold">Quantity: </div>

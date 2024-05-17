@@ -26,6 +26,8 @@ export class ProductDetailsComponent implements OnInit {
   productQuantity = 0;
   colors =  [];
   sizes = [];
+  colorsOptions = [];
+  sizeOptions = [];
   discountedPrice: number;
 
   constructor(
@@ -44,12 +46,12 @@ export class ProductDetailsComponent implements OnInit {
       uniqueColors.add(size.Color);
       uniqueSizes.add(size.Name);
     });
+    
+    this.colorsOptions = Array.from(uniqueColors);
+    this.sizeOptions = Array.from(uniqueSizes);
 
-    this.colors = Array.from(uniqueColors);
-    this.sizes = Array.from(uniqueSizes);
-
-    console.log('Colors ---> ', this.colors);
-    console.log('Sizes ---> ', this.sizes);
+    this.colors = this.colorsOptions;
+    this.sizes = this.sizeOptions;
   }
 
   ngOnInit(): void {
@@ -101,14 +103,53 @@ export class ProductDetailsComponent implements OnInit {
       this.cartService.addAnotherProductToCart(this.productID, this.product, this.selectedSize, this.color, this.productQuantity);
       this.router.navigate(['cart-show']);
     }
-}
+  }
+
+  undoSelection() {
+    this.selectedSize = '';
+    this.color = '';
+    this.fetchAllColors();
+  }
 
   onSizeChange(size: string) {
-    this.selectedSize = size;
+    if(!this.color) {
+      this.selectedSize = size;
+      this.filterColors();
+    }
+    else {
+      this.selectedSize = size;
+    }
+  }
+
+  filterSizes() {
+    var uniqueSizes = new Set<string>();
+    this.product.Size.forEach(size => {
+      if(size.Color === this.color) {
+        uniqueSizes.add(size.Name);
+      }
+    });
+
+    this.sizes = Array.from(uniqueSizes);
+  }
+
+  filterColors() {
+    var uniqueColors = new Set<string>();
+    this.product.Size.forEach(size => {
+      if(size.Name === this.selectedSize) {
+        uniqueColors.add(size.Color);
+      }
+    });
+
+    this.colors = Array.from(uniqueColors);
   }
 
   onColorChange(color: string) {
-    this.color = color;
+    if(!this.selectedSize) {
+      this.color = color;
+      this.filterSizes();
+    } else {
+      this.color = color;
+    }
   }
   removeProduct() {
 
@@ -118,7 +159,26 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   incrementQuantity() {
-    this.productQuantity++;
+    if(!this.color) {
+      alert('Please a color');
+    }
+    else if(!this.selectedSize) {
+      alert('Please select size');
+    }
+    else {
+      var maxQuantity: number;
+      this.product.Size.forEach(size => {
+        if(size.Color === this.color && size.Name === this.selectedSize) {
+          maxQuantity = size.Quantity;
+        }
+      });
+      if(this.productQuantity === maxQuantity) {
+        alert('Maximum Quantity Limit Reached');
+      } 
+      else {
+        this.productQuantity++;
+      }
+    }
   }
 
 }

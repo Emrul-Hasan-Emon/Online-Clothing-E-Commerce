@@ -167,3 +167,14 @@
 del {
     color: black;
 }
+
+.undo-selection button {
+    width: 150px;
+    background-color: skyblue;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.undo-selection button:hover {
+    background-color: #25b09b;
+}
