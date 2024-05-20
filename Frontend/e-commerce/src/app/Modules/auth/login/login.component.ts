@@ -17,6 +17,7 @@ export interface Response {
 })
 export class LoginComponent implements OnInit {
   logInForm: FormGroup;
+  isInValid: boolean = false;
 
   constructor(
     private authService: AuthService,
@@ -49,6 +50,7 @@ export class LoginComponent implements OnInit {
   validateTheUser(userData: any) {
     this.authService.authenticateUser(userData).subscribe(
       (response: Response) => {
+        alert('Successfully logged in');
         if(response.role == 'user') {
           this.userValidation(response);
         }
@@ -67,7 +69,9 @@ export class LoginComponent implements OnInit {
         this.authService.validationHappened(response);
       },
       (error) => {
+        alert('Log In failed');
         console.log(error);
+        this.isInValid = true;
       }
     )
   }

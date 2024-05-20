@@ -58,3 +58,9 @@ p {
     text-align: center;
     margin-top: 10px;
 }
+
+.invalid {
+    background-color: red;
+    font-weight: bold;
+    font-size: 15px;
+}

@@ -1,9 +1,16 @@
 <div class="login-container">
     <div class="login">
         <h2>Log In</h2>
+        <div class="invalid" *ngIf="isInValid">
+            *Invalid username and password
+        </div>
         <form [formGroup]="logInForm" (ngSubmit)="authenticate()">
             <label for="username">Email</label>
             <input type="text" id="username" formControlName="email" required>
+
+            <span class="invalid" *ngIf="!logInForm.get('email').valid && logInForm.get('email').touched">
+                *Please enter a valid email address
+            </span>
 
             <label for="password">Password</label>
             <input type="password" id="password" formControlName="password" required>
