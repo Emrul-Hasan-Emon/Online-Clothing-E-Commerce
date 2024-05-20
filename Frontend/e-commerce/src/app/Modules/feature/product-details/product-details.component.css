@@ -84,6 +84,27 @@
     margin-bottom: 5px;
 }
 
+.comment button {
+    margin: 5px;
+    margin-left: 20px;
+    background-color: skyblue;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.comment button.disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+}
+
+.comment button.active {
+    background-color: orange;
+    color: white;
+    cursor: pointer;
+}
+
+
 .product-loader {
     /* background-color: gray; */
     height: 100vh;
