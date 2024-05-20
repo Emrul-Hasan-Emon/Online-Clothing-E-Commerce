@@ -1,11 +1,17 @@
-<div class="product">
+<div class="product" (click)="navigateToProductDetailsPage(product.id)">
     <div class="product-image">
       <img [src]="product.ImageURL" alt="Product Image">
     </div>
     <div class="product-details">
       <h2 class="product-title">{{ product.Name }}</h2>
       <p class="product-brand">Brand: {{ product.Brand }}</p>
-      <p class="product-price">$ {{ product.Price }}</p>
+      <div *ngIf="!isDiscount">
+        <p class="product-price">$ {{ product.Price }} BDT</p>
+      </div>
+      <div *ngIf="isDiscount">
+        <del><p class="product-price">$ {{ product.Price }} BDT</p></del>
+        <p class="discount product-price">$ {{ product.Price - discountedPrice }} BDT</p>
+      </div>
     </div>
   </div>
   
