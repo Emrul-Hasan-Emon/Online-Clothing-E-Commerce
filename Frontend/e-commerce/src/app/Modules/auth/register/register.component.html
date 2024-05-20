@@ -4,18 +4,34 @@
         <div>
             <label for="name">Name</label>
             <input type="text" id="name" formControlName="name" required>
+            
+            <span class="invalid" *ngIf="!registerForm.get('name').valid && registerForm.get('name').touched">
+                *Name is a required field
+            </span>
+            <span class="invalid" *ngIf="registerForm.get('name').invalid && registerForm.get('name').dirty">
+                *Name must start with an alphabet
+            </span>
         </div>
         <div>
             <label for="phone">Phone Number</label>
             <input type="text" id="phone" formControlName="phonenumber" required>
+            <span class="invalid" *ngIf="!registerForm.get('phonenumber').valid && registerForm.get('phonenumber').touched">
+                *Phone Number is a required field
+            </span>
         </div>
         <div>
             <label for="email">Email</label>
             <input type="email" id="email" formControlName="email" required>
+            <span class="invalid" *ngIf="!registerForm.get('email').valid && registerForm.get('email').touched">
+                *Please enter a valid email address
+            </span>
         </div>
         <div>
             <label for="dob">Date of Birth</label>
             <input type="date" id="dob" formControlName="dateOfBirth" required>
+            <span class="invalid" *ngIf="!registerForm.get('dateOfBirth').valid && registerForm.get('dateOfBirth').touched">
+                *Date is a required field
+            </span>
         </div>
         <div>
             <label>Gender</label>
@@ -28,24 +44,42 @@
         <div>
             <label for="address">Address</label>
             <textarea id="address" formControlName="address" required></textarea>
+            <span class="invalid" *ngIf="!registerForm.get('address').valid && registerForm.get('address').touched">
+                *Address is a required field
+            </span>
         </div>
         <div class="flex justify-between">
             <div>
                 <label for="address">City</label>
                 <input type="text" id="city" formControlName="city" required>
+                <span class="invalid" *ngIf="!registerForm.get('city').valid && registerForm.get('city').touched">
+                    *City is a required field
+                </span>
             </div>
             <div>
                 <label for="address">District</label>
                 <input type="text" id="district" formControlName="district" required>
+                <span class="invalid" *ngIf="!registerForm.get('district').valid && registerForm.get('district').touched">
+                    *District is a required field
+                </span>
             </div>
         </div>
         <div>
             <label for="password">Password</label>
             <input type="password" id="password" formControlName="password" required>
+            <span class="invalid" *ngIf="!registerForm.get('password').valid && registerForm.get('password').touched">
+                *Password is a required field
+            </span>
         </div>
         <div>
             <label for="confirmPassword">Confirm Password</label>
             <input type="password" id="confirmPassword" formControlName="confirmPassword" required>
+            <span class="invalid" *ngIf="!registerForm.get('confirmPassword').valid && registerForm.get('confirmPassword').touched">
+                *Confirm Password is a required field
+            </span>
+            <span class="invalid" *ngIf="isPasswordMatched">
+                *Passwords do not match
+            </span>
         </div>
         <button type="submit" [disabled]="registerForm.invalid" [class.disabled-button]="registerForm.invalid">Register</button>
         <p><a routerLink="/login">Log In</a></p>
