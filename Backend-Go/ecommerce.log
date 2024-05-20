@@ -1,3 +1,145 @@
-[DEBUG] [2024-05-08 22:58:04,341] [???] [database.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/database.openDatabase:32] ==> Connected to database localhost:3306: 
-[DEBUG] [2024-05-08 22:58:04,342] [???] [database.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/database.openDatabase:37] ==> Database available localhost:3306:
-[DEBUG] [2024-05-08 22:58:09,142] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /auth/all Fetch All Users 461.086µs
+[DEBUG] [2024-05-20 20:45:01,707] [???] [database.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/database.openDatabase:32] ==> Connected to database localhost:3306: 
+[DEBUG] [2024-05-20 20:45:01,711] [???] [database.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/database.openDatabase:37] ==> Database available localhost:3306:
+[DEBUG] [2024-05-20 20:45:06,827] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /auth/validate Token Validate 89.317µs
+[DEBUG] [2024-05-20 20:45:06,880] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 8.927017ms
+[DEBUG] [2024-05-20 20:47:11,805] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /auth/validate Token Validate 76.133µs
+[DEBUG] [2024-05-20 20:47:11,810] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 683.631µs
+[DEBUG] [2024-05-20 20:47:53,148] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /auth/validate Token Validate 36.95µs
+[DEBUG] [2024-05-20 20:47:56,689] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /auth/validate Token Validate 36.99µs
+[DEBUG] [2024-05-20 20:47:56,716] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 641.87µs
+[DEBUG] [2024-05-20 20:47:57,649] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/44 Get Product By ID 1.790583ms
+[DEBUG] [2024-05-20 20:47:59,606] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 618.245µs
+[DEBUG] [2024-05-20 20:48:00,973] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/58 Get Product By ID 436.121µs
+[DEBUG] [2024-05-20 20:48:02,685] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 652.329µs
+[DEBUG] [2024-05-20 20:48:06,724] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/46 Get Product By ID 421.554µs
+[DEBUG] [2024-05-20 20:48:08,637] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 550.026µs
+[DEBUG] [2024-05-20 20:49:54,574] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /auth/validate Token Validate 47.299µs
+[DEBUG] [2024-05-20 20:49:56,578] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 916.623µs
+[DEBUG] [2024-05-20 20:50:20,630] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /auth/validate Token Validate 39.234µs
+[DEBUG] [2024-05-20 20:50:20,631] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 625.581µs
+[DEBUG] [2024-05-20 20:51:21,678] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /auth/validate Token Validate 71.725µs
+[DEBUG] [2024-05-20 20:51:21,772] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 1.082242ms
+[DEBUG] [2024-05-20 20:52:00,082] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /auth/validate Token Validate 51.668µs
+[DEBUG] [2024-05-20 20:52:00,151] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 623.486µs
+[DEBUG] [2024-05-20 20:53:07,147] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /auth/validate Token Validate 34.114µs
+[DEBUG] [2024-05-20 20:53:07,208] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 1.164456ms
+[DEBUG] [2024-05-20 20:53:45,484] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /auth/validate Token Validate 32.762µs
+[DEBUG] [2024-05-20 20:53:45,485] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 1.535686ms
+[DEBUG] [2024-05-20 20:53:50,921] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /auth/validate Token Validate 42.831µs
+[DEBUG] [2024-05-20 20:53:50,989] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 814.175µs
+[DEBUG] [2024-05-20 20:54:01,163] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /auth/validate Token Validate 66.365µs
+[DEBUG] [2024-05-20 20:54:01,223] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 729.816µs
+[DEBUG] [2024-05-20 21:08:00,049] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/44 Get Product By ID 425.041µs
+[DEBUG] [2024-05-20 21:08:05,109] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 704.325µs
+[DEBUG] [2024-05-20 21:08:08,717] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 567.383µs
+[DEBUG] [2024-05-20 21:08:11,701] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /category/ Get Categories 1.658615ms
+[DEBUG] [2024-05-20 21:08:40,628] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /category/ Get Categories 325.721µs
+[DEBUG] [2024-05-20 21:10:58,972] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/?categoryId=shirt Get All Products 676.707µs
+[DEBUG] [2024-05-20 21:11:16,941] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 735.849µs
+[DEBUG] [2024-05-20 21:11:17,556] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 612.374µs
+[DEBUG] [2024-05-20 21:11:17,732] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 726.882µs
+[DEBUG] [2024-05-20 21:11:17,939] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 702.385µs
+[DEBUG] [2024-05-20 21:11:20,027] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /auth/validate Token Validate 45.797µs
+[DEBUG] [2024-05-20 21:11:20,410] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /auth/validate Token Validate 64.262µs
+[DEBUG] [2024-05-20 21:11:20,467] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 1.018947ms
+[DEBUG] [2024-05-20 21:11:22,244] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 654.113µs
+[DEBUG] [2024-05-20 21:11:25,427] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /category/ Get Categories 316.251µs
+[DEBUG] [2024-05-20 21:13:19,621] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/?categoryId=shirt Get All Products 606.892µs
+[DEBUG] [2024-05-20 21:13:22,220] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /auth/validate Token Validate 35.066µs
+[DEBUG] [2024-05-20 21:13:22,693] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /auth/validate Token Validate 45.275µs
+[DEBUG] [2024-05-20 21:13:22,778] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 853.64µs
+[DEBUG] [2024-05-20 21:13:23,377] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 517.763µs
+[DEBUG] [2024-05-20 21:14:14,813] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 915.687µs
+[DEBUG] [2024-05-20 21:14:20,155] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /auth/validate Token Validate 44.435µs
+[DEBUG] [2024-05-20 21:14:20,608] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /auth/validate Token Validate 43.633µs
+[DEBUG] [2024-05-20 21:14:20,711] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 617.702µs
+[DEBUG] [2024-05-20 21:14:21,753] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 561.045µs
+[DEBUG] [2024-05-20 21:14:45,042] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 735.545µs
+[DEBUG] [2024-05-20 21:14:48,787] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /auth/validate Token Validate 37.16µs
+[DEBUG] [2024-05-20 21:14:49,297] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /auth/validate Token Validate 53.141µs
+[DEBUG] [2024-05-20 21:14:49,390] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 726.669µs
+[DEBUG] [2024-05-20 21:14:50,628] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 810.818µs
+[DEBUG] [2024-05-20 21:15:13,664] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 1.093574ms
+[DEBUG] [2024-05-20 21:15:27,026] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /auth/validate Token Validate 39.585µs
+[DEBUG] [2024-05-20 21:15:27,530] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /auth/validate Token Validate 42.3µs
+[DEBUG] [2024-05-20 21:15:27,629] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 798.455µs
+[DEBUG] [2024-05-20 21:15:28,078] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 550.224µs
+[DEBUG] [2024-05-20 21:15:35,782] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 757.998µs
+[DEBUG] [2024-05-20 21:15:50,699] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /auth/validate Token Validate 48.462µs
+[DEBUG] [2024-05-20 21:15:51,094] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /auth/validate Token Validate 34.084µs
+[DEBUG] [2024-05-20 21:15:51,121] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 699.366µs
+[DEBUG] [2024-05-20 21:15:51,790] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 564.471µs
+[DEBUG] [2024-05-20 21:15:58,139] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/46 Get Product By ID 408.665µs
+[DEBUG] [2024-05-20 21:15:59,324] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 603.374µs
+[DEBUG] [2024-05-20 21:16:07,312] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /category/ Get Categories 282.245µs
+[DEBUG] [2024-05-20 21:16:59,852] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/?categoryId=shirt Get All Products 558.719µs
+[DEBUG] [2024-05-20 21:17:07,313] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /auth/validate Token Validate 43.342µs
+[DEBUG] [2024-05-20 21:17:07,817] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /auth/validate Token Validate 31.53µs
+[DEBUG] [2024-05-20 21:17:07,913] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 718.372µs
+[DEBUG] [2024-05-20 21:17:08,365] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 728.221µs
+[DEBUG] [2024-05-20 21:17:13,246] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /category/ Get Categories 299.918µs
+[DEBUG] [2024-05-20 21:17:44,723] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/?categoryId=shirt Get All Products 558.078µs
+[DEBUG] [2024-05-20 21:17:48,053] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /auth/validate Token Validate 48.081µs
+[DEBUG] [2024-05-20 21:17:48,541] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /auth/validate Token Validate 76.826µs
+[DEBUG] [2024-05-20 21:17:48,634] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 629.874µs
+[DEBUG] [2024-05-20 21:17:50,365] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 621.428µs
+[DEBUG] [2024-05-20 21:17:53,382] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 607.151µs
+[DEBUG] [2024-05-20 21:17:57,286] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 645.514µs
+[DEBUG] [2024-05-20 21:17:58,975] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 604.897µs
+[DEBUG] [2024-05-20 21:18:00,372] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 767.785µs
+[DEBUG] [2024-05-20 21:18:03,312] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /category/ Get Categories 305.259µs
+[DEBUG] [2024-05-20 21:18:33,851] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 703.013µs
+[DEBUG] [2024-05-20 21:18:33,851] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/?categoryId=shirt Get All Products 1.405715ms
+[DEBUG] [2024-05-20 21:18:36,035] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 707.552µs
+[DEBUG] [2024-05-20 21:18:37,368] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 631.705µs
+[DEBUG] [2024-05-20 21:18:38,472] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 762.126µs
+[DEBUG] [2024-05-20 21:18:40,849] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /category/ Get Categories 481.226µs
+[DEBUG] [2024-05-20 21:19:55,323] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/?categoryId=shirt Get All Products 607.517µs
+[DEBUG] [2024-05-20 21:20:04,695] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /auth/validate Token Validate 51.509µs
+[DEBUG] [2024-05-20 21:20:05,216] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /auth/validate Token Validate 66.477µs
+[DEBUG] [2024-05-20 21:20:05,321] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 762.163µs
+[DEBUG] [2024-05-20 21:20:05,903] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 520.459µs
+[DEBUG] [2024-05-20 21:20:08,533] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /category/ Get Categories 306.037µs
+[DEBUG] [2024-05-20 21:20:50,999] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/?categoryId=shirt Get All Products 521.601µs
+[DEBUG] [2024-05-20 21:20:53,576] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /auth/validate Token Validate 62.67µs
+[DEBUG] [2024-05-20 21:20:54,149] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /auth/validate Token Validate 41.7µs
+[DEBUG] [2024-05-20 21:20:54,228] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 675.074µs
+[DEBUG] [2024-05-20 21:20:54,515] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 668.041µs
+[DEBUG] [2024-05-20 21:20:58,932] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /category/ Get Categories 285.828µs
+[DEBUG] [2024-05-20 21:22:09,117] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/?categoryId=shirt Get All Products 1.002209ms
+[DEBUG] [2024-05-20 21:22:11,609] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /auth/validate Token Validate 60.265µs
+[DEBUG] [2024-05-20 21:22:12,112] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /auth/validate Token Validate 51.218µs
+[DEBUG] [2024-05-20 21:22:12,128] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/44 Get Product By ID 448.428µs
+[DEBUG] [2024-05-20 21:22:12,366] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 921.695µs
+[DEBUG] [2024-05-20 21:22:14,613] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /category/ Get Categories 280.848µs
+[DEBUG] [2024-05-20 21:23:26,331] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/?categoryId=shirt Get All Products 600.458µs
+[DEBUG] [2024-05-20 21:23:28,934] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /auth/validate Token Validate 48.091µs
+[DEBUG] [2024-05-20 21:23:29,440] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /auth/validate Token Validate 43.323µs
+[DEBUG] [2024-05-20 21:23:29,523] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 645.464µs
+[DEBUG] [2024-05-20 21:23:31,813] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /category/ Get Categories 419.492µs
+[DEBUG] [2024-05-20 21:23:32,848] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 533.471µs
+[DEBUG] [2024-05-20 21:24:42,014] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/?categoryId=shirt Get All Products 620.425µs
+[DEBUG] [2024-05-20 21:24:44,436] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /auth/validate Token Validate 34.687µs
+[DEBUG] [2024-05-20 21:24:44,959] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /auth/validate Token Validate 46.829µs
+[DEBUG] [2024-05-20 21:24:45,041] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 766.615µs
+[DEBUG] [2024-05-20 21:24:47,709] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /category/ Get Categories 282.66µs
+[DEBUG] [2024-05-20 21:24:48,814] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 510.415µs
+[DEBUG] [2024-05-20 21:25:24,394] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/?categoryId=shirt Get All Products 886.092µs
+[DEBUG] [2024-05-20 21:25:26,344] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /auth/validate Token Validate 50.176µs
+[DEBUG] [2024-05-20 21:25:26,842] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /auth/validate Token Validate 47.501µs
+[DEBUG] [2024-05-20 21:25:26,927] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 829.454µs
+[DEBUG] [2024-05-20 21:25:29,484] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /category/ Get Categories 284.423µs
+[DEBUG] [2024-05-20 21:25:30,815] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 542.997µs
+[DEBUG] [2024-05-20 21:26:11,990] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/?categoryId=shirt Get All Products 607.749µs
+[DEBUG] [2024-05-20 21:26:14,347] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /auth/validate Token Validate 53.602µs
+[DEBUG] [2024-05-20 21:26:14,899] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /auth/validate Token Validate 49.615µs
+[DEBUG] [2024-05-20 21:26:14,996] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 1.055023ms
+[DEBUG] [2024-05-20 21:26:15,549] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /category/ Get Categories 293.32µs
+[DEBUG] [2024-05-20 21:26:19,318] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 651.233µs
+[DEBUG] [2024-05-20 21:27:24,492] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/?categoryId=shirt Get All Products 597.88µs
+[DEBUG] [2024-05-20 21:27:27,765] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /auth/validate Token Validate 43.062µs
+[DEBUG] [2024-05-20 21:27:28,294] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /auth/validate Token Validate 61.387µs
+[DEBUG] [2024-05-20 21:27:28,388] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 853.898µs
+[DEBUG] [2024-05-20 21:27:29,292] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /category/ Get Categories 272.8µs
+[DEBUG] [2024-05-20 21:27:30,369] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/ Get All Products 651.943µs
+[DEBUG] [2024-05-20 21:29:22,411] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /products/44 Get Product By ID 383.891µs
