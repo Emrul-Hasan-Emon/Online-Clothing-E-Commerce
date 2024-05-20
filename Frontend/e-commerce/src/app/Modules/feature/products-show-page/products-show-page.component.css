@@ -111,3 +111,7 @@
 .filters button:hover {
     background-color: orange;
 }
+
+.discount {
+    color: orange;
+}

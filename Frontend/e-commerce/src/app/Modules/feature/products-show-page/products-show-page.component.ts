@@ -29,7 +29,7 @@ export class ProductsShowPageComponent implements OnInit {
   selectedColor: string = 'All';
   selectedSize: string = 'All';
   selectedPrice: string = '';
-  selectedDiscount: string = 'All';
+  chosenDiscount = 'All';
   selectedBrand: string = 'All';
   selectedGender: string = 'All';
 
@@ -44,7 +44,7 @@ export class ProductsShowPageComponent implements OnInit {
       (params) => {
         const brand = params.get('brand');
         if(brand) {
-          this.products = this.allProducts.filter((item) => item?.Brand == brand);
+          this.products = this.products.filter((item) => item?.Brand == brand);
         }
       }
     );
@@ -56,7 +56,7 @@ export class ProductsShowPageComponent implements OnInit {
         this.categoryId = params.get('categoryId');
 
         if(this.categoryId) {
-          this.products = this.allProducts.filter((item) => item.CategoryID == this.categoryId);
+          this.products = this.products.filter((item) => item.CategoryID == this.categoryId);
         }
       }
     );
@@ -64,6 +64,10 @@ export class ProductsShowPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.categoryId = '';
+    this.selectedBrand = 'All';
+    this.chosenDiscount = 'All';
+
+    console.log('Chosen Discount --->  ', this.chosenDiscount);
 
     this.productFetchService.getAllProducts().subscribe(
       (productList) => {
@@ -78,19 +82,16 @@ export class ProductsShowPageComponent implements OnInit {
         console.log('An error occured while fetching products');        
       }
     );
-
-    this.sortingOptions = [
-      { name: "Sort By Price", code: "sp"},
-      { name: "Sort By Name", code: "sn" }
-    ]
-    this.selectedSortOption = null;
   }
 
   private filtersProduct() {
     this.products = this.allProducts;
 
+    this.filterProductsByBrand();
+    this.filterProductByCategoryId();
+
     if(this.selectedColor != 'All') {
-        this.allProducts.forEach(product => {
+        this.products.forEach(product => {
           var mark: boolean = false;
 
           product.Size.forEach(size => {
@@ -102,8 +103,6 @@ export class ProductsShowPageComponent implements OnInit {
             this.products.push(product);
           }
         });
-    } else {
-      this.products = this.allProducts;
     }
 
     if(this.selectedSize != 'All') {
@@ -122,13 +121,13 @@ export class ProductsShowPageComponent implements OnInit {
       this.products = tempProducts;
     }
 
-    if(this.selectedDiscount != 'All') {
+    if(this.chosenDiscount != 'All') {
       var tempProducts: Product[] = [];
       this.products.forEach(product => {
-        if(this.selectedDiscount === 'Yes' && product.Discount > 0) {
+        if(this.chosenDiscount === 'Yes' && product.Discount > 0) {
           tempProducts.push(product);
         }
-        if(this.selectedDiscount === 'No' && !product.Discount) {
+        if(this.chosenDiscount === 'No' && !product.Discount) {
           tempProducts.push(product);
         }
       });
@@ -161,10 +160,10 @@ export class ProductsShowPageComponent implements OnInit {
           tempProducts.push(product);
         }
       });
-      console.log('Temp Products -->  ', tempProducts);
       this.products = tempProducts;
     }
   }
+
   onGenderSelection(gender: string) {
     this.selectedGender = gender;
     this.filtersProduct();
@@ -186,7 +185,7 @@ export class ProductsShowPageComponent implements OnInit {
     this.filtersProduct();
   }
   onDiscountSelect(ok: string) {
-    this.selectedDiscount = ok;
+    this.chosenDiscount = ok;
     this.filtersProduct();
   }
   onSortSelect(event) {

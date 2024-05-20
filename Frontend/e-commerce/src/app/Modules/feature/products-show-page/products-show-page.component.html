@@ -15,7 +15,7 @@
                 <app-single-filter-show [sortingOptions]="sizesOptions" [placeholder]="'Size'" (selectedSortOptionEvent)="onSizeSelect($event)"></app-single-filter-show>
                 <app-single-filter-show [sortingOptions]="priceOptions" [placeholder]="'Price'" (selectedSortOptionEvent)="onPriceSelect($event)"></app-single-filter-show>
                 <app-single-filter-show [sortingOptions]="discountOptions" [placeholder]="'Discount'" (selectedSortOptionEvent)="onDiscountSelect($event)"></app-single-filter-show>
-                <app-single-filter-show [sortingOptions]="brandOptions" [placeholder]="'Brand'" (selectedSortOptionEvent)="onDiscountSelect($event)"></app-single-filter-show>
+                <app-single-filter-show [sortingOptions]="brandOptions" [placeholder]="'Brand'" (selectedSortOptionEvent)="onBrandSelection($event)"></app-single-filter-show>
     
             </div>
         </div>
@@ -31,8 +31,16 @@
                     <div class="product-details">
                         <h2 class="product-title">{{ item.Name }}</h2>
                         <p class="product-brand">Brand: {{ item.Brand }}</p>
-                        <p class="product-price">$ {{ item.Price }}</p>
-                        <button class="btn btn-primary">Add to Cart</button>
+                        <div>
+                            <div *ngIf="item.Discount">
+                                <del><p class="product-price">$ {{ item.Price }} BDT</p></del>
+                                <p class="discount product-price">$ {{ item.Price - ((item.Price * item.Discount) / 100 ) }} BDT</p>
+                            </div>
+                            <div *ngIf="!item.Discount">
+                                <p class="product-price">$ {{ item.Price }}</p>
+                            </div>
+                        </div>
+                        <!-- <button class="btn btn-primary">Add to Cart</button> -->
                     </div>
                 </div>
             </div>
