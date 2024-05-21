@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { delay } from 'rxjs';
 import { Product } from 'src/app/Model/product';
+import { CommentService } from 'src/app/Service/Comment/comment.service';
 import { AuthService } from 'src/app/Service/auth.service';
 import { CartService } from 'src/app/Service/cart.service';
 import { ProductFetchService } from 'src/app/Service/product-fetch.service';
@@ -29,13 +30,21 @@ export class ProductDetailsComponent implements OnInit {
   colorsOptions = [];
   sizeOptions = [];
   discountedPrice: number;
+  hasComment: boolean = false;
+  comments;
+  userDetails;
+  userComment: string = '';
+
+  femaleAvatar = 'https://static.vecteezy.com/system/resources/previews/004/899/833/non_2x/beautiful-girl-with-blue-hair-avatar-of-woman-for-social-network-vector.jpg';
+  maleAvatar = 'https://static.vecteezy.com/system/resources/previews/024/183/502/original/male-avatar-portrait-of-a-young-man-with-a-beard-illustration-of-male-character-in-modern-color-style-vector.jpg';
 
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private productFetchService: ProductFetchService,
     private authService: AuthService,
-    private cartService: CartService
+    private cartService: CartService,
+    private commentService: CommentService
   ) {}
   
   fetchAllColors() {
@@ -54,16 +63,31 @@ export class ProductDetailsComponent implements OnInit {
     this.sizes = this.sizeOptions;
   }
 
+  private fetchComments() {
+    this.commentService.fetchCommentForProduct(+this.productID).subscribe(
+      (comments: any) => {
+        this.comments = comments;
+        if(this.comments) {
+          this.hasComment = true;
+        } else {
+          this.hasComment = false;
+        }
+      }
+    )
+  }
+
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe(
       parmas => {
         this.productID = parmas.get('id');
         this.fetchProductDetails();
+        this.fetchComments();
       }
     )
 
     this.authService.getLoginCredentials().subscribe(
       (response: Response) => {
+        this.userDetails = response;
         if(response.role == 'admin') {
           this.isAdminLoggedIn = true;
         }
@@ -181,4 +205,15 @@ export class ProductDetailsComponent implements OnInit {
     }
   }
 
+  postComment() {
+    this.commentService.insertCommentForProduct(+this.productID, this.userDetails.userId, 'Male', this.userComment).subscribe(
+      (response: any) => {
+        alert('Your comment posted successfilly');
+        this.fetchComments();
+      },
+      (error) => {
+        alert('An error occured while posting comment. Please Try Again');
+      }
+    )
+  }
 }

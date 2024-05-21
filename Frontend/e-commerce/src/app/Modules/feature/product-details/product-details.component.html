@@ -74,23 +74,35 @@
                 <img src="https://static.vecteezy.com/system/resources/previews/024/183/502/original/male-avatar-portrait-of-a-young-man-with-a-beard-illustration-of-male-character-in-modern-color-style-vector.jpg" alt="User Avatar">
             </div>
             <div class="comment-input">
-                <input type="text" placeholder="Add a Comment">
+                <input 
+                    type="text" 
+                    placeholder="Add a Comment"
+                    [(ngModel)]="userComment"
+                    >
             </div>
             <div>
-                <button [ngClass]="{'disabled': !isUserLoggedIn, 'active': isUserLoggedIn}" [disabled]="!isUserLoggedIn">
+                <button 
+                    [ngClass]="{'disabled': !isUserLoggedIn, 'active': isUserLoggedIn}" 
+                    [disabled]="!isUserLoggedIn"
+                    (click)="postComment()"
+                    >
                     Post
                 </button>                
             </div>
         </div>
-        <div class="comment-list">
-            <div class="comment-item">
-                <div class="comment-img">
-                    <img src="https://static.vecteezy.com/system/resources/previews/024/183/502/original/male-avatar-portrait-of-a-young-man-with-a-beard-illustration-of-male-character-in-modern-color-style-vector.jpg" alt="User Avatar">
+        <ng-container *ngIf="hasComment">
+            <ng-container *ngFor="let comment of comments"> 
+                <div class="comment-list">
+                    <div class="comment-item">
+                        <div class="comment-img">
+                            <img src="https://static.vecteezy.com/system/resources/previews/024/183/502/original/male-avatar-portrait-of-a-young-man-with-a-beard-illustration-of-male-character-in-modern-color-style-vector.jpg" alt="User Avatar">
+                        </div>
+                        <div class="comment-text">
+                            <p>{{ comment.Comment }}</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="comment-text">
-                    <p>{{ product.Description }}</p>
-                </div>
-            </div>
-        </div>
+            </ng-container>
+        </ng-container>
     </div>
 </div>
