@@ -6,6 +6,7 @@ import (
 
 	"github.com/Emrul-Hasan-Emon/repositories/ecommerce/common"
 	"github.com/Emrul-Hasan-Emon/repositories/ecommerce/database"
+	"github.com/Emrul-Hasan-Emon/repositories/ecommerce/model"
 )
 
 func (pr *Product) CreateCommentFetcher(
@@ -30,5 +31,25 @@ func (pr *Product) CreateCommentFetcher(
 		}
 		common.SetHeader(w)
 		w.Write(commentJson)
+	}
+}
+
+func (pr *Product) CreateCommentWriter(
+	db *database.Database,
+) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		var comment model.Comment
+		err := json.NewDecoder(r.Body).Decode(&comment)
+		if err != nil {
+			http.Error(w, "request couldnot found", http.StatusBadRequest)
+			return
+		}
+		err = db.WriteComment(comment)
+		if err != nil {
+			http.Error(w, "an error occured while inserting comment into the database", http.StatusBadRequest)
+			return
+		}
+		w.WriteHeader(http.StatusOK)
+		json.NewEncoder(w).Encode("successfully posted the comment")
 	}
 }

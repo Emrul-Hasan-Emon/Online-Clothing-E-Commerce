@@ -25,3 +25,15 @@ func (db *Database) FetchComments(ProductID int) ([]model.Comment, error) {
 	}
 	return comments, nil
 }
+
+func (db *Database) WriteComment(comment model.Comment) error {
+	stmt, err := db.db.Prepare("INSERT INTO online_clothing_management_system.Comment (ProductID, UserID, Gender, Comment) VALUES(?, ?, ?, ?)")
+	if err != nil {
+		return err
+	}
+	_, err = stmt.Exec(comment.ProductID, comment.UserID, comment.Gender, comment.Comment)
+	if err != nil {
+		return err
+	}
+	return nil
+}

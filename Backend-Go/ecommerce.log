@@ -1,4 +1,5 @@
-[DEBUG] [2024-05-21 22:24:52,134] [???] [database.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/database.openDatabase:32] ==> Connected to database localhost:3306: 
-[DEBUG] [2024-05-21 22:24:52,134] [???] [database.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/database.openDatabase:37] ==> Database available localhost:3306:
-[DEBUG] [2024-05-21 22:24:55,892] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /comment/44 Fetch Comments 533.562µs
-[DEBUG] [2024-05-21 22:25:05,430] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /comment/45 Fetch Comments 476.315µs
+[DEBUG] [2024-05-21 22:37:03,693] [???] [database.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/database.openDatabase:32] ==> Connected to database localhost:3306: 
+[DEBUG] [2024-05-21 22:37:03,694] [???] [database.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/database.openDatabase:37] ==> Database available localhost:3306:
+[DEBUG] [2024-05-21 22:37:10,204] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> POST /comment/insert Insert Comment 3.26971ms
+[DEBUG] [2024-05-21 22:37:20,144] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> POST /comment/insert Insert Comment 5.466541ms
+[DEBUG] [2024-05-21 22:37:25,018] [???] [routebuilder.go:github.com/Emrul-Hasan-Emon/repositories/ecommerce/route.(*Builder).performanceLogger.func1:58] ==> GET /comment/45 Fetch Comments 425.027µs

@@ -64,6 +64,7 @@ func main() {
 
 	commentRouter := router.SubRouteBuilder("/comment")
 	commentRouter.Add("Fetch Comments", http.MethodGet, "/{productId}", pr.CreateCommentFetcher(db))
+	commentRouter.Add("Insert Comment", http.MethodPost, "/insert", pr.CreateCommentWriter(db))
 
 	log.Fatal(http.ListenAndServe(config.Server().String(), router.Router()))
 }
