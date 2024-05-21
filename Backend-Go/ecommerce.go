@@ -62,5 +62,8 @@ func main() {
 	deliveryRouter.Add("Fetch New Delivery Information", http.MethodPost, "/info", pr.CreateDeliveryDetailsFetcher(db))
 	deliveryRouter.Add("Change Delivery Order Status", http.MethodGet, "/change/{orderId}", pr.CreateDeliveryStatusChanger(db))
 
+	commentRouter := router.SubRouteBuilder("/comment")
+	commentRouter.Add("Fetch Comments", http.MethodGet, "/{productId}", pr.CreateCommentFetcher(db))
+
 	log.Fatal(http.ListenAndServe(config.Server().String(), router.Router()))
 }
