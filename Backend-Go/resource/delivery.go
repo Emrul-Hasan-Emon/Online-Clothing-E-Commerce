@@ -154,6 +154,12 @@ func (pr *Product) CreateDeliveryStatusChanger(
 			http.Error(w, "an error occured while changin delivery status", http.StatusBadRequest)
 			return
 		}
+
+		err = db.ChangeOrderStatus(orderID, "Delivered")
+		if err != nil {
+			http.Error(w, "an error occured while changin delivery status", http.StatusBadRequest)
+			return
+		}
 		w.WriteHeader(http.StatusOK)
 	}
 }
