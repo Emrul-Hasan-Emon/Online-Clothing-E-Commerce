@@ -70,17 +70,14 @@ export class PaymentMethodComponent implements OnInit {
     this.stockService.isPossible(this.cartService.cartDetails).subscribe(
       (missingProductsIds: any) => {
         console.log('missingProductIds --> ', missingProductsIds);
+        if(!missingProductsIds) {
+          this.placeOrder();
+        }
       }
     );
   }
 
-  submitPaymentDetails() {
-    this.number = this.paymentForm.get('number').value;
-    this.transactionNumber = this.paymentForm.get('transactionNumber').value;
-
-    console.log('Cart Details --->  ', this.cartService.cartDetails);
-    this.checkIfAvailable();
-
+  private placeOrder() {
     if(!this.checkData()) {
       const confirmed = window.confirm('Are you sure you want to submit?');
       if(confirmed) {
@@ -106,6 +103,14 @@ export class PaymentMethodComponent implements OnInit {
         )
       }
     }
+  }
+
+  submitPaymentDetails() {
+    this.number = this.paymentForm.get('number').value;
+    this.transactionNumber = this.paymentForm.get('transactionNumber').value;
+
+    console.log('Cart Details --->  ', this.cartService.cartDetails);
+    this.checkIfAvailable();
   }
 }
 
