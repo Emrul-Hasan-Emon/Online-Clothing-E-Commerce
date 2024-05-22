@@ -73,3 +73,7 @@
     background-color: green;
     color: black;
 }
+
+.not-available {
+    color: red;
+}

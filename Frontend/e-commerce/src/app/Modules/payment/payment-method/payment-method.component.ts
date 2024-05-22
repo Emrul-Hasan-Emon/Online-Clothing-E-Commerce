@@ -72,6 +72,9 @@ export class PaymentMethodComponent implements OnInit {
         console.log('missingProductIds --> ', missingProductsIds);
         if(!missingProductsIds) {
           this.placeOrder();
+        } else {
+          this.stockService.raiseStockUnavailableEvent(missingProductsIds);
+          this.router.navigate(['cart-show']);
         }
       }
     );

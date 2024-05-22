@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Cart } from 'src/app/Model/cart';
 import { Product } from 'src/app/Model/product';
+import { StockService } from 'src/app/Service/Stock Check/stock.service';
 import { CartService } from 'src/app/Service/cart.service';
 import { ProductFetchService } from 'src/app/Service/product-fetch.service';
 
@@ -23,17 +24,31 @@ export class CartItemComponent implements OnInit {
   totalPrice: number = 0;
   discountedPrice: number = 0;
   ultimatePrice: number = 0;
-
+  notAvailable: boolean = false;
   productdetails: Product;
 
   constructor(
     private router: Router,
     private cartService: CartService,
-    private productFetchService: ProductFetchService
+    private productFetchService: ProductFetchService,
+    private stockService: StockService
   ) {}
 
-  ngOnInit(): void {
+  private checkProductUnavailability() {
+    this.stockService.getMissingStockProductIds().subscribe(
+      (missingIds: any) => {
+        for (let productid = 0; productid < missingIds.length; productid++) {
+          if (productid === this.cartItem.Id) {
+            this.notAvailable = true;
+          }
+        }
+      }
+    );
+  }
 
+  ngOnInit(): void {
+    this.checkProductUnavailability();
+    
     this.productQuantity = this.cartItem.Quantity;
     this.totalPrice = this.cartItem.TotalPrice;
     this.discountedPrice = this.cartItem.Discount;
