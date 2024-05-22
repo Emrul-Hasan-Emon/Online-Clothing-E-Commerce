@@ -19,6 +19,9 @@
         </div>
     </div>
     <div id="address-container">
+        <div class="number">
+            <p>{{ paymentMethod }} Number: 01850627700 </p>
+        </div>
         <form [formGroup]="paymentForm" (ngSubmit)="submitPaymentDetails()">
             <div>
                 <label for="number">{{ paymentMethod }} Number</label>

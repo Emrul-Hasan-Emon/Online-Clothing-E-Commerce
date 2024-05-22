@@ -105,3 +105,9 @@ cursor: not-allowed;
 input.ng-invalid.ng-touched {
     border: 2px solid red;
 }
+
+.number {
+  background-color: gray;
+  font-weight: bold;
+  font-size: 25px;
+}
