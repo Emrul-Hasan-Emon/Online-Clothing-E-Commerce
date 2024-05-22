@@ -38,6 +38,7 @@ func main() {
 	productRouter.Add("Insert New Product", http.MethodPost, "/insert", pr.InsertNewProduct(db))
 	productRouter.Add("Delete Product", http.MethodGet, "/delete/{productId}", pr.DeleteProduct(db))
 	productRouter.Add("Update Product", http.MethodPost, "/update/{productId}", pr.UpdateProduct(db))
+	productRouter.Add("Stocke Check", http.MethodPost, "/check", pr.CreateStockChecker(db))
 
 	categoryRouter := router.SubRouteBuilder("/category")
 	categoryRouter.Add("Get Categories", http.MethodGet, "/", pr.CreateCategoryFetcher(db))

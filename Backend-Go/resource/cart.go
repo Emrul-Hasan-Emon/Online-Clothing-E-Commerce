@@ -55,3 +55,47 @@ func (pr *Product) CreateCartFetcher(
 		w.Write(cartsJsonData)
 	}
 }
+
+func (pr *Product) CreateStockChecker(
+	db *database.Database,
+) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		var cartDetails []model.Cart
+		err := json.NewDecoder(r.Body).Decode(&cartDetails)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusBadRequest)
+			return
+		}
+		missingProductsId, err := checkStockExitOrNot(cartDetails, db)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusBadRequest)
+			return
+		}
+		w.WriteHeader(http.StatusOK)
+		json.NewEncoder(w).Encode(missingProductsId)
+	}
+}
+
+func checkStockExitOrNot(cartDetails []model.Cart, db *database.Database) ([]int, error) {
+	var missingProductId []int
+	for cartItem := 0; cartItem < len(cartDetails); cartItem++ {
+		products, err := db.FetchProductByID(model.ProductID(cartDetails[cartItem].ProductID))
+		if err != nil {
+			return []int{}, nil
+		}
+
+		for stock := 0; stock < len(products.Size); stock++ {
+			color := products.Size[stock].Color
+			name := products.Size[stock].Name
+			quantity := products.Size[stock].Quantity
+
+			if color == cartDetails[cartItem].Color && name == cartDetails[cartItem].Size {
+				if cartDetails[cartItem].Quantity > quantity {
+					missingProductId = append(missingProductId, cartDetails[cartItem].ProductID)
+					break
+				}
+			}
+		}
+	}
+	return missingProductId, nil
+}
