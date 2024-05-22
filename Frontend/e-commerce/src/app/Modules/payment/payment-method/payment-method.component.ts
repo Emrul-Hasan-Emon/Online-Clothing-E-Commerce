@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { OrderAddressService } from 'src/app/Service/Order-Address/order-address.service';
 import { OrderService } from 'src/app/Service/Order/order.service';
+import { StockService } from 'src/app/Service/Stock Check/stock.service';
 import { AuthService } from 'src/app/Service/auth.service';
 import { CartService } from 'src/app/Service/cart.service';
 
@@ -24,7 +25,8 @@ export class PaymentMethodComponent implements OnInit {
     private orderAddressService: OrderAddressService,
     private orderService: OrderService,
     private cartService: CartService,
-    private authService: AuthService
+    private authService: AuthService,
+    private stockService: StockService
   ) {}
   
   private initiateForm() {
@@ -65,7 +67,7 @@ export class PaymentMethodComponent implements OnInit {
   }
   
   private checkIfAvailable() {
-    this.cartService.isPossibleForOrder().subscribe(
+    this.stockService.isPossible(this.cartService.cartDetails).subscribe(
       (missingProductsIds: any) => {
         console.log('missingProductIds --> ', missingProductsIds);
       }
@@ -78,7 +80,7 @@ export class PaymentMethodComponent implements OnInit {
 
     console.log('Cart Details --->  ', this.cartService.cartDetails);
     this.checkIfAvailable();
-    
+
     if(!this.checkData()) {
       const confirmed = window.confirm('Are you sure you want to submit?');
       if(confirmed) {
