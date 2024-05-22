@@ -37,8 +37,9 @@ export class CartItemComponent implements OnInit {
   private checkProductUnavailability() {
     this.stockService.getMissingStockProductIds().subscribe(
       (missingIds: any) => {
+        console.log('missing -> ', missingIds);
         for (let productid = 0; productid < missingIds.length; productid++) {
-          if (productid === this.cartItem.Id) {
+          if (missingIds[productid] === this.cartItem.Id) {
             this.notAvailable = true;
           }
         }
@@ -48,7 +49,7 @@ export class CartItemComponent implements OnInit {
 
   ngOnInit(): void {
     this.checkProductUnavailability();
-    
+
     this.productQuantity = this.cartItem.Quantity;
     this.totalPrice = this.cartItem.TotalPrice;
     this.discountedPrice = this.cartItem.Discount;

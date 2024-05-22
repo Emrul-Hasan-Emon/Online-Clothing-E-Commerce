@@ -105,7 +105,7 @@ export class ShowSingleOrderDetailsComponent implements OnInit, OnDestroy {
     this.orderService.fetchOrderStatus(this.orderID).subscribe(
       (response: any) => {
         this.orderStatus = response.toString();
-        this.status = this.orderStatus
+        this.status = this.orderStatus;
       },
       (error) => {
         alert('An error occured while fetching order status');
@@ -169,8 +169,10 @@ export class ShowSingleOrderDetailsComponent implements OnInit, OnDestroy {
         (response: any) => {
           alert(`The order is assigned to ${d.name}`);
           this.changeOrderStatus("Shipping");
-          this.doAdminJobs();
-          this.fetchOrderStatus();
+          // this.doAdminJobs();
+          // this.fetchOrderStatus();
+          this.orderStatus = 'Shipping';
+          this.status = 'Shipping';
         },
         (error) => {
           alert('An error occured');
@@ -180,6 +182,10 @@ export class ShowSingleOrderDetailsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    console.log('Status -->  ', this.status);
+    console.log('Order Status --> ', this.orderStatus);
+
+    if(this.isAdmin && this.status) {
       if(this.status != this.orderStatus) {
         const confirm = window.confirm('Do you want change the order status?');
         if(confirm) {
@@ -187,5 +193,6 @@ export class ShowSingleOrderDetailsComponent implements OnInit, OnDestroy {
           this.changeOrderStatus(this.status);
         }
       }
+    }
   }
 }

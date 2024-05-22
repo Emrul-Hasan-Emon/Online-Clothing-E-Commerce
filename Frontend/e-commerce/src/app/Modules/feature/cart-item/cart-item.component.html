@@ -33,7 +33,7 @@
         <!-- <div class="add-another-button">
             <button type="submit" (click)="addAnotherOne()">Add another one</button>
         </div> -->
-        <div class="not-available text-red-600 font-bold">
+        <div class="not-available text-red-600 font-bold" *ngIf="notAvailable">
             *Given quantity is not available
         </div>
 
