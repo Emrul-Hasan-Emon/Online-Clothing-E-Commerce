@@ -61,7 +61,9 @@ export class CartService {
   }
   
   public removeCartFromLocalStorage() {
+    this.cartDetails = [];
     localStorage.removeItem('userCart');
+    this.cartSource.next(this.cartDetails);
   }
   public addAnotherProductToCart(productId: string, product: Product, selectedSize: string, selectedColor: string, quantity: number) {
     let discountInfo = 0;
