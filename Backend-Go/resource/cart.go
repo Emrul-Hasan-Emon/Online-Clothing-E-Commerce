@@ -21,6 +21,12 @@ func (pr *Product) CreateCartInserter(
 			return
 		}
 		fmt.Println(cartDetails)
+
+		err = updateProduct(cartDetails, db)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusBadRequest)
+			return
+		}
 		err = db.InsertCartDetails(cartDetails)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -30,6 +36,27 @@ func (pr *Product) CreateCartInserter(
 		w.WriteHeader(http.StatusCreated)
 		json.NewEncoder(w).Encode("cart details entered successfully")
 	}
+}
+
+func updateProduct(cartDetails []model.Cart, db *database.Database) error {
+	for cartItem := 0; cartItem < len(cartDetails); cartItem++ {
+		product, err := db.FetchProductByID(model.ProductID(cartDetails[cartItem].ProductID))
+		if err != nil {
+			return err
+		}
+
+		for idx := 0; idx < len(product.Size); idx++ {
+			if product.Size[idx].Color == cartDetails[cartItem].Color && product.Size[idx].Name == cartDetails[cartItem].Size {
+				product.Quantity = product.Quantity - cartDetails[cartItem].Quantity
+				product.Size[idx].Quantity = product.Size[idx].Quantity - cartDetails[cartItem].Quantity
+				err = db.UpdateProductDetails(product, int(product.ID))
+				if err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 func (pr *Product) CreateCartFetcher(
