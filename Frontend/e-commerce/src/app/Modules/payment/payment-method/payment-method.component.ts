@@ -64,11 +64,20 @@ export class PaymentMethodComponent implements OnInit {
     return false;
   }
   
+  private checkIfAvailable() {
+    this.cartService.isPossibleForOrder().subscribe(
+      (missingProductsIds: any) => {
+        console.log('missingProductIds --> ', missingProductsIds);
+      }
+    );
+  }
+
   submitPaymentDetails() {
     this.number = this.paymentForm.get('number').value;
     this.transactionNumber = this.paymentForm.get('transactionNumber').value;
 
     console.log('Cart Details --->  ', this.cartService.cartDetails);
+    this.checkIfAvailable();
     
     if(!this.checkData()) {
       const confirmed = window.confirm('Are you sure you want to submit?');

@@ -129,8 +129,4 @@ export class CartService {
     console.log('Total Cart Cost ---> ', this.cartCost);
     return this.cartCost;
   }
-
-  public isPossibleForOrder() {
-    return this.http.post(`${this.baseUrl}/check`, this.cartDetails);
-  }
 }
