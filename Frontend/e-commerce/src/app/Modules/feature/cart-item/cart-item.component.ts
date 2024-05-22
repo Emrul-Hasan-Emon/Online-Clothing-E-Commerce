@@ -35,20 +35,24 @@ export class CartItemComponent implements OnInit {
   ) {}
 
   private checkProductUnavailability() {
-    this.stockService.getMissingStockProductIds().subscribe(
-      (missingIds: any) => {
-        console.log('missing -> ', missingIds);
-        for (let productid = 0; productid < missingIds.length; productid++) {
-          if (missingIds[productid] === this.cartItem.Id) {
-            this.notAvailable = true;
-          }
-        }
+    this.productdetails.Size.forEach(size => {
+      const sizeName = size.Name.toLowerCase();
+      const colorName = size.Color.toLowerCase();
+      const quantityP = size.Quantity ? size.Quantity : 0;
+
+      const name = this.cartItem.Size.toLowerCase();
+      const color = this.cartItem.Color.toLowerCase();
+      const quantity = this.cartItem.Quantity;
+
+      console.log(`Product -> Size: ${sizeName}, Color: ${colorName}, Quantity: ${quantityP}`);
+      console.log(`Cart -> Size: ${name}, Color: ${color}, Quantity: ${quantity}`);
+      if(sizeName === name && colorName === color && quantity > quantityP) {
+        this.notAvailable = true;
       }
-    );
+    });
   }
 
   ngOnInit(): void {
-    this.checkProductUnavailability();
 
     this.productQuantity = this.cartItem.Quantity;
     this.totalPrice = this.cartItem.TotalPrice;
@@ -59,6 +63,8 @@ export class CartItemComponent implements OnInit {
       (productDetails) => {
         this.productdetails = productDetails;
         console.log('Cart Item ---> ', this.cartItem);
+        console.log('Product Details --> ', productDetails);
+        this.checkProductUnavailability();  
       },
       (error) => {
         alert('An error occured while fetching data');
