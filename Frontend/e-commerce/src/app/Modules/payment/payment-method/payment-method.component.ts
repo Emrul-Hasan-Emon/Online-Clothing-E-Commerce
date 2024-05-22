@@ -68,6 +68,8 @@ export class PaymentMethodComponent implements OnInit {
     this.number = this.paymentForm.get('number').value;
     this.transactionNumber = this.paymentForm.get('transactionNumber').value;
 
+    console.log('Cart Details --->  ', this.cartService.cartDetails);
+    
     if(!this.checkData()) {
       const confirmed = window.confirm('Are you sure you want to submit?');
       if(confirmed) {
