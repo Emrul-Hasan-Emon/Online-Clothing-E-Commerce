@@ -1,0 +1,32 @@
+<div class="address-container">
+    <button *ngIf="isDisable" (click)="enableEditing()">Update</button>
+    <form [formGroup]="userForm" (ngSubmit)="updateUserForm()">
+        <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" formControlName="name" [placeholder]="userData.name" [disabled]="isDisable" required>
+        </div>
+        <div>
+            <label for="contact">Contact</label>
+            <input type="tel" id="contact" formControlName="contact" [placeholder]="contact" [disabled]="isDisable" required>
+        </div>
+        <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" formControlName="email" [disabled]="isDisable" required>
+        </div>
+        <div>
+            <label for="address">Address</label>
+            <input type="text" id="address" formControlName="address" [disabled]="isDisable" required>
+        </div>
+        <div>
+            <label for="city">City</label>
+            <input type="text" id="city" formControlName="city" [disabled]="isDisable" required>
+        </div>
+        <div>
+            <label for="district">District</label>
+            <input type="text" id="district" formControlName="district" [disabled]="isDisable" required>
+        </div>
+        <div *ngIf="!isDisable" class="button-container">
+            <button type="submit">Save Changes</button>
+        </div>
+    </form>
+</div>

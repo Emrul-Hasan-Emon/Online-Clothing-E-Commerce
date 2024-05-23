@@ -16,6 +16,7 @@ import { PaymentMethodComponent } from './Modules/payment/payment-method/payment
 import { SinglePaymentMethodComponent } from './Modules/payment/single-payment-method/single-payment-method.component';
 import { UserOrderHistoryComponent } from './Modules/order/user-order-history/user-order-history.component';
 import { DeliveryHomeComponent } from './Modules/delivery/delivery-home/delivery-home.component';
+import { ProfileComponent } from './Modules/shared/profile/profile.component';
 
 const routes: Routes = [
   // { 
@@ -50,7 +51,8 @@ const routes: Routes = [
   },
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent },
-  { path: "single-payment-method/:method", component: SinglePaymentMethodComponent }
+  { path: "single-payment-method/:method", component: SinglePaymentMethodComponent },
+  { path: "profile", component: ProfileComponent }
 ];
 
 @NgModule({

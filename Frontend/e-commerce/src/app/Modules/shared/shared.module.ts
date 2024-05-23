@@ -4,11 +4,12 @@ import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NavbarContentComponent } from './navbar/navbar-content/navbar-content.component';
 import { DropdownModule } from 'primeng/dropdown';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SingleFilterShowComponent } from './single-filter-show/single-filter-show.component';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { BrowserModule } from '@angular/platform-browser';
     FooterComponent,
     NavbarComponent,
     NavbarContentComponent,
-    SingleFilterShowComponent
+    SingleFilterShowComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +26,8 @@ import { BrowserModule } from '@angular/platform-browser';
     BrowserAnimationsModule,
     DropdownModule,
     RouterModule,
-    BrowserModule
+    BrowserModule,
+    ReactiveFormsModule
   ],
   exports: [
     FooterComponent,

@@ -32,7 +32,7 @@
             <div class="dropdown single-icon" *ngIf="isLogged">
                 <button class="dropbtn">{{ name }}</button>
                 <div class="dropdown-content">
-                    <a href="#">Profile</a>
+                    <a routerLink="profile">Profile</a>
                     <a routerLink="user-order-history">Order History</a>
                     <a (click)="logoutClicked()">Logout</a>
                 </div>
