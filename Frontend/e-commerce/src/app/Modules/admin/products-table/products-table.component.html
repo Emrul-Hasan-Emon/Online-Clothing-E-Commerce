@@ -2,6 +2,20 @@
     <div>
         <h2 class="text-center">Products Table (Admin)</h2>
     </div>
+    <div class="search-box flex justify-between">
+        <div class="card flex justify-content-center">
+                <p-autoComplete 
+                    [(ngModel)]="searchProductByName" 
+                    [dropdown]="true" 
+                    [suggestions]="searchOptions" 
+                    [placeholder]="'Search By Product Name'"
+                    (completeMethod)="filterCountry($event)" 
+                    (onSelect)="onSelect($event)" />
+        </div>
+        <div *ngIf="mark">
+            <button (click)="undoSelection()">Undo Selection</button>
+        </div>
+    </div>
     <div class="product-container">
         <table>
             <thead>
