@@ -195,4 +195,51 @@ export class ShowSingleOrderDetailsComponent implements OnInit, OnDestroy {
       }
     }
   }
+
+  downloadInvoice() {
+    const printContent = document.getElementById('order-details').innerHTML;
+    const popupWin = window.open('', '_blank', 'top=0,left=0,height=auto,width=auto');
+
+    // Get the stylesheets from the parent document
+    const stylesheets = Array.from(document.querySelectorAll('link[rel="stylesheet"], style'))
+      .map(style => style.outerHTML)
+      .join('\n');
+
+    popupWin.document.open();
+    popupWin.document.write(`
+      <html>
+        <head>
+          <title>Invoice</title>
+          ${stylesheets}
+          <style>
+            /* Add your styles here */
+            table {
+              width: 100%;
+              border-collapse: collapse;
+            }
+            table, th, td {
+              border: 1px solid black;
+            }
+            th, td {
+              padding: 15px;
+              text-align: left;
+            }
+            img {
+              max-width: 100px; /* Adjust based on your layout */
+            }
+          </style>
+        </head>
+        <body>
+          ${printContent}
+          <script>
+            window.onload = function() {
+              window.print();
+              window.close();
+            };
+          </script>
+        </body>
+      </html>`
+    );
+    popupWin.document.close();
+  }
 }

@@ -41,7 +41,10 @@
     <div class="order-status" *ngIf="isUser === true">
         <h3>Status: {{ orderStatus }}</h3>
     </div>
-    <div class="order-details">
+    <div>
+        <button (click)="downloadInvoice()">Download Invoice</button>
+    </div>
+    <div class="order-details" id="order-details">
         <table>
             <thead>
                 <tr>
